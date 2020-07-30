@@ -11,6 +11,8 @@ namespace eRestoran.WebAPI.Mappers
         public Mapper()
         {
             CreateMap<Database.User, Model.User>();
+            CreateMap<Database.User, Model.Request.UserInsertRequest>().ReverseMap();
+
         }
     }
 }

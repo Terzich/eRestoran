@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using eRestoran.Model.Request;
 using eRestoran.WebAPI.Database;
 using eRestoran.WebAPI.Services;
 using Microsoft.AspNetCore.Http;
@@ -24,6 +25,12 @@ namespace eRestoran.WebAPI.Controllers
         public ActionResult<List<Model.User>> Get()
         {
             return _service.Get();
+        }
+
+        [HttpPost]
+        public ActionResult<Model.User>Insert(UserInsertRequest request)
+        {
+            return _service.Insert(request);
         }
 
     }

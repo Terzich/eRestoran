@@ -1,4 +1,5 @@
-﻿using eRestoran.WebAPI.Database;
+﻿using eRestoran.Model.Request;
+using eRestoran.WebAPI.Database;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +10,6 @@ namespace eRestoran.WebAPI.Services
     public interface IUserService
     {
         List<Model.User> Get();
-
+        Model.User Insert(UserInsertRequest request);
     }
 }
