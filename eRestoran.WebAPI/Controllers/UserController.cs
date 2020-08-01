@@ -26,6 +26,12 @@ namespace eRestoran.WebAPI.Controllers
         {
             return _service.Get();
         }
+        
+        [HttpGet("{userId}")]
+        public ActionResult<Model.User> Get(int userId)
+        {
+            return _service.Get(userId);
+        }
 
         [HttpPost]
         public ActionResult<Model.User>Insert(UserInsertRequest request)

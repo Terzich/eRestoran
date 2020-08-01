@@ -10,7 +10,7 @@ namespace eRestoran.WebAPI.Mappers
     {
         public Mapper()
         {
-            CreateMap<Database.User, Model.User>();
+            CreateMap<Database.User, Model.User>().ForMember(dest=> dest.City, opt=> opt.MapFrom(src=>src.City));
             CreateMap<Database.User, Model.Request.UserInsertRequest>().ReverseMap();
 
         }

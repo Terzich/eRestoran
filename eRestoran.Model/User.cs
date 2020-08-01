@@ -12,6 +12,9 @@ namespace eRestoran.Model
         public DateTime? DateOfBirth { get; set; }
         public string Address { get; set; }
         public string PhoneNumber { get; set; }
+        public int CityId { get; set; }
+        public virtual City City { get; set; }
+
 
     }
 }

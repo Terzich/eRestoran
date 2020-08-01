@@ -3,9 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29409.12
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eRestoran.WebAPI", "eRestoran.WebAPI\eRestoran.WebAPI.csproj", "{04872688-24BA-4075-B745-F50F7FC89720}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "eRestoran.WebAPI", "eRestoran.WebAPI\eRestoran.WebAPI.csproj", "{04872688-24BA-4075-B745-F50F7FC89720}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eRestoran.Model", "eRestoran.Model\eRestoran.Model.csproj", "{4FEB6794-4408-4FF0-A5FB-FCCB1747D2E2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "eRestoran.Model", "eRestoran.Model\eRestoran.Model.csproj", "{4FEB6794-4408-4FF0-A5FB-FCCB1747D2E2}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UI", "UI", "{B684CF94-2A94-40A3-B0DD-0743BF52BF91}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eRestoran.WinUI", "eRestoran.WinUI\eRestoran.WinUI.csproj", "{5B7EE9EB-2FBC-44F6-AFDE-473C5E63EEE0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,9 +25,16 @@ Global
 		{4FEB6794-4408-4FF0-A5FB-FCCB1747D2E2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4FEB6794-4408-4FF0-A5FB-FCCB1747D2E2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4FEB6794-4408-4FF0-A5FB-FCCB1747D2E2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5B7EE9EB-2FBC-44F6-AFDE-473C5E63EEE0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5B7EE9EB-2FBC-44F6-AFDE-473C5E63EEE0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5B7EE9EB-2FBC-44F6-AFDE-473C5E63EEE0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5B7EE9EB-2FBC-44F6-AFDE-473C5E63EEE0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{5B7EE9EB-2FBC-44F6-AFDE-473C5E63EEE0} = {B684CF94-2A94-40A3-B0DD-0743BF52BF91}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {92120E94-1FC1-45C8-8B9D-8A3DDD2AD602}
