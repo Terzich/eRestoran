@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 using eRestoran.Model.Request;
 using eRestoran.WebAPI.Database;
@@ -24,6 +25,7 @@ namespace eRestoran.WebAPI.Controllers
         [HttpGet]
         public ActionResult<List<Model.User>> Get()
         {
+            Thread.Sleep(5000);
             return _service.Get();
         }
         

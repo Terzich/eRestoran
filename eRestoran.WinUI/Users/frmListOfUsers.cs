@@ -13,15 +13,16 @@ namespace eRestoran.WinUI.Users
 {
     public partial class frmListOfUsers : Form
     {
+        private readonly APIService _apiService = new APIService("User");
         public frmListOfUsers()
         {
             InitializeComponent();
         }
 
-        private void btnShowUsers_Click(object sender, EventArgs e)
+        private async void btnShowUsers_Click(object sender, EventArgs e)
         {
-            var result = "https://localhost:44375/api/User".GetJsonAsync<List<Model.User>>().Result;
+            var result= await _apiService.Get<List<Model.User>>();
             dgvUsers.DataSource = result;
         }
-    }
+    }   
 }
