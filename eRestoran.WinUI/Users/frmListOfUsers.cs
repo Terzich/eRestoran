@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using eRestoran.Model.Request;
 using Flurl.Http;
 
 namespace eRestoran.WinUI.Users
@@ -21,7 +22,13 @@ namespace eRestoran.WinUI.Users
 
         private async void btnShowUsers_Click(object sender, EventArgs e)
         {
-            var result= await _apiService.Get<List<Model.User>>();
+            var search = new UserSearchRequest()
+            {
+                Name = searchBox.Text
+            };
+
+
+            var result= await _apiService.Get<List<Model.User>>(search);
             dgvUsers.DataSource = result;
         }
     }   

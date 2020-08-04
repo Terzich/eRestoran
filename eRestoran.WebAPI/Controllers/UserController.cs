@@ -23,10 +23,9 @@ namespace eRestoran.WebAPI.Controllers
         }
 
         [HttpGet]
-        public ActionResult<List<Model.User>> Get()
+        public ActionResult<List<Model.User>> Get([FromQuery]UserSearchRequest search)
         {
-            Thread.Sleep(5000);
-            return _service.Get();
+            return _service.Get(search);
         }
         
         [HttpGet("{userId}")]

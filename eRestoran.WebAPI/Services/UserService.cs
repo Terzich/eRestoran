@@ -19,9 +19,19 @@ namespace eRestoran.WebAPI.Services
             _context = context;
             _mapper = mapper;
         }
-        public List<Model.User> Get ()
+        public List<Model.User> Get (UserSearchRequest search)
         {
-            var list = _context.User.ToList();
+            var query = _context.User.AsQueryable();
+            if(!string.IsNullOrWhiteSpace(search.Name))
+            {
+                query = query.Where(q => q.Name.StartsWith(search.Name));
+            }
+            if (!string.IsNullOrWhiteSpace(search.Surname))
+            {
+                query = query.Where(q => q.Surname.StartsWith(search.Surname));
+            }
+
+            var list = query.ToList();
 
             return _mapper.Map<List<Model.User>>(list);
         }
