@@ -31,5 +31,15 @@ namespace eRestoran.WinUI
             return result;
 
         }
+        public async Task<T> GetById<T>(object id)
+        {
+
+            var url = $"{Properties.Settings.Default.APIurl}/{_route}/{id}";
+           
+
+            var result = await url.GetJsonAsync<T>();
+            return result;
+
+        }
     }
 }

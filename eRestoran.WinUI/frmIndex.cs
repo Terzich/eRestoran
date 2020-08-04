@@ -113,5 +113,11 @@ namespace eRestoran.WinUI
             louForm.Show();
 
         }
+
+        private void noviPosjetiocToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmUserDetails frm = new frmUserDetails();
+            frm.Show();
+        }
     }
 }

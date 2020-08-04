@@ -65,7 +65,6 @@
             this.posjetiociToolStripMenuItem});
             this.menuStrip.Location = new System.Drawing.Point(0, 0);
             this.menuStrip.Name = "menuStrip";
-            this.menuStrip.Padding = new System.Windows.Forms.Padding(8, 2, 0, 2);
             this.menuStrip.Size = new System.Drawing.Size(843, 28);
             this.menuStrip.TabIndex = 0;
             this.menuStrip.Text = "MenuStrip";
@@ -91,6 +90,7 @@
             this.noviPosjetiocToolStripMenuItem.Name = "noviPosjetiocToolStripMenuItem";
             this.noviPosjetiocToolStripMenuItem.Size = new System.Drawing.Size(245, 26);
             this.noviPosjetiocToolStripMenuItem.Text = "Novi posjetioc";
+            this.noviPosjetiocToolStripMenuItem.Click += new System.EventHandler(this.noviPosjetiocToolStripMenuItem_Click);
             // 
             // frmIndex
             // 
@@ -101,7 +101,7 @@
             this.Controls.Add(this.menuStrip);
             this.IsMdiContainer = true;
             this.MainMenuStrip = this.menuStrip;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmIndex";
             this.Text = "frmIndex";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;

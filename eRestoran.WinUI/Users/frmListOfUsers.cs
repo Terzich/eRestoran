@@ -29,7 +29,15 @@ namespace eRestoran.WinUI.Users
 
 
             var result= await _apiService.Get<List<Model.User>>(search);
+            dgvUsers.AutoGenerateColumns = false;
             dgvUsers.DataSource = result;
+        }
+
+        private void dgvUsers_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            var id = dgvUsers.SelectedRows[0].Cells[0].Value;
+            frmUserDetails frm = new frmUserDetails(int.Parse(id.ToString()));
+            frm.Show();
         }
     }   
 }
