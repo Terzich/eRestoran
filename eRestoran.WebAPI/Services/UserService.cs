@@ -54,5 +54,13 @@ namespace eRestoran.WebAPI.Services
             return _mapper.Map<Model.User>(entity);
 
         }
+
+        public Model.User Update(int id, UserInsertRequest request)
+        {
+            var entity = _context.User.Find(id);
+            _mapper.Map(request, entity);
+            _context.SaveChanges();
+            return _mapper.Map<Model.User>(entity);
+        }
     }
 }

@@ -39,6 +39,12 @@ namespace eRestoran.WebAPI.Controllers
         {
             return _service.Insert(request);
         }
+       
+        [HttpPut]
+        public ActionResult<Model.User> Update(int id, UserInsertRequest request)
+        {
+            return _service.Update(id,request);
+        }
 
     }
 }
