@@ -21,8 +21,10 @@ namespace eRestoran.WebAPI.Database
         public virtual DbSet<ItemType> ItemType { get; set; }
         public virtual DbSet<MenuItemsReview> MenuItemsReview { get; set; }
         public virtual DbSet<RecommendationType> RecommendationType { get; set; }
+        public virtual DbSet<Restaurant> Restaurant { get; set; }
         public virtual DbSet<RestaurantMenuItem> RestaurantMenuItem { get; set; }
         public virtual DbSet<RestaurantReview> RestaurantReview { get; set; }
+        public virtual DbSet<SuperOffer> SuperOffer { get; set; }
         public virtual DbSet<User> User { get; set; }
         public virtual DbSet<Visit> Visit { get; set; }
         public virtual DbSet<VisitorRecommendation> VisitorRecommendation { get; set; }
@@ -32,7 +34,7 @@ namespace eRestoran.WebAPI.Database
             if (!optionsBuilder.IsConfigured)
             {
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
-                optionsBuilder.UseSqlServer("Server=localhost;Database=eRestoran;Trusted_Connection=True;");
+                optionsBuilder.UseSqlServer("Server=localhost;Database=eRestoran;Integrated Security=False;Trusted_Connection=True;");
             }
         }
 
@@ -100,6 +102,25 @@ namespace eRestoran.WebAPI.Database
                     .HasMaxLength(50);
             });
 
+            modelBuilder.Entity<Restaurant>(entity =>
+            {
+                entity.Property(e => e.Address).HasMaxLength(50);
+
+                entity.Property(e => e.ImageUrl)
+                    .HasColumnName("ImageURL")
+                    .HasMaxLength(100);
+
+                entity.Property(e => e.RestaurantName)
+                    .IsRequired()
+                    .HasMaxLength(50);
+
+                entity.HasOne(d => d.City)
+                    .WithMany(p => p.Restaurant)
+                    .HasForeignKey(d => d.CityId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("CityId_Restaurant_FK");
+            });
+
             modelBuilder.Entity<RestaurantMenuItem>(entity =>
             {
                 entity.ToTable("RestaurantMenu_Item");
@@ -132,6 +153,34 @@ namespace eRestoran.WebAPI.Database
                     .HasForeignKey(d => d.UserId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("Restaurant_Review_UserId_FK");
+            });
+
+            modelBuilder.Entity<SuperOffer>(entity =>
+            {
+                entity.Property(e => e.Description)
+                    .IsRequired()
+                    .HasMaxLength(50);
+
+                entity.Property(e => e.OfferEnd).HasColumnType("datetime");
+
+                entity.Property(e => e.OfferStart).HasColumnType("datetime");
+
+                entity.Property(e => e.RestaurantMenuItemId).HasColumnName("RestaurantMenu_ItemId");
+
+                entity.HasOne(d => d.ItemCategory)
+                    .WithMany(p => p.SuperOffer)
+                    .HasForeignKey(d => d.ItemCategoryId)
+                    .HasConstraintName("ItemCategory_SuperOffer_FK");
+
+                entity.HasOne(d => d.ItemType)
+                    .WithMany(p => p.SuperOffer)
+                    .HasForeignKey(d => d.ItemTypeId)
+                    .HasConstraintName("ItemType_SuperOffer_FK");
+
+                entity.HasOne(d => d.RestaurantMenuItem)
+                    .WithMany(p => p.SuperOffer)
+                    .HasForeignKey(d => d.RestaurantMenuItemId)
+                    .HasConstraintName("RestaurantMenu_Item_SuperOffer_FK");
             });
 
             modelBuilder.Entity<User>(entity =>

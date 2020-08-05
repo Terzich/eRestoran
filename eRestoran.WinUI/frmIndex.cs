@@ -119,5 +119,10 @@ namespace eRestoran.WinUI
             frmUserDetails frm = new frmUserDetails();
             frm.Show();
         }
+
+        private void urediToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

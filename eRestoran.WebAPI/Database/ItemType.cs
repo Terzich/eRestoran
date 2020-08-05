@@ -8,11 +8,13 @@ namespace eRestoran.WebAPI.Database
         public ItemType()
         {
             ItemCategory = new HashSet<ItemCategory>();
+            SuperOffer = new HashSet<SuperOffer>();
         }
 
         public int ItemTypeId { get; set; }
         public string Type { get; set; }
 
         public virtual ICollection<ItemCategory> ItemCategory { get; set; }
+        public virtual ICollection<SuperOffer> SuperOffer { get; set; }
     }
 }
