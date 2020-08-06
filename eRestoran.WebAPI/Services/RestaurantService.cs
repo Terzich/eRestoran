@@ -23,7 +23,9 @@ namespace eRestoran.WebAPI.Services
         public Model.Restaurant Get(int id)
         {
             var entity = _context.Restaurant.Find(id);
-            return _mapper.Map<Model.Restaurant>(entity);
+            var result= _mapper.Map<Model.Restaurant>(entity);
+            result.CityName = _context.City.Find(entity.CityId).CityName;
+            return result;
         }
 
         public Model.Restaurant Update(int id, RestaurantUpdateRequest request)
@@ -31,7 +33,9 @@ namespace eRestoran.WebAPI.Services
             var entity = _context.Restaurant.Find(id);
             _mapper.Map(request, entity);
             _context.SaveChanges();
-            return _mapper.Map<Model.Restaurant>(entity);
+            var result = _mapper.Map<Model.Restaurant>(entity);
+            result.CityName = _context.City.Find(entity.CityId).CityName;
+            return result;
         }
     }
 }

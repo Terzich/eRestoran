@@ -12,6 +12,8 @@ namespace eRestoran.WebAPI.Mappers
         {
             CreateMap<Database.User, Model.User>().ForMember(dest=> dest.City, opt=> opt.MapFrom(src=>src.City));
             CreateMap<Database.User, Model.Request.UserInsertRequest>().ReverseMap();
+            CreateMap<Database.Restaurant, Model.Restaurant>().ReverseMap();
+            CreateMap<Database.Restaurant, Model.Request.RestaurantUpdateRequest>().ReverseMap();
 
         }
     }

@@ -74,11 +74,11 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Restaurant\RestaurantDetails.cs">
+    <Compile Include="Restaurant\frmRestaurantDetails.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Restaurant\RestaurantDetails.Designer.cs">
-      <DependentUpon>RestaurantDetails.cs</DependentUpon>
+    <Compile Include="Restaurant\frmRestaurantDetails.Designer.cs">
+      <DependentUpon>frmRestaurantDetails.cs</DependentUpon>
     </Compile>
     <Compile Include="Users\frmListOfUsers.cs">
       <SubType>Form</SubType>
@@ -108,8 +108,8 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="Restaurant\RestaurantDetails.resx">
-      <DependentUpon>RestaurantDetails.cs</DependentUpon>
+    <EmbeddedResource Include="Restaurant\frmRestaurantDetails.resx">
+      <DependentUpon>frmRestaurantDetails.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Users\frmListOfUsers.resx">
       <DependentUpon>frmListOfUsers.cs</DependentUpon>

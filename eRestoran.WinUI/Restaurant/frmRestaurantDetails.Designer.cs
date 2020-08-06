@@ -1,6 +1,6 @@
 ﻿namespace eRestoran.WinUI.Restaurant
 {
-    partial class RestaurantDetails
+    partial class frmRestaurantDetails
     {
         /// <summary>
         /// Required designer variable.
@@ -37,6 +37,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.btnSave = new System.Windows.Forms.Button();
+            this.dtpOpenAt = new System.Windows.Forms.DateTimePicker();
             this.SuspendLayout();
             // 
             // txtRestaurantName
@@ -111,12 +112,22 @@
             this.btnSave.TabIndex = 8;
             this.btnSave.Text = "Sačuvaj";
             this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
-            // RestaurantDetails
+            // dtpOpenAt
+            // 
+            this.dtpOpenAt.Format = System.Windows.Forms.DateTimePickerFormat.Time;
+            this.dtpOpenAt.Location = new System.Drawing.Point(536, 139);
+            this.dtpOpenAt.Name = "dtpOpenAt";
+            this.dtpOpenAt.Size = new System.Drawing.Size(200, 22);
+            this.dtpOpenAt.TabIndex = 9;
+            // 
+            // frmRestaurantDetails
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.dtpOpenAt);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
@@ -126,7 +137,7 @@
             this.Controls.Add(this.txtAddress);
             this.Controls.Add(this.txtCity);
             this.Controls.Add(this.txtRestaurantName);
-            this.Name = "RestaurantDetails";
+            this.Name = "frmRestaurantDetails";
             this.Text = "RestaurantDetails";
             this.Load += new System.EventHandler(this.RestaurantDetails_Load);
             this.ResumeLayout(false);
@@ -145,5 +156,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button btnSave;
+        private System.Windows.Forms.DateTimePicker dtpOpenAt;
     }
 }

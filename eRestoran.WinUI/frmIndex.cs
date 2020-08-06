@@ -1,4 +1,5 @@
-﻿using eRestoran.WinUI.Users;
+﻿using eRestoran.WinUI.Restaurant;
+using eRestoran.WinUI.Users;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -122,7 +123,8 @@ namespace eRestoran.WinUI
 
         private void urediToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            frmRestaurantDetails frm = new frmRestaurantDetails();
+            frm.Show();
         }
     }
 }
