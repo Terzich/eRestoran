@@ -30,33 +30,44 @@ namespace eRestoran.WinUI.Restaurant
             txtNumberOfTables.Text = restaurant.NumberOfTables.ToString();
             if (restaurant.OpenAt != null)
             {
-                TimeSpan openAt = new TimeSpan(restaurant.OpenAt.Value.Hours, restaurant.OpenAt.Value.Minutes, restaurant.OpenAt.Value.Seconds);
-                DateTime timeOpenAt = new DateTime();
-                timeOpenAt.Add(openAt);
-                dtpOpenAt.Value = timeOpenAt;
+                
+                dtpOpenAt.Value = restaurant.OpenAt.Value;
             }
             else
             {
                 DateTime alternateTime = new DateTime(1753,1,1,1,1,1);
                 dtpOpenAt.Value = alternateTime;
             }
-            
+            if (restaurant.CloseAt != null)
+            {
+
+                dtpCloseAt.Value = restaurant.CloseAt.Value;
+            }
+            else
+            {
+                DateTime alternateTime = new DateTime(1753, 1, 1, 1, 1, 1);
+                dtpCloseAt.Value = alternateTime;
+            }
+
         }
 
         private async void btnSave_Click(object sender, EventArgs e)
         {
             DateTime openAt = dtpOpenAt.Value;
-            TimeSpan tsoA = new TimeSpan(openAt.Hour, openAt.Minute, openAt.Second);
             RestaurantUpdateRequest request = new RestaurantUpdateRequest
             {
                 RestaurantName=txtRestaurantName.Text,
                 Address=txtAddress.Text,
                 NumberOfTables=int.Parse(txtNumberOfTables.Text),
-                OpenAt=tsoA
+                OpenAt=openAt,
+                CloseAt=dtpCloseAt.Value
             };
 
-            await _service.Update<Model.Restaurant>(_RestaurantId, request);
-            MessageBox.Show("Podaci restorana uspjesno promjenjeni!");
+            Model.Restaurant entity = null;
+            entity=await _service.Update<Model.Restaurant>(_RestaurantId, request);
+
+            if(entity!=null)
+                MessageBox.Show("Podaci restorana uspjesno promjenjeni!");
             
         }
     }

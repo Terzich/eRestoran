@@ -27,7 +27,7 @@ namespace eRestoran.WebAPI.Controllers
         }
 
         [HttpPut("{id}")]
-        public ActionResult<Model.Restaurant> Update(int id, RestaurantUpdateRequest request)
+        public ActionResult<Model.Restaurant> Update(int id,[FromBody] RestaurantUpdateRequest request)
         {
             return _service.Update(id,request);
         }

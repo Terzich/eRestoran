@@ -106,9 +106,13 @@ namespace eRestoran.WebAPI.Database
             {
                 entity.Property(e => e.Address).HasMaxLength(50);
 
+                entity.Property(e => e.CloseAt).HasColumnType("datetime");
+
                 entity.Property(e => e.ImageUrl)
                     .HasColumnName("ImageURL")
                     .HasMaxLength(100);
+
+                entity.Property(e => e.OpenAt).HasColumnType("datetime");
 
                 entity.Property(e => e.RestaurantName)
                     .IsRequired()

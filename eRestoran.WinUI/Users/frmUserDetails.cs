@@ -33,16 +33,17 @@ namespace eRestoran.WinUI.Users
                     Surname = txtSurname.Text,
                     DateOfBirth = dtpDateOfBirth.Value,
                     Address = txtAddress.Text,
-                    PhoneNumber = txtPhoneNumber.Text
+                    PhoneNumber = txtPhoneNumber.Text,
                 };
+                Model.User entity = null;
                 if (_id.HasValue)
                 {
-                    await _service.Update<Model.User>(_id, objU);
+                    entity=await _service.Update<Model.User>(_id.Value, objU);
                     MessageBox.Show("Podaci korisnika uspješno promjenjeni!");
                 }
                 else
                 {
-                    await _service.Insert<Model.User>(objU);
+                    entity=await _service.Insert<Model.User>(objU);
                     MessageBox.Show("Novi korisnik uspješno dodan!");
                 }
             }

@@ -8,8 +8,8 @@ namespace eRestoran.Model.Request
     {
         public string RestaurantName { get; set; }
         public string Address { get; set; }
-        public TimeSpan? OpenAt { get; set; }
-        public TimeSpan? CloseAt { get; set; }
+        public DateTime? OpenAt { get; set; }
+        public DateTime? CloseAt { get; set; }
         public int? NumberOfTables { get; set; }
 
     }
