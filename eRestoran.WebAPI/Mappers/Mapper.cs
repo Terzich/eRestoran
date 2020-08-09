@@ -17,6 +17,9 @@ namespace eRestoran.WebAPI.Mappers
             CreateMap<Database.ItemType, Model.ItemType>().ReverseMap();
             CreateMap<Database.ItemCategory, Model.ItemCategory>().ReverseMap();
             CreateMap<Database.Quantity, Model.Quantity>().ReverseMap();
+            CreateMap<Database.RestaurantMenuItem, Model.RestaurantMenuItem>().ReverseMap();
+            CreateMap<Model.RestaurantMenuItem, Model.Request.RestaurantMenuItemUpsertRequest>().ReverseMap();
+            CreateMap<Database.RestaurantMenuItem, Model.Request.RestaurantMenuItemUpsertRequest>().ReverseMap();
 
 
 

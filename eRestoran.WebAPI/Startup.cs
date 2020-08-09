@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
+using eRestoran.Model.Request;
 using eRestoran.WebAPI.Database;
 using eRestoran.WebAPI.Services;
 using Microsoft.AspNetCore.Builder;
@@ -44,8 +45,9 @@ namespace eRestoran.WebAPI
             services.AddScoped<IService<Model.ItemType,object>, BaseService<Model.ItemType,object,ItemType>>();
             services.AddScoped<IService<Model.ItemCategory, object>, BaseService<Model.ItemCategory, object, ItemCategory>>();
             services.AddScoped<IService<Model.Quantity, object>, BaseService<Model.Quantity, object, Quantity>>();
+            services.AddScoped<ICRUDService<Model.RestaurantMenuItem, MenuItemSearchRequest, Model.Request.RestaurantMenuItemUpsertRequest, Model.Request.RestaurantMenuItemUpsertRequest>, RestaurantMenuItemService>();
 
-
+            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

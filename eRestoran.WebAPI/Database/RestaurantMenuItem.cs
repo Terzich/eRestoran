@@ -16,6 +16,7 @@ namespace eRestoran.WebAPI.Database
         public decimal Price { get; set; }
         public int ItemCategoryId { get; set; }
         public int? QuantityId { get; set; }
+        public byte[] Image { get; set; }
 
         public virtual ItemCategory ItemCategory { get; set; }
         public virtual Quantity Quantity { get; set; }
