@@ -33,11 +33,14 @@
             this.toolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
             this.menuStrip = new System.Windows.Forms.MenuStrip();
+            this.izmjenaPodatakaRestoranaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.urediToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.posjetiociToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pregledSvihPosjetiocaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.noviPosjetiocToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.izmjenaPodatakaRestoranaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.urediToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.meniRestoranaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.dodajNovoJeloPićeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.pregledPonudeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip.SuspendLayout();
             this.menuStrip.SuspendLayout();
             this.SuspendLayout();
@@ -65,12 +68,28 @@
             this.menuStrip.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.izmjenaPodatakaRestoranaToolStripMenuItem,
+            this.meniRestoranaToolStripMenuItem,
             this.posjetiociToolStripMenuItem});
             this.menuStrip.Location = new System.Drawing.Point(0, 0);
             this.menuStrip.Name = "menuStrip";
             this.menuStrip.Size = new System.Drawing.Size(843, 28);
             this.menuStrip.TabIndex = 0;
             this.menuStrip.Text = "MenuStrip";
+            // 
+            // izmjenaPodatakaRestoranaToolStripMenuItem
+            // 
+            this.izmjenaPodatakaRestoranaToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.urediToolStripMenuItem});
+            this.izmjenaPodatakaRestoranaToolStripMenuItem.Name = "izmjenaPodatakaRestoranaToolStripMenuItem";
+            this.izmjenaPodatakaRestoranaToolStripMenuItem.Size = new System.Drawing.Size(208, 24);
+            this.izmjenaPodatakaRestoranaToolStripMenuItem.Text = "Izmjena podataka restorana";
+            // 
+            // urediToolStripMenuItem
+            // 
+            this.urediToolStripMenuItem.Name = "urediToolStripMenuItem";
+            this.urediToolStripMenuItem.Size = new System.Drawing.Size(128, 26);
+            this.urediToolStripMenuItem.Text = "Uredi";
+            this.urediToolStripMenuItem.Click += new System.EventHandler(this.urediToolStripMenuItem_Click);
             // 
             // posjetiociToolStripMenuItem
             // 
@@ -95,20 +114,27 @@
             this.noviPosjetiocToolStripMenuItem.Text = "Novi posjetioc";
             this.noviPosjetiocToolStripMenuItem.Click += new System.EventHandler(this.noviPosjetiocToolStripMenuItem_Click);
             // 
-            // izmjenaPodatakaRestoranaToolStripMenuItem
+            // meniRestoranaToolStripMenuItem
             // 
-            this.izmjenaPodatakaRestoranaToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.urediToolStripMenuItem});
-            this.izmjenaPodatakaRestoranaToolStripMenuItem.Name = "izmjenaPodatakaRestoranaToolStripMenuItem";
-            this.izmjenaPodatakaRestoranaToolStripMenuItem.Size = new System.Drawing.Size(208, 24);
-            this.izmjenaPodatakaRestoranaToolStripMenuItem.Text = "Izmjena podataka restorana";
+            this.meniRestoranaToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.dodajNovoJeloPićeToolStripMenuItem,
+            this.pregledPonudeToolStripMenuItem});
+            this.meniRestoranaToolStripMenuItem.Name = "meniRestoranaToolStripMenuItem";
+            this.meniRestoranaToolStripMenuItem.Size = new System.Drawing.Size(122, 24);
+            this.meniRestoranaToolStripMenuItem.Text = "Meni restorana";
             // 
-            // urediToolStripMenuItem
+            // dodajNovoJeloPićeToolStripMenuItem
             // 
-            this.urediToolStripMenuItem.Name = "urediToolStripMenuItem";
-            this.urediToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
-            this.urediToolStripMenuItem.Text = "Uredi";
-            this.urediToolStripMenuItem.Click += new System.EventHandler(this.urediToolStripMenuItem_Click);
+            this.dodajNovoJeloPićeToolStripMenuItem.Name = "dodajNovoJeloPićeToolStripMenuItem";
+            this.dodajNovoJeloPićeToolStripMenuItem.Size = new System.Drawing.Size(241, 26);
+            this.dodajNovoJeloPićeToolStripMenuItem.Text = "Dodaj novo jelo / piće";
+            this.dodajNovoJeloPićeToolStripMenuItem.Click += new System.EventHandler(this.dodajNovoJeloPićeToolStripMenuItem_Click);
+            // 
+            // pregledPonudeToolStripMenuItem
+            // 
+            this.pregledPonudeToolStripMenuItem.Name = "pregledPonudeToolStripMenuItem";
+            this.pregledPonudeToolStripMenuItem.Size = new System.Drawing.Size(241, 26);
+            this.pregledPonudeToolStripMenuItem.Text = "Pregled ponude";
             // 
             // frmIndex
             // 
@@ -142,6 +168,9 @@
         private System.Windows.Forms.ToolStripMenuItem noviPosjetiocToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem izmjenaPodatakaRestoranaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem urediToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem meniRestoranaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem dodajNovoJeloPićeToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem pregledPonudeToolStripMenuItem;
     }
 }
 

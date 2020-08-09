@@ -20,6 +20,7 @@ namespace eRestoran.WebAPI.Database
         public virtual DbSet<ItemCategory> ItemCategory { get; set; }
         public virtual DbSet<ItemType> ItemType { get; set; }
         public virtual DbSet<MenuItemsReview> MenuItemsReview { get; set; }
+        public virtual DbSet<Quantity> Quantity { get; set; }
         public virtual DbSet<RecommendationType> RecommendationType { get; set; }
         public virtual DbSet<Restaurant> Restaurant { get; set; }
         public virtual DbSet<RestaurantMenuItem> RestaurantMenuItem { get; set; }
@@ -95,6 +96,13 @@ namespace eRestoran.WebAPI.Database
                     .HasConstraintName("UserId_FK");
             });
 
+            modelBuilder.Entity<Quantity>(entity =>
+            {
+                entity.Property(e => e.Description).HasMaxLength(30);
+
+                entity.Property(e => e.Mark).HasMaxLength(10);
+            });
+
             modelBuilder.Entity<RecommendationType>(entity =>
             {
                 entity.Property(e => e.RecommendationTypeDescription)
@@ -142,6 +150,11 @@ namespace eRestoran.WebAPI.Database
                     .HasForeignKey(d => d.ItemCategoryId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("ItemCategoryId_FK");
+
+                entity.HasOne(d => d.Quantity)
+                    .WithMany(p => p.RestaurantMenuItem)
+                    .HasForeignKey(d => d.QuantityId)
+                    .HasConstraintName("QuantityId_FK");
             });
 
             modelBuilder.Entity<RestaurantReview>(entity =>

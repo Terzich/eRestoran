@@ -41,6 +41,10 @@ namespace eRestoran.WebAPI
 
             services.AddScoped<IUserService, UserService>();
             services.AddScoped<IRestaurantService, RestaurantService>();
+            services.AddScoped<IService<Model.ItemType,object>, BaseService<Model.ItemType,object,ItemType>>();
+            services.AddScoped<IService<Model.ItemCategory, object>, BaseService<Model.ItemCategory, object, ItemCategory>>();
+            services.AddScoped<IService<Model.Quantity, object>, BaseService<Model.Quantity, object, Quantity>>();
+
 
         }
 

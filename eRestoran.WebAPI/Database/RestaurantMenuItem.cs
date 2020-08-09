@@ -15,8 +15,10 @@ namespace eRestoran.WebAPI.Database
         public string ItemName { get; set; }
         public decimal Price { get; set; }
         public int ItemCategoryId { get; set; }
+        public int? QuantityId { get; set; }
 
         public virtual ItemCategory ItemCategory { get; set; }
+        public virtual Quantity Quantity { get; set; }
         public virtual ICollection<MenuItemsReview> MenuItemsReview { get; set; }
         public virtual ICollection<SuperOffer> SuperOffer { get; set; }
     }

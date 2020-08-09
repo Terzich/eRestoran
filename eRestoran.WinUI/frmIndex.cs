@@ -126,5 +126,12 @@ namespace eRestoran.WinUI
             frmRestaurantDetails frm = new frmRestaurantDetails();
             frm.Show();
         }
+
+        private void dodajNovoJeloPićeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmAddRestaurantMenu_Item frm = new frmAddRestaurantMenu_Item();
+            frm.Show();
+
+        }
     }
 }

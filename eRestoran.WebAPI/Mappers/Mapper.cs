@@ -14,6 +14,12 @@ namespace eRestoran.WebAPI.Mappers
             CreateMap<Database.User, Model.Request.UserInsertRequest>().ReverseMap();
             CreateMap<Database.Restaurant, Model.Restaurant>().ReverseMap();
             CreateMap<Database.Restaurant, Model.Request.RestaurantUpdateRequest>().ReverseMap();
+            CreateMap<Database.ItemType, Model.ItemType>().ReverseMap();
+            CreateMap<Database.ItemCategory, Model.ItemCategory>().ReverseMap();
+            CreateMap<Database.Quantity, Model.Quantity>().ReverseMap();
+
+
+
 
         }
     }
