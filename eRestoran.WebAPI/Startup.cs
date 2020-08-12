@@ -5,7 +5,9 @@ using System.Threading.Tasks;
 using AutoMapper;
 using eRestoran.Model.Request;
 using eRestoran.WebAPI.Database;
+using eRestoran.WebAPI.Security;
 using eRestoran.WebAPI.Services;
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -15,6 +17,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Microsoft.OpenApi.Models;
 
 namespace eRestoran.WebAPI
 {
@@ -35,19 +38,50 @@ namespace eRestoran.WebAPI
             services.AddAutoMapper(typeof(Startup));
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new Microsoft.OpenApi.Models.OpenApiInfo { Title = "My API", Version = "v1" });
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "eRestoran API", Version = "v1" });
+
+                // basic auth swagger
+                c.AddSecurityDefinition("basic", new OpenApiSecurityScheme
+                {
+                    Name = "Authorization",
+                    Type = SecuritySchemeType.Http,
+                    Scheme = "basic",
+                    In = ParameterLocation.Header,
+                    Description = "Basic Authorization header using the Bearer scheme."
+                });
+
+                c.AddSecurityRequirement(new OpenApiSecurityRequirement
+                {
+                    {
+                        new OpenApiSecurityScheme
+                        {
+                            Reference = new OpenApiReference
+                            {
+                                Type = ReferenceType.SecurityScheme,
+                                Id = "basic"
+                            }
+                        },
+                        new string[] {}
+                    }
+                });
             });
+
             var connection = @"Server=localhost;Database=eRestoran;Trusted_Connection=True;ConnectRetryCount=0";
             services.AddDbContext<eRestoranContext>(c => c.UseSqlServer(connection));
 
+            services.AddAuthentication("BasicAuthentication")
+               .AddScheme<AuthenticationSchemeOptions, BasicAuthenticationHandler>("BasicAuthentication", null);
+
             services.AddScoped<IUserService, UserService>();
-            services.AddScoped<IRestaurantService, RestaurantService>();
             services.AddScoped<IService<Model.ItemType,object>, BaseService<Model.ItemType,object,ItemType>>();
             services.AddScoped<IService<Model.ItemCategory, object>, BaseService<Model.ItemCategory, object, ItemCategory>>();
             services.AddScoped<IService<Model.Quantity, object>, BaseService<Model.Quantity, object, Quantity>>();
             services.AddScoped<ICRUDService<Model.RestaurantMenuItem, MenuItemSearchRequest, Model.Request.RestaurantMenuItemUpsertRequest, Model.Request.RestaurantMenuItemUpsertRequest>, RestaurantMenuItemService>();
+            services.AddScoped<ICRUDService<Model.Restaurant, object, Model.Request.RestaurantUpdateRequest, Model.Request.RestaurantUpdateRequest>, RestaurantService>();
 
-            
+
+
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -68,6 +102,8 @@ namespace eRestoran.WebAPI
             app.UseHttpsRedirection();
 
             app.UseRouting();
+
+            app.UseAuthentication();
 
             app.UseAuthorization();
 

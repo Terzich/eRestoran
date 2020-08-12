@@ -9,28 +9,14 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace eRestoran.WebAPI.Controllers
 {
-    [Route("api/[controller]")]
-    [ApiController]
-    public class RestaurantController : ControllerBase
+    public class RestaurantController : BaseCRUDController<Model.Restaurant,object,Model.Request.RestaurantUpdateRequest, Model.Request.RestaurantUpdateRequest>
     {
-        private readonly IRestaurantService _service;
 
-        public RestaurantController(IRestaurantService service)
+        public RestaurantController(ICRUDService<Model.Restaurant, object, Model.Request.RestaurantUpdateRequest, Model.Request.RestaurantUpdateRequest> service):base(service)
         {
-            _service = service;
         }
 
-        [HttpGet("{id}")]
-        public ActionResult<Model.Restaurant> Get(int id)
-        {
-            return _service.Get(id);
-        }
-
-        [HttpPut("{id}")]
-        public ActionResult<Model.Restaurant> Update(int id,[FromBody] RestaurantUpdateRequest request)
-        {
-            return _service.Update(id,request);
-        }
+        
 
     }
 }

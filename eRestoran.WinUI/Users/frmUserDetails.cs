@@ -34,6 +34,9 @@ namespace eRestoran.WinUI.Users
                     DateOfBirth = dtpDateOfBirth.Value,
                     Address = txtAddress.Text,
                     PhoneNumber = txtPhoneNumber.Text,
+                    Password = txtPass.Text,
+                    ConfirmationPassword = txtPassC.Text,
+                    Username = txtUsername.Text
                 };
                 Model.User entity = null;
                 if (_id.HasValue)

@@ -9,6 +9,7 @@ namespace eRestoran.WebAPI.Database
         {
             MenuItemsReview = new HashSet<MenuItemsReview>();
             RestaurantReview = new HashSet<RestaurantReview>();
+            UserRole = new HashSet<UserRole>();
             Visit = new HashSet<Visit>();
             VisitorRecommendation = new HashSet<VisitorRecommendation>();
         }
@@ -21,11 +22,15 @@ namespace eRestoran.WebAPI.Database
         public string Address { get; set; }
         public string PhoneNumber { get; set; }
         public int GenderId { get; set; }
+        public string Username { get; set; }
+        public string PasswordSalt { get; set; }
+        public string PasswordHash { get; set; }
 
         public virtual City City { get; set; }
         public virtual Gender Gender { get; set; }
         public virtual ICollection<MenuItemsReview> MenuItemsReview { get; set; }
         public virtual ICollection<RestaurantReview> RestaurantReview { get; set; }
+        public virtual ICollection<UserRole> UserRole { get; set; }
         public virtual ICollection<Visit> Visit { get; set; }
         public virtual ICollection<VisitorRecommendation> VisitorRecommendation { get; set; }
     }

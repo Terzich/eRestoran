@@ -15,6 +15,9 @@ namespace eRestoran.Model
         public string PhoneNumber { get; set; }
         public int CityId { get; set; }
         public virtual City City { get; set; }
+        public string Username { get; set; }
+        public ICollection<UserRole> UserRole { get; set; }
+
 
 
     }

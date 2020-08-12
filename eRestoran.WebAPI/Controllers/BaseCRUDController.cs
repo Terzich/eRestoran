@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using eRestoran.WebAPI.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -22,7 +23,7 @@ namespace eRestoran.WebAPI.Controllers
             return _service.Insert(request);
         }
 
-        [HttpPut]
+        [HttpPut("{id}")]
         public T Update(int id, [FromBody]TUpdate request)
         {
             return _service.Update(id, request);

@@ -9,18 +9,16 @@ using eRestoran.WebAPI.Database;
 
 namespace eRestoran.WebAPI.Services
 {
-    public class RestaurantService : IRestaurantService
+    public class RestaurantService : BaseCRUDService<Model.Restaurant,object,Database.Restaurant,Model.Request.RestaurantUpdateRequest, Model.Request.RestaurantUpdateRequest>
     {
         //test
-        private readonly eRestoranContext _context;
-        private readonly IMapper _mapper;
+        
 
-        public RestaurantService(eRestoranContext context, IMapper mapper)
+        public RestaurantService(eRestoranContext context, IMapper mapper):base(context,mapper)
         {
-            _context = context;
-            _mapper = mapper;
+            
         }
-        public Model.Restaurant Get(int id)
+        public override Model.Restaurant GetById(int id)
         {
             var entity = _context.Restaurant.Find(id);
             var result= _mapper.Map<Model.Restaurant>(entity);
@@ -28,10 +26,12 @@ namespace eRestoran.WebAPI.Services
             return result;
         }
 
-        public Model.Restaurant Update(int id, RestaurantUpdateRequest request)
+        public override Model.Restaurant Update(int id, RestaurantUpdateRequest request)
         {
             var entity = _context.Restaurant.Find(id);
             _mapper.Map(request, entity);
+            _context.Restaurant.Attach(entity);
+            _context.Restaurant.Update(entity);
             _context.SaveChanges();
             var result = _mapper.Map<Model.Restaurant>(entity);
             result.CityName = _context.City.Find(entity.CityId).CityName;

@@ -13,6 +13,7 @@ namespace eRestoran.WebAPI.Services
         Model.User Get(int userId);
         Model.User Insert(UserInsertRequest request);
         Model.User Update(int id, UserInsertRequest request);
+        Model.User Authenticate(string username, string password);
 
     }
 }

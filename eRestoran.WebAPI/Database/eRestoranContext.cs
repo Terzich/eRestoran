@@ -25,8 +25,10 @@ namespace eRestoran.WebAPI.Database
         public virtual DbSet<Restaurant> Restaurant { get; set; }
         public virtual DbSet<RestaurantMenuItem> RestaurantMenuItem { get; set; }
         public virtual DbSet<RestaurantReview> RestaurantReview { get; set; }
+        public virtual DbSet<Role> Role { get; set; }
         public virtual DbSet<SuperOffer> SuperOffer { get; set; }
         public virtual DbSet<User> User { get; set; }
+        public virtual DbSet<UserRole> UserRole { get; set; }
         public virtual DbSet<Visit> Visit { get; set; }
         public virtual DbSet<VisitorRecommendation> VisitorRecommendation { get; set; }
 
@@ -172,6 +174,13 @@ namespace eRestoran.WebAPI.Database
                     .HasConstraintName("Restaurant_Review_UserId_FK");
             });
 
+            modelBuilder.Entity<Role>(entity =>
+            {
+                entity.Property(e => e.RoleName)
+                    .IsRequired()
+                    .HasMaxLength(25);
+            });
+
             modelBuilder.Entity<SuperOffer>(entity =>
             {
                 entity.Property(e => e.Description)
@@ -210,11 +219,17 @@ namespace eRestoran.WebAPI.Database
                     .IsRequired()
                     .HasMaxLength(30);
 
+                entity.Property(e => e.PasswordHash).HasMaxLength(128);
+
+                entity.Property(e => e.PasswordSalt).HasMaxLength(128);
+
                 entity.Property(e => e.PhoneNumber).HasMaxLength(30);
 
                 entity.Property(e => e.Surname)
                     .IsRequired()
                     .HasMaxLength(30);
+
+                entity.Property(e => e.Username).HasMaxLength(50);
 
                 entity.HasOne(d => d.City)
                     .WithMany(p => p.User)
@@ -227,6 +242,21 @@ namespace eRestoran.WebAPI.Database
                     .HasForeignKey(d => d.GenderId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("GenderId_FK");
+            });
+
+            modelBuilder.Entity<UserRole>(entity =>
+            {
+                entity.HasOne(d => d.Role)
+                    .WithMany(p => p.UserRole)
+                    .HasForeignKey(d => d.RoleId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("Role_UserRole_FK");
+
+                entity.HasOne(d => d.User)
+                    .WithMany(p => p.UserRole)
+                    .HasForeignKey(d => d.UserId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("User_UserRole_FK");
             });
 
             modelBuilder.Entity<Visit>(entity =>
