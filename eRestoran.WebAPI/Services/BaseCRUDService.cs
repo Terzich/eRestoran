@@ -29,7 +29,7 @@ namespace eRestoran.WebAPI.Services
             _context.Set<TDatabase>().Attach(entity);
             _context.Set<TDatabase>().Update(entity);
 
-            _mapper.Map(request, entity);
+            _mapper.Map(request,entity);
 
             _context.SaveChanges();
 

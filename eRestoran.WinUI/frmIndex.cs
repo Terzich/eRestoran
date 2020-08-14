@@ -1,4 +1,5 @@
 ﻿using eRestoran.WinUI.Restaurant;
+using eRestoran.WinUI.SuperOffer;
 using eRestoran.WinUI.Users;
 using System;
 using System.Collections.Generic;
@@ -132,6 +133,18 @@ namespace eRestoran.WinUI
             frmAddRestaurantMenu_Item frm = new frmAddRestaurantMenu_Item();
             frm.Show();
 
+        }
+
+        private void dodajSuperPonuduToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AddSuperOffer frm = new AddSuperOffer();
+            frm.Show();
+        }
+
+        private void pregledSuperPonudaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmSuperOfferList frm = new frmSuperOfferList();
+            frm.Show();
         }
     }
 }

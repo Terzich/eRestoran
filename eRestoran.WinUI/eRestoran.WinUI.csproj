@@ -92,6 +92,18 @@
     <Compile Include="Restaurant\frmRestaurantDetails.Designer.cs">
       <DependentUpon>frmRestaurantDetails.cs</DependentUpon>
     </Compile>
+    <Compile Include="SuperOffer\AddSuperOffer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SuperOffer\AddSuperOffer.Designer.cs">
+      <DependentUpon>AddSuperOffer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SuperOffer\frmSuperOfferList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SuperOffer\frmSuperOfferList.Designer.cs">
+      <DependentUpon>frmSuperOfferList.cs</DependentUpon>
+    </Compile>
     <Compile Include="Users\frmListOfUsers.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -128,6 +140,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Restaurant\frmRestaurantDetails.resx">
       <DependentUpon>frmRestaurantDetails.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SuperOffer\AddSuperOffer.resx">
+      <DependentUpon>AddSuperOffer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SuperOffer\frmSuperOfferList.resx">
+      <DependentUpon>frmSuperOfferList.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Users\frmListOfUsers.resx">
       <DependentUpon>frmListOfUsers.cs</DependentUpon>
