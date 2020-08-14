@@ -18,6 +18,7 @@ namespace eRestoran.WebAPI.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles ="Administrator")]
         public T Insert(TInsert request)
         {
             return _service.Insert(request);

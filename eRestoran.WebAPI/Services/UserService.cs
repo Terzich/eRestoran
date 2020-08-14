@@ -106,7 +106,11 @@ namespace eRestoran.WebAPI.Services
             {
                 var newHash = GenerateHash(user.PasswordSalt, password);
                 if (newHash == user.PasswordHash)
-                    return _mapper.Map<Model.User>(user);
+                {
+                    
+                    Model.User rt= _mapper.Map<Model.User>(user);
+                    return rt;
+                }
 
             }
             return null;

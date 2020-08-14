@@ -187,6 +187,8 @@ namespace eRestoran.WebAPI.Database
                     .IsRequired()
                     .HasMaxLength(50);
 
+                entity.Property(e => e.DiscountValue).HasColumnType("decimal(5, 2)");
+
                 entity.Property(e => e.OfferEnd).HasColumnType("datetime");
 
                 entity.Property(e => e.OfferStart).HasColumnType("datetime");

@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Text;
 
-namespace eRestoran.WebAPI.Database
+namespace eRestoran.Model.Request
 {
-    public partial class SuperOffer
+    public class SuperOfferUpsertRequest
     {
-        public int SuperOfferId { get; set; }
         public string Description { get; set; }
         public DateTime OfferStart { get; set; }
         public DateTime OfferEnd { get; set; }
@@ -13,9 +13,5 @@ namespace eRestoran.WebAPI.Database
         public int? ItemCategoryId { get; set; }
         public int? RestaurantMenuItemId { get; set; }
         public decimal? DiscountValue { get; set; }
-
-        public virtual ItemCategory ItemCategory { get; set; }
-        public virtual ItemType ItemType { get; set; }
-        public virtual RestaurantMenuItem RestaurantMenuItem { get; set; }
     }
 }

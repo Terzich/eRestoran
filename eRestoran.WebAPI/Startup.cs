@@ -78,6 +78,7 @@ namespace eRestoran.WebAPI
             services.AddScoped<IService<Model.Quantity, object>, BaseService<Model.Quantity, object, Quantity>>();
             services.AddScoped<ICRUDService<Model.RestaurantMenuItem, MenuItemSearchRequest, Model.Request.RestaurantMenuItemUpsertRequest, Model.Request.RestaurantMenuItemUpsertRequest>, RestaurantMenuItemService>();
             services.AddScoped<ICRUDService<Model.Restaurant, object, Model.Request.RestaurantUpdateRequest, Model.Request.RestaurantUpdateRequest>, RestaurantService>();
+            services.AddScoped<ICRUDService<Model.SuperOffer, Model.Request.SuperOfferSearchRequest, Model.Request.SuperOfferUpsertRequest, Model.Request.SuperOfferUpsertRequest>, SuperOfferService>();
 
 
 
