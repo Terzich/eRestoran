@@ -37,6 +37,7 @@
             this.Prezime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DateOfBirth = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Adresa = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.AddAward = new System.Windows.Forms.DataGridViewButtonColumn();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvUsers)).BeginInit();
             this.SuspendLayout();
@@ -61,7 +62,8 @@
             this.Ime,
             this.Prezime,
             this.DateOfBirth,
-            this.Adresa});
+            this.Adresa,
+            this.AddAward});
             this.dgvUsers.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvUsers.Location = new System.Drawing.Point(3, 18);
             this.dgvUsers.Name = "dgvUsers";
@@ -71,6 +73,7 @@
             this.dgvUsers.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvUsers.Size = new System.Drawing.Size(749, 354);
             this.dgvUsers.TabIndex = 0;
+            this.dgvUsers.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvUsers_CellContentClick);
             this.dgvUsers.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.dgvUsers_MouseDoubleClick);
             // 
             // btnShowUsers
@@ -136,6 +139,16 @@
             this.Adresa.ReadOnly = true;
             this.Adresa.Width = 125;
             // 
+            // AddAward
+            // 
+            this.AddAward.DataPropertyName = "AddAward";
+            this.AddAward.HeaderText = "AddAward";
+            this.AddAward.MinimumWidth = 6;
+            this.AddAward.Name = "AddAward";
+            this.AddAward.ReadOnly = true;
+            this.AddAward.Text = "AddAward";
+            this.AddAward.Width = 125;
+            // 
             // frmListOfUsers
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -164,5 +177,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Prezime;
         private System.Windows.Forms.DataGridViewTextBoxColumn DateOfBirth;
         private System.Windows.Forms.DataGridViewTextBoxColumn Adresa;
+        private System.Windows.Forms.DataGridViewButtonColumn AddAward;
     }
 }

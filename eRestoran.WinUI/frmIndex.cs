@@ -146,5 +146,10 @@ namespace eRestoran.WinUI
             frmSuperOfferList frm = new frmSuperOfferList();
             frm.Show();
         }
+
+        private void dodijeliNagraduPosjetiocuToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

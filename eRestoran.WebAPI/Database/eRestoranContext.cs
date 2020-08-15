@@ -15,6 +15,7 @@ namespace eRestoran.WebAPI.Database
         {
         }
 
+        public virtual DbSet<Award> Award { get; set; }
         public virtual DbSet<City> City { get; set; }
         public virtual DbSet<Gender> Gender { get; set; }
         public virtual DbSet<ItemCategory> ItemCategory { get; set; }
@@ -43,6 +44,19 @@ namespace eRestoran.WebAPI.Database
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<Award>(entity =>
+            {
+                entity.Property(e => e.AwardDate).HasColumnType("date");
+
+                entity.Property(e => e.Description).HasMaxLength(100);
+
+                entity.HasOne(d => d.User)
+                    .WithMany(p => p.Award)
+                    .HasForeignKey(d => d.UserId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("Award_User_FK");
+            });
+
             modelBuilder.Entity<City>(entity =>
             {
                 entity.Property(e => e.CityName).HasMaxLength(50);

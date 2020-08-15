@@ -43,6 +43,7 @@
             this.superPonudeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pregledSuperPonudaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dodajSuperPonuduToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.upravljanjeNagradamaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip.SuspendLayout();
             this.menuStrip.SuspendLayout();
             this.SuspendLayout();
@@ -119,7 +120,8 @@
             // posjetiociToolStripMenuItem
             // 
             this.posjetiociToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.pregledSvihPosjetiocaToolStripMenuItem});
+            this.pregledSvihPosjetiocaToolStripMenuItem,
+            this.upravljanjeNagradamaToolStripMenuItem});
             this.posjetiociToolStripMenuItem.Name = "posjetiociToolStripMenuItem";
             this.posjetiociToolStripMenuItem.Size = new System.Drawing.Size(86, 24);
             this.posjetiociToolStripMenuItem.Text = "Posjetioci";
@@ -127,7 +129,7 @@
             // pregledSvihPosjetiocaToolStripMenuItem
             // 
             this.pregledSvihPosjetiocaToolStripMenuItem.Name = "pregledSvihPosjetiocaToolStripMenuItem";
-            this.pregledSvihPosjetiocaToolStripMenuItem.Size = new System.Drawing.Size(245, 26);
+            this.pregledSvihPosjetiocaToolStripMenuItem.Size = new System.Drawing.Size(247, 26);
             this.pregledSvihPosjetiocaToolStripMenuItem.Text = "Pregled svih posjetioca";
             this.pregledSvihPosjetiocaToolStripMenuItem.Click += new System.EventHandler(this.pregledSvihPosjetiocaToolStripMenuItem_Click);
             // 
@@ -153,6 +155,12 @@
             this.dodajSuperPonuduToolStripMenuItem.Size = new System.Drawing.Size(238, 26);
             this.dodajSuperPonuduToolStripMenuItem.Text = "Dodaj super ponudu";
             this.dodajSuperPonuduToolStripMenuItem.Click += new System.EventHandler(this.dodajSuperPonuduToolStripMenuItem_Click);
+            // 
+            // upravljanjeNagradamaToolStripMenuItem
+            // 
+            this.upravljanjeNagradamaToolStripMenuItem.Name = "upravljanjeNagradamaToolStripMenuItem";
+            this.upravljanjeNagradamaToolStripMenuItem.Size = new System.Drawing.Size(247, 26);
+            this.upravljanjeNagradamaToolStripMenuItem.Text = "Upravljanje nagradama";
             // 
             // frmIndex
             // 
@@ -191,6 +199,7 @@
         private System.Windows.Forms.ToolStripMenuItem superPonudeToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem pregledSuperPonudaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem dodajSuperPonuduToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem upravljanjeNagradamaToolStripMenuItem;
     }
 }
 
