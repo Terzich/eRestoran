@@ -44,6 +44,7 @@
             this.superPonudeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pregledSuperPonudaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dodajSuperPonuduToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.upravljanjePopustimaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip.SuspendLayout();
             this.menuStrip.SuspendLayout();
             this.SuspendLayout();
@@ -121,7 +122,8 @@
             // 
             this.posjetiociToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.pregledSvihPosjetiocaToolStripMenuItem,
-            this.upravljanjeNagradamaToolStripMenuItem});
+            this.upravljanjeNagradamaToolStripMenuItem,
+            this.upravljanjePopustimaToolStripMenuItem});
             this.posjetiociToolStripMenuItem.Name = "posjetiociToolStripMenuItem";
             this.posjetiociToolStripMenuItem.Size = new System.Drawing.Size(86, 24);
             this.posjetiociToolStripMenuItem.Text = "Posjetioci";
@@ -163,6 +165,13 @@
             this.dodajSuperPonuduToolStripMenuItem.Text = "Dodaj super ponudu";
             this.dodajSuperPonuduToolStripMenuItem.Click += new System.EventHandler(this.dodajSuperPonuduToolStripMenuItem_Click);
             // 
+            // upravljanjePopustimaToolStripMenuItem
+            // 
+            this.upravljanjePopustimaToolStripMenuItem.Name = "upravljanjePopustimaToolStripMenuItem";
+            this.upravljanjePopustimaToolStripMenuItem.Size = new System.Drawing.Size(247, 26);
+            this.upravljanjePopustimaToolStripMenuItem.Text = "Upravljanje popustima";
+            this.upravljanjePopustimaToolStripMenuItem.Click += new System.EventHandler(this.upravljanjePopustimaToolStripMenuItem_Click);
+            // 
             // frmIndex
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -201,6 +210,7 @@
         private System.Windows.Forms.ToolStripMenuItem pregledSuperPonudaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem dodajSuperPonuduToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem upravljanjeNagradamaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem upravljanjePopustimaToolStripMenuItem;
     }
 }
 

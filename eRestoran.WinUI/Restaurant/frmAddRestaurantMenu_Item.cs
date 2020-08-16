@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Drawing.Imaging;
 
 namespace eRestoran.WinUI.Restaurant
 {
@@ -87,13 +88,14 @@ namespace eRestoran.WinUI.Restaurant
 
         private void btnAddImage_Click(object sender, EventArgs e)
         {
-            var result = openFileDialog1.ShowDialog();
-            if(result ==DialogResult.OK)
+            if(openFileDialog1.ShowDialog()==DialogResult.OK)
             {
-                var fileName = openFileDialog1.FileName;
-                var file = File.ReadAllBytes(fileName);
-                request.Image = file;
-                txtSlika.Text = fileName;
+                txtSlika.Text = openFileDialog1.FileName;
+                Image originalImage = System.Drawing.Image.FromFile(openFileDialog1.FileName);
+                MemoryStream ms = new MemoryStream();
+                originalImage.Save(ms, ImageFormat.Jpeg);
+
+                request.Image = ms.ToArray();
             }
         }
     }

@@ -7,6 +7,7 @@ namespace eRestoran.WebAPI.Database
     {
         public RestaurantMenuItem()
         {
+            Discount = new HashSet<Discount>();
             MenuItemsReview = new HashSet<MenuItemsReview>();
             SuperOffer = new HashSet<SuperOffer>();
         }
@@ -20,6 +21,7 @@ namespace eRestoran.WebAPI.Database
 
         public virtual ItemCategory ItemCategory { get; set; }
         public virtual Quantity Quantity { get; set; }
+        public virtual ICollection<Discount> Discount { get; set; }
         public virtual ICollection<MenuItemsReview> MenuItemsReview { get; set; }
         public virtual ICollection<SuperOffer> SuperOffer { get; set; }
     }

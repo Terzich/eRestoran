@@ -65,6 +65,12 @@ namespace eRestoran.WinUI.Users
                 frmAddAward frm = new frmAddAward(int.Parse(id.ToString()));
                 frm.Show();
             }
+            if (dgvUsers.Columns[e.ColumnIndex].Name == "AddDiscount")
+            {
+                var id = dgvUsers.Rows[e.RowIndex].Cells[0].Value;
+                frmAddDiscount frm = new frmAddDiscount(int.Parse(id.ToString()));
+                frm.Show();
+            }
         }
     }   
 }

@@ -82,6 +82,9 @@ namespace eRestoran.WebAPI
             services.AddScoped<ICRUDService<Model.Award, object, Model.Request.AwardUpsertRequest, Model.Request.AwardUpsertRequest>, AwardService>();
 
             services.AddScoped<IService<Model.VisitorRole, object>, BaseService<Model.VisitorRole, object, UserRole>>();
+            services.AddScoped<IService<Model.DiscountType, object>, BaseService<Model.DiscountType, object, DiscountType>>();
+            services.AddScoped<ICRUDService<Model.Discount, object,Model.Request.DiscountUpsertRequest, Model.Request.DiscountUpsertRequest>, DiscountService>();
+
 
 
 

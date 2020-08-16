@@ -28,6 +28,9 @@ namespace eRestoran.WebAPI.Mappers
             CreateMap<Database.Award, Model.Request.AwardUpsertRequest>().ReverseMap();
             CreateMap<Database.User, Model.Visitor>().ReverseMap();
             CreateMap<Database.UserRole, Model.VisitorRole>().ReverseMap();
+            CreateMap<Database.DiscountType, Model.DiscountType>().ReverseMap();
+            CreateMap<Database.Discount, Model.Discount>().ReverseMap();
+            CreateMap<Database.Discount, Model.Request.DiscountUpsertRequest>().ReverseMap();
 
 
 

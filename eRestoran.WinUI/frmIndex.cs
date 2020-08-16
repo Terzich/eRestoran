@@ -156,5 +156,11 @@ namespace eRestoran.WinUI
             frmAwardManagment frm = new frmAwardManagment();
             frm.Show();
         }
+
+        private void upravljanjePopustimaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmDiscountManagment frm = new frmDiscountManagment();
+            frm.Show();
+        }
     }
 }

@@ -13,6 +13,6 @@ namespace eRestoran.Model
         public string ItemCategoryName { get; set; }
         public int? QuantityId { get; set; }
         public string QuantityName { get; set; }
-        public byte?[] Image { get; set; }
+        public byte[] Image { get; set; }
     }
 }

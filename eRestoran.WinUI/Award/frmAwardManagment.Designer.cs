@@ -28,114 +28,128 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.dgvAwardList = new System.Windows.Forms.DataGridView();
-            this.AwardId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.UserId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.VisitorName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Description = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.AwardDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Active = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.awardIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.userIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.visitorNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.descriptionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.awardDateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.activeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.Deactivate = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.awardBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dgvAwardList)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.awardBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // dgvAwardList
             // 
             this.dgvAwardList.AllowUserToAddRows = false;
             this.dgvAwardList.AllowUserToDeleteRows = false;
+            this.dgvAwardList.AutoGenerateColumns = false;
             this.dgvAwardList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvAwardList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.AwardId,
-            this.UserId,
-            this.VisitorName,
-            this.Description,
-            this.AwardDate,
-            this.Active,
+            this.awardIdDataGridViewTextBoxColumn,
+            this.userIdDataGridViewTextBoxColumn,
+            this.visitorNameDataGridViewTextBoxColumn,
+            this.descriptionDataGridViewTextBoxColumn,
+            this.awardDateDataGridViewTextBoxColumn,
+            this.activeDataGridViewTextBoxColumn,
             this.Deactivate});
-            this.dgvAwardList.Location = new System.Drawing.Point(0, 117);
+            this.dgvAwardList.DataSource = this.awardBindingSource;
+            this.dgvAwardList.Location = new System.Drawing.Point(1, 4);
             this.dgvAwardList.Name = "dgvAwardList";
             this.dgvAwardList.ReadOnly = true;
             this.dgvAwardList.RowHeadersWidth = 51;
             this.dgvAwardList.RowTemplate.Height = 24;
-            this.dgvAwardList.Size = new System.Drawing.Size(959, 371);
+            this.dgvAwardList.Size = new System.Drawing.Size(999, 447);
             this.dgvAwardList.TabIndex = 0;
             this.dgvAwardList.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvAwardList_CellContentClick);
             // 
-            // AwardId
+            // awardIdDataGridViewTextBoxColumn
             // 
-            this.AwardId.DataPropertyName = "AwardId";
-            this.AwardId.HeaderText = "AwardId";
-            this.AwardId.MinimumWidth = 6;
-            this.AwardId.Name = "AwardId";
-            this.AwardId.ReadOnly = true;
-            this.AwardId.Width = 128;
+            this.awardIdDataGridViewTextBoxColumn.DataPropertyName = "AwardId";
+            this.awardIdDataGridViewTextBoxColumn.HeaderText = "AwardId";
+            this.awardIdDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.awardIdDataGridViewTextBoxColumn.Name = "awardIdDataGridViewTextBoxColumn";
+            this.awardIdDataGridViewTextBoxColumn.ReadOnly = true;
+            this.awardIdDataGridViewTextBoxColumn.Visible = false;
+            this.awardIdDataGridViewTextBoxColumn.Width = 125;
             // 
-            // UserId
+            // userIdDataGridViewTextBoxColumn
             // 
-            this.UserId.DataPropertyName = "UserId";
-            this.UserId.HeaderText = "UserId";
-            this.UserId.MinimumWidth = 6;
-            this.UserId.Name = "UserId";
-            this.UserId.ReadOnly = true;
-            this.UserId.Visible = false;
-            this.UserId.Width = 125;
+            this.userIdDataGridViewTextBoxColumn.DataPropertyName = "UserId";
+            this.userIdDataGridViewTextBoxColumn.HeaderText = "UserId";
+            this.userIdDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.userIdDataGridViewTextBoxColumn.Name = "userIdDataGridViewTextBoxColumn";
+            this.userIdDataGridViewTextBoxColumn.ReadOnly = true;
+            this.userIdDataGridViewTextBoxColumn.Visible = false;
+            this.userIdDataGridViewTextBoxColumn.Width = 125;
             // 
-            // VisitorName
+            // visitorNameDataGridViewTextBoxColumn
             // 
-            this.VisitorName.DataPropertyName = "VisitorName";
-            this.VisitorName.HeaderText = "Ime i prezime posjetioca";
-            this.VisitorName.MinimumWidth = 6;
-            this.VisitorName.Name = "VisitorName";
-            this.VisitorName.ReadOnly = true;
-            this.VisitorName.Width = 125;
+            this.visitorNameDataGridViewTextBoxColumn.DataPropertyName = "VisitorName";
+            this.visitorNameDataGridViewTextBoxColumn.HeaderText = "Ime i prezime posjetioca";
+            this.visitorNameDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.visitorNameDataGridViewTextBoxColumn.Name = "visitorNameDataGridViewTextBoxColumn";
+            this.visitorNameDataGridViewTextBoxColumn.ReadOnly = true;
+            this.visitorNameDataGridViewTextBoxColumn.Width = 125;
             // 
-            // Description
+            // descriptionDataGridViewTextBoxColumn
             // 
-            this.Description.DataPropertyName = "Description";
-            this.Description.HeaderText = "Opis nagrade";
-            this.Description.MinimumWidth = 6;
-            this.Description.Name = "Description";
-            this.Description.ReadOnly = true;
-            this.Description.Width = 125;
+            this.descriptionDataGridViewTextBoxColumn.DataPropertyName = "Description";
+            this.descriptionDataGridViewTextBoxColumn.HeaderText = "Opis nagrade";
+            this.descriptionDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.descriptionDataGridViewTextBoxColumn.Name = "descriptionDataGridViewTextBoxColumn";
+            this.descriptionDataGridViewTextBoxColumn.ReadOnly = true;
+            this.descriptionDataGridViewTextBoxColumn.Width = 125;
             // 
-            // AwardDate
+            // awardDateDataGridViewTextBoxColumn
             // 
-            this.AwardDate.DataPropertyName = "AwardDate";
-            this.AwardDate.HeaderText = "Datum dodavanja nagrade";
-            this.AwardDate.MinimumWidth = 20;
-            this.AwardDate.Name = "AwardDate";
-            this.AwardDate.ReadOnly = true;
-            this.AwardDate.Width = 187;
+            this.awardDateDataGridViewTextBoxColumn.DataPropertyName = "AwardDate";
+            this.awardDateDataGridViewTextBoxColumn.HeaderText = "Datum dodavanja nagrade";
+            this.awardDateDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.awardDateDataGridViewTextBoxColumn.Name = "awardDateDataGridViewTextBoxColumn";
+            this.awardDateDataGridViewTextBoxColumn.ReadOnly = true;
+            this.awardDateDataGridViewTextBoxColumn.Width = 125;
             // 
-            // Active
+            // activeDataGridViewTextBoxColumn
             // 
-            this.Active.DataPropertyName = "Active";
-            this.Active.HeaderText = "Aktivna";
-            this.Active.MinimumWidth = 6;
-            this.Active.Name = "Active";
-            this.Active.ReadOnly = true;
-            this.Active.Width = 125;
+            this.activeDataGridViewTextBoxColumn.DataPropertyName = "Active";
+            this.activeDataGridViewTextBoxColumn.HeaderText = "Aktivna";
+            this.activeDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.activeDataGridViewTextBoxColumn.Name = "activeDataGridViewTextBoxColumn";
+            this.activeDataGridViewTextBoxColumn.ReadOnly = true;
+            this.activeDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.activeDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.activeDataGridViewTextBoxColumn.Width = 125;
             // 
             // Deactivate
             // 
-            this.Deactivate.DataPropertyName = "Deactivate";
+            this.Deactivate.DataPropertyName = "AwardId";
             this.Deactivate.HeaderText = "Deaktiviraj nagradu";
             this.Deactivate.MinimumWidth = 6;
             this.Deactivate.Name = "Deactivate";
             this.Deactivate.ReadOnly = true;
+            this.Deactivate.Text = "Deaktiviraj nagradu";
             this.Deactivate.UseColumnTextForButtonValue = true;
             this.Deactivate.Width = 125;
+            // 
+            // awardBindingSource
+            // 
+            this.awardBindingSource.DataSource = typeof(eRestoran.Model.Award);
             // 
             // frmAwardManagment
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(960, 482);
+            this.ClientSize = new System.Drawing.Size(1000, 450);
             this.Controls.Add(this.dgvAwardList);
             this.Name = "frmAwardManagment";
             this.Text = "frmAwardManagment";
             this.Load += new System.EventHandler(this.frmAwardManagment_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvAwardList)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.awardBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -143,12 +157,13 @@
         #endregion
 
         private System.Windows.Forms.DataGridView dgvAwardList;
-        private System.Windows.Forms.DataGridViewTextBoxColumn AwardId;
-        private System.Windows.Forms.DataGridViewTextBoxColumn UserId;
-        private System.Windows.Forms.DataGridViewTextBoxColumn VisitorName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Description;
-        private System.Windows.Forms.DataGridViewTextBoxColumn AwardDate;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn Active;
+        private System.Windows.Forms.BindingSource awardBindingSource;
+        private System.Windows.Forms.DataGridViewTextBoxColumn awardIdDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn userIdDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn visitorNameDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn descriptionDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn awardDateDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn activeDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewButtonColumn Deactivate;
     }
 }

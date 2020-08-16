@@ -32,13 +32,14 @@
             this.dgvUsers = new System.Windows.Forms.DataGridView();
             this.btnShowUsers = new System.Windows.Forms.Button();
             this.searchBox = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.UserID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Ime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Prezime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DateOfBirth = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Adresa = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.AddAward = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.label1 = new System.Windows.Forms.Label();
+            this.AddDiscount = new System.Windows.Forms.DataGridViewButtonColumn();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvUsers)).BeginInit();
             this.SuspendLayout();
@@ -64,7 +65,8 @@
             this.Prezime,
             this.DateOfBirth,
             this.Adresa,
-            this.AddAward});
+            this.AddAward,
+            this.AddDiscount});
             this.dgvUsers.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvUsers.Location = new System.Drawing.Point(3, 18);
             this.dgvUsers.Name = "dgvUsers";
@@ -93,6 +95,15 @@
             this.searchBox.Name = "searchBox";
             this.searchBox.Size = new System.Drawing.Size(294, 22);
             this.searchBox.TabIndex = 2;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(90, 37);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(129, 17);
+            this.label1.TabIndex = 3;
+            this.label1.Text = "Pretraga po imenu:";
             // 
             // UserID
             // 
@@ -152,20 +163,22 @@
             this.AddAward.UseColumnTextForButtonValue = true;
             this.AddAward.Width = 125;
             // 
-            // label1
+            // AddDiscount
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(90, 37);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(129, 17);
-            this.label1.TabIndex = 3;
-            this.label1.Text = "Pretraga po imenu:";
+            this.AddDiscount.DataPropertyName = "AddDiscount";
+            this.AddDiscount.HeaderText = "Dodijeli popust";
+            this.AddDiscount.MinimumWidth = 6;
+            this.AddDiscount.Name = "AddDiscount";
+            this.AddDiscount.ReadOnly = true;
+            this.AddDiscount.Text = "Dodijeli popust";
+            this.AddDiscount.UseColumnTextForButtonValue = true;
+            this.AddDiscount.Width = 125;
             // 
             // frmListOfUsers
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(793, 465);
+            this.ClientSize = new System.Drawing.Size(778, 441);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.searchBox);
             this.Controls.Add(this.btnShowUsers);
@@ -185,12 +198,13 @@
         private System.Windows.Forms.DataGridView dgvUsers;
         private System.Windows.Forms.Button btnShowUsers;
         private System.Windows.Forms.TextBox searchBox;
+        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridViewTextBoxColumn UserID;
         private System.Windows.Forms.DataGridViewTextBoxColumn Ime;
         private System.Windows.Forms.DataGridViewTextBoxColumn Prezime;
         private System.Windows.Forms.DataGridViewTextBoxColumn DateOfBirth;
         private System.Windows.Forms.DataGridViewTextBoxColumn Adresa;
         private System.Windows.Forms.DataGridViewButtonColumn AddAward;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.DataGridViewButtonColumn AddDiscount;
     }
 }

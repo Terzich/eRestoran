@@ -17,6 +17,8 @@ namespace eRestoran.WebAPI.Database
 
         public virtual DbSet<Award> Award { get; set; }
         public virtual DbSet<City> City { get; set; }
+        public virtual DbSet<Discount> Discount { get; set; }
+        public virtual DbSet<DiscountType> DiscountType { get; set; }
         public virtual DbSet<Gender> Gender { get; set; }
         public virtual DbSet<ItemCategory> ItemCategory { get; set; }
         public virtual DbSet<ItemType> ItemType { get; set; }
@@ -60,6 +62,47 @@ namespace eRestoran.WebAPI.Database
             modelBuilder.Entity<City>(entity =>
             {
                 entity.Property(e => e.CityName).HasMaxLength(50);
+            });
+
+            modelBuilder.Entity<Discount>(entity =>
+            {
+                entity.Property(e => e.DiscountDate).HasColumnType("date");
+
+                entity.Property(e => e.DiscountValue).HasColumnType("decimal(2, 2)");
+
+                entity.Property(e => e.RestaurantMenuItemId).HasColumnName("RestaurantMenu_ItemId");
+
+                entity.HasOne(d => d.DiscountType)
+                    .WithMany(p => p.Discount)
+                    .HasForeignKey(d => d.DiscountTypeId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("DiscountType_Discount_FK");
+
+                entity.HasOne(d => d.ItemCategory)
+                    .WithMany(p => p.Discount)
+                    .HasForeignKey(d => d.ItemCategoryId)
+                    .HasConstraintName("ItemCategory_Discount_FK");
+
+                entity.HasOne(d => d.ItemType)
+                    .WithMany(p => p.Discount)
+                    .HasForeignKey(d => d.ItemTypeId)
+                    .HasConstraintName("ItemType_Discount_FK");
+
+                entity.HasOne(d => d.RestaurantMenuItem)
+                    .WithMany(p => p.Discount)
+                    .HasForeignKey(d => d.RestaurantMenuItemId)
+                    .HasConstraintName("RestaurantMenu_Item_Discount_FK");
+
+                entity.HasOne(d => d.User)
+                    .WithMany(p => p.Discount)
+                    .HasForeignKey(d => d.UserId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("User_Discount_FK");
+            });
+
+            modelBuilder.Entity<DiscountType>(entity =>
+            {
+                entity.Property(e => e.Description).HasMaxLength(30);
             });
 
             modelBuilder.Entity<Gender>(entity =>

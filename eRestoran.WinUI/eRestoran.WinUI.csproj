@@ -66,11 +66,23 @@
     <Compile Include="Award\frmAddAward.Designer.cs">
       <DependentUpon>frmAddAward.cs</DependentUpon>
     </Compile>
+    <Compile Include="Award\frmAddDiscount.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Award\frmAddDiscount.Designer.cs">
+      <DependentUpon>frmAddDiscount.cs</DependentUpon>
+    </Compile>
     <Compile Include="Award\frmAwardManagment.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Award\frmAwardManagment.Designer.cs">
       <DependentUpon>frmAwardManagment.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Award\frmDiscountManagment.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Award\frmDiscountManagment.Designer.cs">
+      <DependentUpon>frmDiscountManagment.cs</DependentUpon>
     </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
@@ -131,8 +143,14 @@
     <EmbeddedResource Include="Award\frmAddAward.resx">
       <DependentUpon>frmAddAward.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Award\frmAddDiscount.resx">
+      <DependentUpon>frmAddDiscount.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Award\frmAwardManagment.resx">
       <DependentUpon>frmAwardManagment.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Award\frmDiscountManagment.resx">
+      <DependentUpon>frmDiscountManagment.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
@@ -172,6 +190,9 @@
       <DependentUpon>frmUserDetails.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\eRestoran.Model.Award.datasource" />
+    <None Include="Properties\DataSources\eRestoran.Model.Discount.datasource" />
+    <None Include="Properties\DataSources\eRestoran.Model.RestaurantMenuItem.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>PublicSettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

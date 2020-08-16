@@ -24,8 +24,8 @@ namespace eRestoran.WinUI.Award
         {
             var result = await _apiServiceA.Get<List<Model.Award>>(null);
             dgvAwardList.DataSource = result;
-            
         }
+        
 
         private async void dgvAwardList_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -34,26 +34,29 @@ namespace eRestoran.WinUI.Award
                 var idobj = dgvAwardList.Rows[e.RowIndex].Cells[0].Value;
                 var id = int.Parse(idobj.ToString());
                 var award = await _apiServiceA.GetById<Model.Award>(id);
-                if(award.Active == true)
+                if (award.Active == true)
                 {
 
                     AwardUpsertRequest req = new AwardUpsertRequest
                     {
-                        UserId=award.UserId,
-                        Active=false,
-                        Description= award.Description,
-                        AwardDate=award.AwardDate
+                        UserId = award.UserId,
+                        Active = false,
+                        Description = award.Description,
+                        AwardDate = award.AwardDate
                     };
                     await _apiServiceA.Update<Model.Award>(id, req);
                     MessageBox.Show("Nagrada uspješno deaktivirana", "Deaktivacija nagrade", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    frmAwardManagment_Load(this,null);
                 }
                 else
                 {
-                    MessageBox.Show("Nagrada nije aktivna", "Deaktivacija nagrade", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Nagrada nije aktivna", "Deaktivacija nagrade", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 
                 }
             }
-            
+
+
         }
+
     }
 }
