@@ -38,6 +38,7 @@
             this.DateOfBirth = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Adresa = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.AddAward = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.label1 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvUsers)).BeginInit();
             this.SuspendLayout();
@@ -88,7 +89,7 @@
             // 
             // searchBox
             // 
-            this.searchBox.Location = new System.Drawing.Point(24, 25);
+            this.searchBox.Location = new System.Drawing.Point(244, 35);
             this.searchBox.Name = "searchBox";
             this.searchBox.Size = new System.Drawing.Size(294, 22);
             this.searchBox.TabIndex = 2;
@@ -142,18 +143,30 @@
             // AddAward
             // 
             this.AddAward.DataPropertyName = "AddAward";
-            this.AddAward.HeaderText = "AddAward";
+            this.AddAward.HeaderText = "Dodijeli nagradu";
             this.AddAward.MinimumWidth = 6;
             this.AddAward.Name = "AddAward";
             this.AddAward.ReadOnly = true;
-            this.AddAward.Text = "AddAward";
+            this.AddAward.Text = "Dodijeli nagradu";
+            this.AddAward.ToolTipText = "Dodijeli nagradu";
+            this.AddAward.UseColumnTextForButtonValue = true;
             this.AddAward.Width = 125;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(90, 37);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(129, 17);
+            this.label1.TabIndex = 3;
+            this.label1.Text = "Pretraga po imenu:";
             // 
             // frmListOfUsers
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(793, 465);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.searchBox);
             this.Controls.Add(this.btnShowUsers);
             this.Controls.Add(this.groupBox1);
@@ -178,5 +191,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn DateOfBirth;
         private System.Windows.Forms.DataGridViewTextBoxColumn Adresa;
         private System.Windows.Forms.DataGridViewButtonColumn AddAward;
+        private System.Windows.Forms.Label label1;
     }
 }

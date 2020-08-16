@@ -44,8 +44,9 @@ namespace eRestoran.WebAPI.Services
             return Convert.ToBase64String(inArray);
         }
 
-        public List<Model.User> Get (UserSearchRequest search)
+        public List<Model.Visitor> Get (UserSearchRequest search)
         {
+            
             var query = _context.User.AsQueryable();
             if(!string.IsNullOrWhiteSpace(search.Name))
             {
@@ -57,8 +58,8 @@ namespace eRestoran.WebAPI.Services
             }
 
             var list = query.ToList();
-
-            return _mapper.Map<List<Model.User>>(list);
+           
+            return _mapper.Map<List<Model.Visitor>>(list);
         }
 
         public Model.User Get(int userId)

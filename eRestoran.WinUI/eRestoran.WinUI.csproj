@@ -66,6 +66,12 @@
     <Compile Include="Award\frmAddAward.Designer.cs">
       <DependentUpon>frmAddAward.cs</DependentUpon>
     </Compile>
+    <Compile Include="Award\frmAwardManagment.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Award\frmAwardManagment.Designer.cs">
+      <DependentUpon>frmAwardManagment.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -124,6 +130,9 @@
     </Compile>
     <EmbeddedResource Include="Award\frmAddAward.resx">
       <DependentUpon>frmAddAward.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Award\frmAwardManagment.resx">
+      <DependentUpon>frmAwardManagment.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>

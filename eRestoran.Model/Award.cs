@@ -11,6 +11,6 @@ namespace eRestoran.Model
         public string Description { get; set; }
         public bool? Active { get; set; }
         public DateTime? AwardDate { get; set; }
-        public User User { get; set; }
+        public string VisitorName { get; set; }
     }
 }

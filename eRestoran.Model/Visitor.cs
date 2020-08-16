@@ -2,10 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-
 namespace eRestoran.Model
 {
-    public class User
+    public class Visitor
     {
         public int UserID { get; set; }
         public string Name { get; set; }
@@ -16,9 +15,5 @@ namespace eRestoran.Model
         public int CityId { get; set; }
         public City City { get; set; }
         public string Username { get; set; }
-        public ICollection<UserRole> UserRole { get; set; }
-
-
-
     }
 }

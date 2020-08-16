@@ -1,4 +1,5 @@
-﻿using eRestoran.WinUI.Restaurant;
+﻿using eRestoran.WinUI.Award;
+using eRestoran.WinUI.Restaurant;
 using eRestoran.WinUI.SuperOffer;
 using eRestoran.WinUI.Users;
 using System;
@@ -110,8 +111,6 @@ namespace eRestoran.WinUI
         private void pregledSvihPosjetiocaToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frmListOfUsers louForm = new frmListOfUsers();
-            louForm.WindowState = FormWindowState.Maximized;
-            louForm.MdiParent = this;
             louForm.Show();
 
         }
@@ -150,6 +149,12 @@ namespace eRestoran.WinUI
         private void dodijeliNagraduPosjetiocuToolStripMenuItem1_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void upravljanjeNagradamaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmAwardManagment frm = new frmAwardManagment();
+            frm.Show();
         }
     }
 }

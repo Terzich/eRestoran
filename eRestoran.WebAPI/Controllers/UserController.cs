@@ -23,7 +23,7 @@ namespace eRestoran.WebAPI.Controllers
         }
 
         [HttpGet]
-        public ActionResult<List<Model.User>> Get([FromQuery]UserSearchRequest search)
+        public ActionResult<List<Model.Visitor>> Get([FromQuery]UserSearchRequest search)
         {
             return _service.Get(search);
         }

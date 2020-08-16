@@ -16,6 +16,8 @@ namespace eRestoran.WinUI.Users
     public partial class frmListOfUsers : Form
     {
         private readonly APIService _apiService = new APIService("User");
+        private readonly APIService _apiServiceUR = new APIService("UserRole");
+
         public frmListOfUsers()
         {
             InitializeComponent();
@@ -29,9 +31,23 @@ namespace eRestoran.WinUI.Users
             };
 
 
-            var result= await _apiService.Get<List<Model.User>>(search);
+            var result= await _apiService.Get<List<Model.Visitor>>(search);
+            var listUR = await _apiServiceUR.Get<List<Model.VisitorRole>>(null);
+            List<Model.Visitor> listV = new List<Model.Visitor>();
+            int c = 0;
+            foreach(var r in result)
+            {
+                foreach(var ur in listUR)
+                {
+                    if (r.UserID == ur.UserId && ur.RoleId == 2)
+                        c++;
+                }
+                if (c > 0)
+                    listV.Add(r);
+                c = 0;
+            }
             dgvUsers.AutoGenerateColumns = false;
-            dgvUsers.DataSource = result;
+            dgvUsers.DataSource = listV;
         }
 
         private void dgvUsers_MouseDoubleClick(object sender, MouseEventArgs e)

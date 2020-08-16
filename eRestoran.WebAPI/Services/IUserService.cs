@@ -9,7 +9,7 @@ namespace eRestoran.WebAPI.Services
 {
     public interface IUserService
     {
-        List<Model.User> Get(UserSearchRequest search);
+        List<Model.Visitor> Get(UserSearchRequest search);
         Model.User Get(int userId);
         Model.User Insert(UserInsertRequest request);
         Model.User Update(int id, UserInsertRequest request);
