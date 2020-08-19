@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="clr-namespace:eRestoran.MobileApp.ViewModels"
+             xmlns:converters="clr-namespace:eRestoran.MobileApp.Converters"
+             mc:Ignorable="d"
+             x:Class="eRestoran.MobileApp.Views.CatalogPage">
+    <ContentPage.BindingContext>
+        <vm:RestaurantMenuItemViewModel />
+    </ContentPage.BindingContext>
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:ImageConverter x:Key="imgConv"></converters:ImageConverter>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="Proizvodi"
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand" />
+            <Picker ItemsSource="{Binding ItemCategoryList}" SelectedItem="{Binding SelectedItemCategory}" ItemDisplayBinding="{Binding Category}"></Picker>
+            <ListView ItemsSource="{Binding ItemList}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Padding="10">
+                                <Image Source="{Binding Image, Converter={StaticResource imgConv}}"></Image>
+                                <Label Text="{Binding ItemName}" 
+                                d:Text="{Binding .}"
+                                LineBreakMode="NoWrap" 
+                                Style="{DynamicResource ListItemTextStyle}" 
+                                FontSize="16" />
+                                <Label Text="{Binding Price}" 
+                                d:Text="Item descripton"
+                                LineBreakMode="NoWrap"
+                                Style="{DynamicResource ListItemDetailTextStyle}"
+                                FontSize="13" />
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>   
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
