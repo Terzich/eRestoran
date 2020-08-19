@@ -14,6 +14,7 @@ namespace eRestoran.MobileApp.ViewModels
         public LoginViewModel()
         {
             LoginCommand = new Command(async () => await Login());
+            TapCommand = new Command(async () => CreateAccount());
         }
 
 
@@ -31,6 +32,12 @@ namespace eRestoran.MobileApp.ViewModels
             set { SetProperty(ref Password, value); }
         }
         public ICommand LoginCommand { get; set; }
+        public ICommand TapCommand { get; set; }
+
+        async Task CreateAccount()
+        {
+            Application.Current.MainPage = new CreateAccountPage();
+        }
 
         async Task Login()
         {

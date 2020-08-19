@@ -10,17 +10,11 @@ using Xamarin.Forms.Xaml;
 namespace eRestoran.MobileApp.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class LoginPage : ContentPage
+    public partial class CreateAccountPage : ContentPage
     {
-        public LoginPage()
+        public CreateAccountPage()
         {
             InitializeComponent();
-        }
-
-        private async void TapGestureRecognizer_Tapped(object sender, EventArgs e)
-        {
-
-            await Navigation.PushAsync(new CreateAccountPage());
         }
     }
 }

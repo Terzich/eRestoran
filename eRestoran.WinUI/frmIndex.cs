@@ -162,5 +162,11 @@ namespace eRestoran.WinUI
             frmDiscountManagment frm = new frmDiscountManagment();
             frm.Show();
         }
+
+        private void dodajPosjetiocaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmUserDetails frm = new frmUserDetails();
+            frm.Show();
+        }
     }
 }

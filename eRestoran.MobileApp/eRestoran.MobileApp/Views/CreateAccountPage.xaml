@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="clr-namespace:eRestoran.MobileApp.ViewModels"
+             mc:Ignorable="d"
+             x:Class="eRestoran.MobileApp.Views.CreateAccountPage">
+    <ContentPage.BindingContext>
+        <vm:UserInsertRequestViewModel />
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <StackLayout Padding="5" VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand">
+            <Label Text="Ime:"/>
+            <Entry x:Name="Name" Text="{Binding _Name}"></Entry>
+            <Label Text="Prezime:"/>
+            <Entry x:Name="Surname" Text="{Binding _Surname}"></Entry>
+            <Label Text="Adresa stanovanja:"/>
+            <Entry x:Name="Address" Text="{Binding _Address}"></Entry>
+            <Label Text="Datum rođenja:"/>
+            <DatePicker Date="{Binding _DateOfBirth}"> </DatePicker>
+            <Label Text="Broj telefona:"/>
+            <Entry x:Name="PhoneNumber" Text="{Binding _PhoneNumber}"></Entry>
+            <Label Text="Korisničko ime:"/>
+            <Entry x:Name="Username" Text="{Binding _Username}"></Entry>
+            <Label Text="Lozinka:"/>
+            <Entry x:Name="Password" Text="{Binding _Password}"></Entry>
+            <Label Text="Potvrdite lozinku:"/>
+            <Entry x:Name="ConfirmationPassword" Text="{Binding _ConfirmationPassword}"></Entry>
+
+            <Button Command="{Binding SignUpCommand}" Text="Kreiraj račun" HorizontalOptions="FillAndExpand"></Button>
+            <Label IsVisible="{Binding IsBusy}" Text="Working..."></Label>
+            <Label>
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="Ukoliko imate korisnički račun, " />
+                        <Span Text="logirajte se"
+                  TextColor="Blue"
+                  TextDecorations="Underline">
+                            <Span.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding BackToLoginCommand}"
+                                          />
+                            </Span.GestureRecognizers>
+                        </Span>
+                        <Span Text="." />
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

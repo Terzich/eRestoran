@@ -17,6 +17,22 @@
             <Entry Text="{Binding _Password}"></Entry>
             <Button Command="{Binding LoginCommand}" Text="Login" HorizontalOptions="FillAndExpand"></Button>
             <Label IsVisible="{Binding IsBusy}" Text="Working..."></Label>
+            <Label>
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="Ukoliko nemate korisnički račun, " />
+                        <Span Text="kreirajte novi"
+                  TextColor="Blue"
+                  TextDecorations="Underline">
+                            <Span.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding TapCommand}"
+                                          />
+                            </Span.GestureRecognizers>
+                        </Span>
+                        <Span Text="." />
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

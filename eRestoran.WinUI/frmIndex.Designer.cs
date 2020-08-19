@@ -41,10 +41,11 @@
             this.posjetiociToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pregledSvihPosjetiocaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.upravljanjeNagradamaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.upravljanjePopustimaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.superPonudeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pregledSuperPonudaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dodajSuperPonuduToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.upravljanjePopustimaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.dodajPosjetiocaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip.SuspendLayout();
             this.menuStrip.SuspendLayout();
             this.SuspendLayout();
@@ -123,7 +124,8 @@
             this.posjetiociToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.pregledSvihPosjetiocaToolStripMenuItem,
             this.upravljanjeNagradamaToolStripMenuItem,
-            this.upravljanjePopustimaToolStripMenuItem});
+            this.upravljanjePopustimaToolStripMenuItem,
+            this.dodajPosjetiocaToolStripMenuItem});
             this.posjetiociToolStripMenuItem.Name = "posjetiociToolStripMenuItem";
             this.posjetiociToolStripMenuItem.Size = new System.Drawing.Size(86, 24);
             this.posjetiociToolStripMenuItem.Text = "Posjetioci";
@@ -141,6 +143,13 @@
             this.upravljanjeNagradamaToolStripMenuItem.Size = new System.Drawing.Size(247, 26);
             this.upravljanjeNagradamaToolStripMenuItem.Text = "Upravljanje nagradama";
             this.upravljanjeNagradamaToolStripMenuItem.Click += new System.EventHandler(this.upravljanjeNagradamaToolStripMenuItem_Click);
+            // 
+            // upravljanjePopustimaToolStripMenuItem
+            // 
+            this.upravljanjePopustimaToolStripMenuItem.Name = "upravljanjePopustimaToolStripMenuItem";
+            this.upravljanjePopustimaToolStripMenuItem.Size = new System.Drawing.Size(247, 26);
+            this.upravljanjePopustimaToolStripMenuItem.Text = "Upravljanje popustima";
+            this.upravljanjePopustimaToolStripMenuItem.Click += new System.EventHandler(this.upravljanjePopustimaToolStripMenuItem_Click);
             // 
             // superPonudeToolStripMenuItem
             // 
@@ -165,12 +174,12 @@
             this.dodajSuperPonuduToolStripMenuItem.Text = "Dodaj super ponudu";
             this.dodajSuperPonuduToolStripMenuItem.Click += new System.EventHandler(this.dodajSuperPonuduToolStripMenuItem_Click);
             // 
-            // upravljanjePopustimaToolStripMenuItem
+            // dodajPosjetiocaToolStripMenuItem
             // 
-            this.upravljanjePopustimaToolStripMenuItem.Name = "upravljanjePopustimaToolStripMenuItem";
-            this.upravljanjePopustimaToolStripMenuItem.Size = new System.Drawing.Size(247, 26);
-            this.upravljanjePopustimaToolStripMenuItem.Text = "Upravljanje popustima";
-            this.upravljanjePopustimaToolStripMenuItem.Click += new System.EventHandler(this.upravljanjePopustimaToolStripMenuItem_Click);
+            this.dodajPosjetiocaToolStripMenuItem.Name = "dodajPosjetiocaToolStripMenuItem";
+            this.dodajPosjetiocaToolStripMenuItem.Size = new System.Drawing.Size(247, 26);
+            this.dodajPosjetiocaToolStripMenuItem.Text = "Dodaj posjetioca";
+            this.dodajPosjetiocaToolStripMenuItem.Click += new System.EventHandler(this.dodajPosjetiocaToolStripMenuItem_Click);
             // 
             // frmIndex
             // 
@@ -211,6 +220,7 @@
         private System.Windows.Forms.ToolStripMenuItem dodajSuperPonuduToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem upravljanjeNagradamaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem upravljanjePopustimaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem dodajPosjetiocaToolStripMenuItem;
     }
 }
 

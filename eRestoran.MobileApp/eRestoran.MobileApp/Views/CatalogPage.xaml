@@ -21,22 +21,27 @@
                 VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand" />
             <Picker ItemsSource="{Binding ItemCategoryList}" SelectedItem="{Binding SelectedItemCategory}" ItemDisplayBinding="{Binding Category}"></Picker>
-            <ListView ItemsSource="{Binding ItemList}">
+            <ListView ItemsSource="{Binding ItemList}" ItemSelected="ListView_ItemSelected">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
-                            <StackLayout Padding="10">
-                                <Image Source="{Binding Image, Converter={StaticResource imgConv}}"></Image>
-                                <Label Text="{Binding ItemName}" 
+                            <StackLayout Padding="10" Orientation="Horizontal">
+                                <StackLayout>
+                                    <Image WidthRequest="150"  Source="{Binding Image, Converter={StaticResource imgConv}}"></Image>
+                                </StackLayout>
+                                <StackLayout Orientation="Vertical">
+                                    <Label Text="{Binding ItemName}" 
                                 d:Text="{Binding .}"
                                 LineBreakMode="NoWrap" 
                                 Style="{DynamicResource ListItemTextStyle}" 
                                 FontSize="16" />
-                                <Label Text="{Binding Price}" 
+                                    <Label Text="{Binding Price}" 
                                 d:Text="Item descripton"
                                 LineBreakMode="NoWrap"
                                 Style="{DynamicResource ListItemDetailTextStyle}"
                                 FontSize="13" />
+
+                                </StackLayout>
                             </StackLayout>
                         </ViewCell>
                     </DataTemplate>
