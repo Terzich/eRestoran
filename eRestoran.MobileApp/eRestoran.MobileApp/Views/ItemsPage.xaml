@@ -3,17 +3,22 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="clr-namespace:eRestoran.MobileApp.ViewModels"
              mc:Ignorable="d"
              x:Class="eRestoran.MobileApp.Views.ItemsPage"
              Title="{Binding Title}"
              x:Name="BrowseItemsPage">
 
-    <ContentPage.ToolbarItems>
+    <!--<ContentPage.ToolbarItems>
         <ToolbarItem Text="Add" Clicked="AddItem_Clicked" />
-    </ContentPage.ToolbarItems>
+    </ContentPage.ToolbarItems>-->
 
-    <StackLayout>
-        <ListView x:Name="ItemsListView"
+    <ContentPage.BindingContext>
+        <vm:RestaurantMenuItemViewModel />
+    </ContentPage.BindingContext>
+
+    <StackLayout VerticalOptions="CenterAndExpand">
+        <!--<ListView x:Name="ItemsListView"
                 ItemsSource="{Binding Items}"
                 VerticalOptions="FillAndExpand"
                 HasUnevenRows="true"
@@ -50,7 +55,17 @@
                     </ViewCell>
                 </DataTemplate>
             </ListView.ItemTemplate>
-        </ListView>
+        </ListView>-->
+        <Label FontSize="30" HorizontalOptions="Center" Margin="0,0,0,10">
+            <Label.FormattedText>
+                <FormattedString>
+                    <Span Text="Dobrodošli na aplikaciju eRestoran"/>
+                    <Span Text=" "/>
+                    <Span TextColor="DarkRed" Text="{Binding LoggedUser}" />
+                </FormattedString>
+            </Label.FormattedText>
+        </Label>
+
     </StackLayout>
     
 </ContentPage>

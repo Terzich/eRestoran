@@ -12,15 +12,22 @@ namespace eRestoran.MobileApp.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class LoginPage : ContentPage
     {
-        public LoginPage()
+        private bool? redirect = null;
+        public LoginPage(bool? red=false)
         {
             InitializeComponent();
+            redirect = red;
         }
 
         private async void TapGestureRecognizer_Tapped(object sender, EventArgs e)
         {
-
             await Navigation.PushAsync(new CreateAccountPage());
+        }
+        protected override async void OnAppearing()
+        {
+            base.OnAppearing();
+            if(redirect==true)
+                await Application.Current.MainPage.Navigation.PushModalAsync(new LoginPage());
         }
     }
 }

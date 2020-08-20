@@ -8,7 +8,9 @@ namespace eRestoran.MobileApp.Models
     {
         Browse,
         About,
-        Proizvodi
+        Proizvodi,
+        Odjava,
+        Postavke
     }
     public class HomeMenuItem
     {

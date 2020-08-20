@@ -35,12 +35,21 @@
                                 LineBreakMode="NoWrap" 
                                 Style="{DynamicResource ListItemTextStyle}" 
                                 FontSize="16" />
-                                    <Label Text="{Binding Price}" 
+                                    <StackLayout Orientation="Horizontal">
+                                        <Label Text="Cijena u konvertibilnim markama (KM): "></Label>
+                                        <Label Text="{Binding Price}" 
                                 d:Text="Item descripton"
                                 LineBreakMode="NoWrap"
                                 Style="{DynamicResource ListItemDetailTextStyle}"
                                 FontSize="13" />
-
+                                        
+                                    </StackLayout>
+                                    
+                                    <Label TextColor="Blue" Text="{Binding QuantityName}" 
+                                d:Text="Item descripton"
+                                LineBreakMode="NoWrap"
+                                Style="{DynamicResource ListItemDetailTextStyle}"
+                                FontSize="13" />
                                 </StackLayout>
                             </StackLayout>
                         </ViewCell>

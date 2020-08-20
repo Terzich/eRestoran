@@ -19,12 +19,14 @@ namespace eRestoran.MobileApp.Views
     public partial class ItemsPage : ContentPage
     {
         ItemsViewModel viewModel;
+        HomePageViewModel hpvm;
 
         public ItemsPage()
         {
             InitializeComponent();
 
-            BindingContext = viewModel = new ItemsViewModel();
+            BindingContext = hpvm = new HomePageViewModel();
+            
         }
 
         async void OnItemSelected(object sender, SelectedItemChangedEventArgs args)
@@ -36,7 +38,7 @@ namespace eRestoran.MobileApp.Views
             await Navigation.PushAsync(new ItemDetailPage(new ItemDetailViewModel(item)));
 
             // Manually deselect item.
-            ItemsListView.SelectedItem = null;
+            //ItemsListView.SelectedItem = null;
         }
 
         async void AddItem_Clicked(object sender, EventArgs e)
@@ -44,12 +46,13 @@ namespace eRestoran.MobileApp.Views
             await Navigation.PushModalAsync(new NavigationPage(new NewItemPage()));
         }
 
-        protected override void OnAppearing()
+        protected override void OnAppearing() 
         {
             base.OnAppearing();
 
-            if (viewModel.Items.Count == 0)
-                viewModel.LoadItemsCommand.Execute(null);
+            //if (viewModel.Items.Count == 0)
+            //    viewModel.LoadItemsCommand.Execute(null);
+            
         }
     }
 }

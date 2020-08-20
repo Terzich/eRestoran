@@ -12,7 +12,7 @@ namespace eRestoran.WebAPI.Services
         List<Model.Visitor> Get(UserSearchRequest search);
         Model.User Get(int userId);
         Model.User Insert(UserInsertRequest request);
-        Model.User Update(int id, UserInsertRequest request);
+        Model.Visitor Update(int id, UserInsertRequest request);
         Model.User Authenticate(string username, string password);
 
     }

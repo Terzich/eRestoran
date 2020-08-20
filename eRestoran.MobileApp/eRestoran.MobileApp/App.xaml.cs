@@ -15,6 +15,7 @@ namespace eRestoran.MobileApp
 
             DependencyService.Register<MockDataStore>();
             MainPage = new LoginPage();
+            DependencyService.Register<Services.IMessageService, Services.MessageService>();
         }
 
         protected override void OnStart()

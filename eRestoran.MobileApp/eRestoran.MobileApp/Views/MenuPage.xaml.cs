@@ -22,8 +22,9 @@ namespace eRestoran.MobileApp.Views
             {
                 new HomeMenuItem {Id = MenuItemType.Browse, Title="Browse" },
                 new HomeMenuItem {Id = MenuItemType.About, Title="About" },
-                new HomeMenuItem {Id = MenuItemType.Proizvodi, Title="Cjenovnik" }
-
+                new HomeMenuItem {Id = MenuItemType.Proizvodi, Title="Cjenovnik" },
+                new HomeMenuItem {Id = MenuItemType.Odjava, Title="Odjavi se" },
+                new HomeMenuItem {Id = MenuItemType.Postavke, Title="Postavke profila" }
             };
 
             ListViewMenu.ItemsSource = menuItems;

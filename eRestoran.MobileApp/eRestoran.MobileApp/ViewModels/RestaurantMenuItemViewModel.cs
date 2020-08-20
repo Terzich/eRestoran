@@ -48,21 +48,36 @@ namespace eRestoran.MobileApp.ViewModels
                 {
                     ItemCategoryList.Add(ic);
                 }
+                ItemCategoryList.Insert(0, new ItemCategory { Category = "Sve stavke menija", ItemCategoryId = -1, ItemTypeId = -1 });
             }
             IEnumerable<RestaurantMenuItem> list = null;
-            if(SelectedItemCategory!=null)
+            if(SelectedItemCategory!=null )
             {
-                MenuItemSearchRequest req = new MenuItemSearchRequest
+                if(SelectedItemCategory.ItemCategoryId==-1)
                 {
-                    ItemCategoryId=SelectedItemCategory.ItemCategoryId
-                };
-                list = await _apiServiceRMI.Get<IEnumerable<RestaurantMenuItem>>(req);
-                ItemList.Clear();
-                foreach (var item in list)
-                {
-                    ItemList.Add(item);
+                    list = await _apiServiceRMI.Get<IEnumerable<RestaurantMenuItem>>(null);
+                    ItemList.Clear();
+                    foreach (var item in list)
+                    {
+                        ItemList.Add(item);
 
+                    }
                 }
+                else
+                {
+                    MenuItemSearchRequest req = new MenuItemSearchRequest
+                    {
+                        ItemCategoryId = SelectedItemCategory.ItemCategoryId
+                    };
+                    list = await _apiServiceRMI.Get<IEnumerable<RestaurantMenuItem>>(req);
+                    ItemList.Clear();
+                    foreach (var item in list)
+                    {
+                        ItemList.Add(item);
+
+                    }
+                }
+                
             }
             else
             {

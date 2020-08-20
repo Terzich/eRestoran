@@ -22,6 +22,7 @@ namespace eRestoran.MobileApp.Views
             MasterBehavior = MasterBehavior.Popover;
 
             MenuPages.Add((int)MenuItemType.Browse, (NavigationPage)Detail);
+            
         }
 
         public async Task NavigateFromMenu(int id)
@@ -38,6 +39,12 @@ namespace eRestoran.MobileApp.Views
                         break;
                     case (int)MenuItemType.Proizvodi:
                         MenuPages.Add(id, new NavigationPage(new CatalogPage()));
+                        break;
+                    case (int)MenuItemType.Odjava:
+                        MenuPages.Add(id, new NavigationPage(new LoginPage(true)));
+                        break;
+                    case (int)MenuItemType.Postavke:
+                        MenuPages.Add(id, new NavigationPage(new AccountDetails()));
                         break;
                 }
             }

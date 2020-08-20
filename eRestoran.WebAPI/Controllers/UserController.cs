@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using eRestoran.Model.Request;
 using eRestoran.WebAPI.Database;
 using eRestoran.WebAPI.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -13,6 +14,7 @@ namespace eRestoran.WebAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class UserController : ControllerBase
     {
         private readonly IUserService _service;
@@ -40,8 +42,8 @@ namespace eRestoran.WebAPI.Controllers
             return _service.Insert(request);
         }
        
-        [HttpPut]
-        public ActionResult<Model.User> Update(int id, UserInsertRequest request)
+        [HttpPut("{id}")]
+        public ActionResult<Model.Visitor> Update(int id, UserInsertRequest request)
         {
             return _service.Update(id,request);
         }

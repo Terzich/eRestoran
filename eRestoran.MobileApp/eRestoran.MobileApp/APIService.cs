@@ -14,6 +14,8 @@ using Xamarin.Forms;
         private readonly string _route;
         public static string _Username;
         public static string _Password;
+        public static int _VisitorId;
+
 
 #if DEBUG
         private string _apiUrl= "http://localhost:49947/api";

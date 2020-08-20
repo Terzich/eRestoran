@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="clr-namespace:eRestoran.MobileApp.ViewModels"
+             mc:Ignorable="d"
+             x:Class="eRestoran.MobileApp.Views.AccountDetails">
+    
+    <ContentPage.BindingContext>
+        <vm:UserInsertRequestViewModel />
+    </ContentPage.BindingContext>
+    
+    <ContentPage.Content>
+        
+        <StackLayout>
+            <Label Text="Ime:"/>
+            <Entry x:Name="_Name" Text="{Binding _Name}"></Entry>
+            <Label Text="Prezime:"/>
+            <Entry x:Name="Surname" Text="{Binding _Surname}"></Entry>
+            <Label Text="Adresa stanovanja:"/>
+            <Entry x:Name="Address" Text="{Binding _Address}"></Entry>
+            <Label Text="Datum rođenja:"/>
+            <DatePicker Date="{Binding _DateOfBirth}"></DatePicker>
+            <Label Text="Broj telefona:"/>
+            <Entry x:Name="PhoneNumber" Text="{Binding _PhoneNumber}"></Entry>
+            <Label Text="Korisničko ime:"/>
+            <Entry x:Name="Username" Text="{Binding _Username}"></Entry>
+            <Label>
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="Ukoliko želite promijeniti lozinku, " />
+                        <Span Text="pritisnite ovdje"
+                  TextColor="Blue"
+                  TextDecorations="Underline">
+                            <Span.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding ChangePassCommand}"
+                                          />
+                            </Span.GestureRecognizers>
+                        </Span>
+                        <Span Text="." />
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+            <Label IsVisible="{Binding _showPW}" Text="Nova lozinka:"/>
+            <Entry  x:Name="_Password" Text="{Binding _Password}" IsVisible="{Binding _showPW}"></Entry>
+            <Label IsVisible="{Binding _showPW}" Text="Potvrdite novu lozinku:"/>
+            <Entry x:Name="CPass" Text="{Binding _ConfirmationPassword}" IsVisible="{Binding _showPW}"></Entry>
+            <Button Text="Promijeni podatke" Command="{Binding UpdateDataCommand}"></Button>
+            <Label IsVisible="{Binding IsBusy}" Text="Working..."></Label>
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

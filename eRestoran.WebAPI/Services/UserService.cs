@@ -56,6 +56,10 @@ namespace eRestoran.WebAPI.Services
             {
                 query = query.Where(q => q.Surname.StartsWith(search.Surname));
             }
+            if (!string.IsNullOrWhiteSpace(search.Username))
+            {
+                query = query.Where(q => q.Username.StartsWith(search.Username));
+            }
 
             var list = query.ToList();
            
@@ -87,17 +91,21 @@ namespace eRestoran.WebAPI.Services
 
         }
 
-        public Model.User Update(int id, UserInsertRequest request)
+        public Model.Visitor Update(int id, UserInsertRequest request)
         {
             var entity = _context.User.Find(id);
             _context.User.Attach(entity);
             _context.User.Update(entity);
 
             _mapper.Map(request, entity);
+           
+            entity.PasswordSalt = GenerateSalt();
+            entity.PasswordHash = GenerateHash(entity.PasswordSalt, request.Password);
+            
 
             _context.SaveChanges();
 
-            return _mapper.Map<Model.User>(entity);
+            return _mapper.Map<Model.Visitor>(entity);
         }
 
         public Model.User Authenticate(string username, string password)
@@ -116,5 +124,7 @@ namespace eRestoran.WebAPI.Services
             }
             return null;
         }
+
+        
     }
 }
