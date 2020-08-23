@@ -46,13 +46,13 @@ namespace eRestoran.MobileApp.Views
             await Navigation.PushModalAsync(new NavigationPage(new NewItemPage()));
         }
 
-        protected override void OnAppearing() 
+        protected async override void OnAppearing() 
         {
             base.OnAppearing();
 
             //if (viewModel.Items.Count == 0)
             //    viewModel.LoadItemsCommand.Execute(null);
-            
+           await hpvm.Init();
         }
     }
 }

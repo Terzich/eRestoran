@@ -10,7 +10,8 @@ namespace eRestoran.MobileApp.Models
         About,
         Proizvodi,
         Odjava,
-        Postavke
+        Postavke,
+        Početna
     }
     public class HomeMenuItem
     {

@@ -24,7 +24,6 @@ namespace eRestoran.WebAPI.Database
         public virtual DbSet<ItemType> ItemType { get; set; }
         public virtual DbSet<MenuItemsReview> MenuItemsReview { get; set; }
         public virtual DbSet<Quantity> Quantity { get; set; }
-        public virtual DbSet<RecommendationType> RecommendationType { get; set; }
         public virtual DbSet<Restaurant> Restaurant { get; set; }
         public virtual DbSet<RestaurantMenuItem> RestaurantMenuItem { get; set; }
         public virtual DbSet<RestaurantReview> RestaurantReview { get; set; }
@@ -160,13 +159,6 @@ namespace eRestoran.WebAPI.Database
                 entity.Property(e => e.Description).HasMaxLength(30);
 
                 entity.Property(e => e.Mark).HasMaxLength(10);
-            });
-
-            modelBuilder.Entity<RecommendationType>(entity =>
-            {
-                entity.Property(e => e.RecommendationTypeDescription)
-                    .HasColumnName("RecommendationType_Description")
-                    .HasMaxLength(50);
             });
 
             modelBuilder.Entity<Restaurant>(entity =>
@@ -338,12 +330,6 @@ namespace eRestoran.WebAPI.Database
                 entity.Property(e => e.RecommendationDescription)
                     .HasColumnName("Recommendation_Description")
                     .HasMaxLength(100);
-
-                entity.HasOne(d => d.RecommendationType)
-                    .WithMany(p => p.VisitorRecommendation)
-                    .HasForeignKey(d => d.RecommendationTypeId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("RecommendationTypeId_FK");
 
                 entity.HasOne(d => d.User)
                     .WithMany(p => p.VisitorRecommendation)

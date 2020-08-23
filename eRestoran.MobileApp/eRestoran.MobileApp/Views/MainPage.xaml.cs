@@ -46,6 +46,9 @@ namespace eRestoran.MobileApp.Views
                     case (int)MenuItemType.Postavke:
                         MenuPages.Add(id, new NavigationPage(new AccountDetails()));
                         break;
+                    case (int)MenuItemType.Početna:
+                        MenuPages.Add(id, new NavigationPage(new ItemsPage()));
+                        break;
                 }
             }
 

@@ -1,14 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Text;
 
-namespace eRestoran.WebAPI.Database
+namespace eRestoran.Model
 {
-    public partial class VisitorRecommendation
+    public class VisitorRecommendation
     {
         public int VisitorRecommendationId { get; set; }
         public int UserId { get; set; }
         public string RecommendationDescription { get; set; }
-
-        public virtual User User { get; set; }
     }
 }

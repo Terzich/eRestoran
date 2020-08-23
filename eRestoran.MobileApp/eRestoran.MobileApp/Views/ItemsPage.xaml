@@ -14,10 +14,10 @@
     </ContentPage.ToolbarItems>-->
 
     <ContentPage.BindingContext>
-        <vm:RestaurantMenuItemViewModel />
+        <vm:HomePageViewModel />
     </ContentPage.BindingContext>
 
-    <StackLayout VerticalOptions="CenterAndExpand">
+    <StackLayout BackgroundColor="Gray">
         <!--<ListView x:Name="ItemsListView"
                 ItemsSource="{Binding Items}"
                 VerticalOptions="FillAndExpand"
@@ -56,16 +56,61 @@
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>-->
-        <Label FontSize="30" HorizontalOptions="Center" Margin="0,0,0,10">
+        <Label FontSize="15" HorizontalOptions="Center"  Margin="0,30,0,10">
             <Label.FormattedText>
                 <FormattedString>
-                    <Span Text="Dobrodošli na aplikaciju eRestoran"/>
+                    <Span Text="Dobrodošli na aplikaciju eRestorann"/>
                     <Span Text=" "/>
-                    <Span TextColor="DarkRed" Text="{Binding LoggedUser}" />
+                    <Span TextColor="DarkRed" Text="{Binding _Username}" />
                 </FormattedString>
             </Label.FormattedText>
         </Label>
+        <StackLayout VerticalOptions="CenterAndExpand" HorizontalOptions="Center">
+            <Label FontSize="15"   Margin="0,0,0,10">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="Naziv restorana:"/>
+                        <Span Text=" "/>
+                        <Span TextColor="Blue" Text="{Binding _RestaurantName}" />
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+            <Label FontSize="15"   Margin="0,0,0,10">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="Grad i adresa:"/>
+                        <Span Text=" "/>
+                        <Span TextColor="Blue" Text="{Binding _CityName}" />
+                        <Span Text=", "/>
+                        <Span TextColor="Blue" Text="{Binding _Address}" />
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+            <Label FontSize="15"   Margin="0,0,0,10">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="Broj stolova:"/>
+                        <Span Text=" "/>
+                        <Span TextColor="Blue" Text="{Binding _NumberOfTables}" />
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+            <Label FontSize="15"   Margin="0,0,0,10">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="Vrijeme otvaranja:"/>
+                        <Span Text=" '"/>
+                        <Span TextColor="Blue" Text="{Binding _OpenAt, StringFormat='{}{0:hh\\:mm}'}" />
+                        <Span Text="', vrijeme zatvaranja: '"/>
+                        <Span TextColor="Blue" Text="{Binding _CloseAt, StringFormat='{}{0:hh\\:mm}'}" />
+                        <Span Text="'."/>
 
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+            <Button WidthRequest="50" Command="{Binding RecommendationCommand}" Text="Ostavi preporuku" BackgroundColor="Yellow" BorderColor="Black" CornerRadius="15"></Button>
+            <Button FontSize="Medium" Text="Ostavi posjetu" BackgroundColor="Green" BorderColor="Black" CornerRadius="15"></Button>
+        </StackLayout>
     </StackLayout>
     
 </ContentPage>

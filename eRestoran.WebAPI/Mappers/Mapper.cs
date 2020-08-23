@@ -31,6 +31,8 @@ namespace eRestoran.WebAPI.Mappers
             CreateMap<Database.DiscountType, Model.DiscountType>().ReverseMap();
             CreateMap<Database.Discount, Model.Discount>().ReverseMap();
             CreateMap<Database.Discount, Model.Request.DiscountUpsertRequest>().ReverseMap();
+            CreateMap<Database.VisitorRecommendation, Model.VisitorRecommendation>().ReverseMap();
+            CreateMap<Database.VisitorRecommendation, Model.Request.VisitorRecommendationUpsertRequest>().ReverseMap();
 
 
 
