@@ -62,8 +62,18 @@ namespace eRestoran.WebAPI.Services
             }
 
             var list = query.ToList();
+            List<Model.Visitor> rez = _mapper.Map<List<Model.Visitor>>(list);
+            foreach (var item in rez)
+            {
+                foreach (var s in _context.Visit.ToList())
+                {
+                    if (item.UserID == s.UserId)
+                        item.NumberOfVisits++;
+                }
+
+            }
+            return rez;
            
-            return _mapper.Map<List<Model.Visitor>>(list);
         }
 
         public Model.User Get(int userId)

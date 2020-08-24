@@ -1,4 +1,5 @@
 ﻿using eRestoran.MobileApp.Views;
+using eRestoran.Model.Request;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -11,11 +12,21 @@ namespace eRestoran.MobileApp.ViewModels
     public class HomePageViewModel : BaseViewModel
     {
         private readonly APIService _apiServiceR = new APIService("Restaurant");
+        private readonly APIService _apiServiceV = new APIService("Visit");
+        private readonly APIService _apiServiceVR = new APIService("VisitorRecommendation");
+        private readonly APIService _apiServiceRR = new APIService("RestaurantReview");
+
+
 
         public HomePageViewModel()
         {
             InitCommand = new Command(async () => await Init());
             RecommendationCommand = new Command(async () => await Recommendation());
+            OpenRecCommand = new Command(() => OpenRec());
+            AddVisitCommand= new Command(async () => await AddVisit());
+            GiveReviewCommand = new Command( () => GiveReview());
+            AddReviewCommand = new Command(async () => await AddReview());
+
 
         }
 
@@ -32,7 +43,55 @@ namespace eRestoran.MobileApp.ViewModels
             get { return RestaurantName; }
             set { SetProperty(ref RestaurantName, value); }
         }
+
+        string Description = string.Empty;
+        public string _Description
+        {
+            get { return Description; }
+            set { SetProperty(ref Description, value); }
+        }
+
+        string ReviewDescription = string.Empty;
+        public string _ReviewDescription
+        {
+            get { return ReviewDescription; }
+            set { SetProperty(ref ReviewDescription, value); }
+        }
         
+        string ReviewGradeS = string.Empty;
+        public string _ReviewGradeS
+        {
+            get { return ReviewGradeS; }
+            set { SetProperty(ref ReviewGradeS, value); }
+        }
+        int? ReviewGrade = 0;
+        public int? _ReviewGrade
+        {
+            get { return ReviewGrade; }
+            set { SetProperty(ref ReviewGrade, value); }
+        }
+
+        bool addR = false;
+        public bool _addR
+        {
+            get { return addR; }
+            set { SetProperty(ref addR, value); }
+        }
+
+        bool giveR = false;
+        public bool _giveR
+        {
+            get { return giveR; }
+            set { SetProperty(ref giveR, value); }
+        }
+        
+         bool showR = false;
+        public bool _showR
+        {
+            get { return showR; }
+            set { SetProperty(ref showR, value); }
+        }
+
         string CityName = string.Empty;
         public string _CityName
         {
@@ -71,12 +130,129 @@ namespace eRestoran.MobileApp.ViewModels
 
         public ICommand InitCommand { get; set; }
         public ICommand RecommendationCommand { get; set; }
+        public ICommand OpenRecCommand { get; set; }
+        public ICommand AddVisitCommand { get; set; }
+        public ICommand GiveReviewCommand { get; set; }
+        public ICommand AddReviewCommand { get; set; }
+
+        public async Task AddReview()
+        {
+            if (string.IsNullOrEmpty(_ReviewDescription))
+            {
+                await Application.Current.MainPage.DisplayAlert("Greška!", "Potrebno je unijeti opis vašeg dojma!", "Pokušajte ponovo!");
+                return;
+            }
+            if (string.IsNullOrEmpty(_ReviewGradeS))
+            {
+                await Application.Current.MainPage.DisplayAlert("Greška!", "Potrebno je unijeti ocjenu od 1 do 5!", "Pokušajte ponovo!");
+                return;
+            }
+            if(int.TryParse(_ReviewGradeS, out int o))
+            {
+                if(o<1 || o>5)
+                {
+                    await Application.Current.MainPage.DisplayAlert("Greška!", "Potrebno je unijeti ocjenu od 1 do 5!", "Pokušajte ponovo!");
+                    return;
+                }
+                _ReviewGrade = o;
+            }
+            else
+            {
+                await Application.Current.MainPage.DisplayAlert("Greška!", "Potrebno je unijeti ocjenu od 1 do 5!", "Pokušajte ponovo!");
+                return;
+            }
+
+            RestaurantReviewUpsertRequest req = new RestaurantReviewUpsertRequest
+            {
+                UserId = APIService._VisitorId,
+                Grade = _ReviewGrade,
+                Description = _ReviewDescription
+            };
+            Model.RestaurantReview r = null;
+            r = await _apiServiceRR.Insert<Model.RestaurantReview>(req);
+            if(r!= null)
+            {
+                await Application.Current.MainPage.DisplayAlert("Dojam ostavljen!", "Uspješno ste ostavili dojam ovom restoranu!", "OK");
+                _giveR = false;
+
+            }
+
+
+
+        }
+
+        public void  GiveReview()
+        {
+            _giveR = true;
+            _showR = false;
+        }
+
+        public async Task AddVisit()
+        {
+            VisitUpsertRequest req = new VisitUpsertRequest
+            {
+                UserId = APIService._VisitorId,
+                DateOfVisit = DateTime.Now
+            };
+            Model.Visit r = null;
+            r = await _apiServiceV.Insert<Model.Visit>(req);
+            if(r!=null)
+            {
+                await Application.Current.MainPage.DisplayAlert("Posjeta ostavljena!", "Uspješno ste ostavili posjetu ovom restoranu!", "OK");
+                _showR = true;
+            }
+
+
+        }
+
+
+        public void OpenRec()
+        {
+            if (_addR == false)
+                _addR = true;
+            else
+                _addR = false;
+        }
+
 
         public async Task Recommendation()
         {
-            Application.Current.MainPage = new AddRecommendation();
+            
+            var visits = await _apiServiceV.Get<List<Model.Visit>>(null);
+            var vr = await _apiServiceVR.Get<List<Model.VisitorRecommendation>>(null);
 
+            foreach (var item in visits)
+            {
+                if (item.UserId != APIService._VisitorId)
+                    visits.Remove(item);
+            }
+            foreach (var item in vr)
+            {
+                if (item.UserId != APIService._VisitorId)
+                    vr.Remove(item);
+            }
+            if(visits.Count<=vr.Count)
+                await Application.Current.MainPage.DisplayAlert("Obavijest!", "Broj preporuka ne može biti veći od broja posjeta. Nakon nove posjete resorana, ostavljanje preporuke će biti omogućeno!", "OK");
+            else
+            {
+                if (string.IsNullOrEmpty(_Description))
+                {
+                    await Application.Current.MainPage.DisplayAlert("Greška!", "Potrebno je unijeti tekst preporuke!", "Pokušajte ponovo!");
+                    return;
+                }
+                VisitorRecommendationUpsertRequest req = new VisitorRecommendationUpsertRequest
+                {
+                    UserId = APIService._VisitorId,
+                    RecommendationDescription = _Description
+                };
+                Model.VisitorRecommendation r = null;
+                r = await _apiServiceVR.Insert<Model.VisitorRecommendation>(req);
+                if (r != null)
+                {
+                    await Application.Current.MainPage.DisplayAlert("Preporuka ostavljena!", "Uspješno ste ostavili preporuku ovom restoranu!", "OK");
+                }
 
+            }
         }
 
         public async Task Init()

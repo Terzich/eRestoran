@@ -15,5 +15,7 @@ namespace eRestoran.Model
         public int CityId { get; set; }
         public City City { get; set; }
         public string Username { get; set; }
+        public int NumberOfVisits { get; set; }
+
     }
 }

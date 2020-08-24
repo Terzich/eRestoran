@@ -38,6 +38,7 @@
             this.Prezime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DateOfBirth = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Adresa = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NumberOfVisits = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.AddAward = new System.Windows.Forms.DataGridViewButtonColumn();
             this.AddDiscount = new System.Windows.Forms.DataGridViewButtonColumn();
             this.groupBox1.SuspendLayout();
@@ -65,6 +66,7 @@
             this.Prezime,
             this.DateOfBirth,
             this.Adresa,
+            this.NumberOfVisits,
             this.AddAward,
             this.AddDiscount});
             this.dgvUsers.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -151,6 +153,15 @@
             this.Adresa.ReadOnly = true;
             this.Adresa.Width = 125;
             // 
+            // NumberOfVisits
+            // 
+            this.NumberOfVisits.DataPropertyName = "NumberOfVisits";
+            this.NumberOfVisits.HeaderText = "Broj posjeta";
+            this.NumberOfVisits.MinimumWidth = 6;
+            this.NumberOfVisits.Name = "NumberOfVisits";
+            this.NumberOfVisits.ReadOnly = true;
+            this.NumberOfVisits.Width = 125;
+            // 
             // AddAward
             // 
             this.AddAward.DataPropertyName = "AddAward";
@@ -178,7 +189,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(778, 441);
+            this.ClientSize = new System.Drawing.Size(780, 441);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.searchBox);
             this.Controls.Add(this.btnShowUsers);
@@ -204,6 +215,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Prezime;
         private System.Windows.Forms.DataGridViewTextBoxColumn DateOfBirth;
         private System.Windows.Forms.DataGridViewTextBoxColumn Adresa;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NumberOfVisits;
         private System.Windows.Forms.DataGridViewButtonColumn AddAward;
         private System.Windows.Forms.DataGridViewButtonColumn AddDiscount;
     }

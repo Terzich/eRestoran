@@ -17,7 +17,7 @@
         <vm:HomePageViewModel />
     </ContentPage.BindingContext>
 
-    <StackLayout BackgroundColor="Gray">
+    <StackLayout >
         <!--<ListView x:Name="ItemsListView"
                 ItemsSource="{Binding Items}"
                 VerticalOptions="FillAndExpand"
@@ -56,7 +56,7 @@
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>-->
-        <Label FontSize="15" HorizontalOptions="Center"  Margin="0,30,0,10">
+        <Label FontAttributes="Bold" FontSize="15" HorizontalOptions="Center"  Margin="0,30,0,10">
             <Label.FormattedText>
                 <FormattedString>
                     <Span Text="Dobrodošli na aplikaciju eRestorann"/>
@@ -65,8 +65,8 @@
                 </FormattedString>
             </Label.FormattedText>
         </Label>
-        <StackLayout VerticalOptions="CenterAndExpand" HorizontalOptions="Center">
-            <Label FontSize="15"   Margin="0,0,0,10">
+        <StackLayout VerticalOptions="CenterAndExpand" HorizontalOptions="Center" >
+            <Label FontAttributes="Bold" FontSize="15"   Margin="0,0,0,10">
                 <Label.FormattedText>
                     <FormattedString>
                         <Span Text="Naziv restorana:"/>
@@ -75,7 +75,7 @@
                     </FormattedString>
                 </Label.FormattedText>
             </Label>
-            <Label FontSize="15"   Margin="0,0,0,10">
+            <Label FontAttributes="Bold" FontSize="15"   Margin="0,0,0,10">
                 <Label.FormattedText>
                     <FormattedString>
                         <Span Text="Grad i adresa:"/>
@@ -86,7 +86,7 @@
                     </FormattedString>
                 </Label.FormattedText>
             </Label>
-            <Label FontSize="15"   Margin="0,0,0,10">
+            <Label FontAttributes="Bold" FontSize="15"   Margin="0,0,0,10">
                 <Label.FormattedText>
                     <FormattedString>
                         <Span Text="Broj stolova:"/>
@@ -95,7 +95,7 @@
                     </FormattedString>
                 </Label.FormattedText>
             </Label>
-            <Label FontSize="15"   Margin="0,0,0,10">
+            <Label FontAttributes="Bold" FontSize="15"   Margin="0,0,0,10">
                 <Label.FormattedText>
                     <FormattedString>
                         <Span Text="Vrijeme otvaranja:"/>
@@ -108,9 +108,54 @@
                     </FormattedString>
                 </Label.FormattedText>
             </Label>
-            <Button WidthRequest="50" Command="{Binding RecommendationCommand}" Text="Ostavi preporuku" BackgroundColor="Yellow" BorderColor="Black" CornerRadius="15"></Button>
-            <Button FontSize="Medium" Text="Ostavi posjetu" BackgroundColor="Green" BorderColor="Black" CornerRadius="15"></Button>
+            <Label>
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span FontAttributes="Italic" TextColor="DarkRed" Text="Ukoliko želite ostaviti preporuku za unapređenje lokala, pritisnite" />
+                        <Span Text=" ovdje"
+                  TextColor="Blue"
+                  TextDecorations="Underline">
+                            <Span.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding OpenRecCommand}"
+                                          />
+                            </Span.GestureRecognizers>
+                        </Span>
+                        <Span Text="." />
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+            <Label IsVisible="{Binding _addR}" Text="Unesite tekst preporuke:" HorizontalOptions="Center" />
+            <Entry IsVisible="{Binding _addR}" Text="{Binding _Description}"></Entry>
+            <Button IsVisible="{Binding _addR}" HorizontalOptions="Center" Command="{Binding RecommendationCommand}" Text="Ostavi preporuku" BackgroundColor="Yellow" BorderColor="Black" CornerRadius="15"></Button>
+            <Label IsVisible="{Binding _addR}" FontAttributes="Italic" Text="Napomena! Broj ostavljenih preporuka ne može biti veći od proja ostavljenih posjeta! " HorizontalOptions="Center" />
+            
         </StackLayout>
+        <Label IsVisible="{Binding _showR} " HorizontalOptions="Center">
+            <Label.FormattedText>
+                <FormattedString>
+                    <Span FontAttributes="Italic" TextColor="Black" Text="Da li želite" />
+                    <Span Text=" ostaviti dojam"
+                  TextColor="Blue"
+                  TextDecorations="Underline">
+                        <Span.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding GiveReviewCommand}"
+                                          />
+                        </Span.GestureRecognizers>
+                    </Span>
+                    <Span Text=" restoranu?" />
+                </FormattedString>
+            </Label.FormattedText>
+        </Label>
+        <Label IsVisible="{Binding _giveR}" Text="Vaš dojam:" HorizontalOptions="Center" />
+        <Entry IsVisible="{Binding _giveR}" Text="{Binding _ReviewDescription}"></Entry>
+        <Label IsVisible="{Binding _giveR}" Text="Vaša ocjena (od 1 do 5):" HorizontalOptions="Center" />
+        <Entry IsVisible="{Binding _giveR}" Text="{Binding _ReviewGradeS}"  HorizontalOptions="Center" Keyboard="Numeric"></Entry>
+
+
+        <Button  Command="{Binding AddReviewCommand}" IsVisible="{Binding _giveR}" Margin="0,0,10,10" HorizontalOptions="Center" Text="Ostavi dojam" BackgroundColor="Blue" BorderColor="Black" CornerRadius="15"></Button>
+
+
+        <Button  Command="{Binding AddVisitCommand}" Margin="0,0,0,10" HorizontalOptions="Center" VerticalOptions="End" FontSize="Medium" Text="Ostavi posjetu" BackgroundColor="Green" BorderColor="Black" CornerRadius="15"></Button>
     </StackLayout>
     
 </ContentPage>
