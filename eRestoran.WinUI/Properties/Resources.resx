@@ -117,6 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Validation_Field_PriceTooLow" xml:space="preserve">
+    <value>Cijena ne može biti manja od 1 KM !</value>
+  </data>
   <data name="Validation_Field_Required" xml:space="preserve">
     <value>Ovo polje je obavezno unijeti!</value>
   </data>

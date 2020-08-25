@@ -31,7 +31,7 @@ namespace eRestoran.WebAPI.Controllers
         }
         
         [HttpGet("{userId}")]
-        public ActionResult<Model.User> Get(int userId)
+        public ActionResult<Model.Visitor> Get(int userId)
         {
             return _service.Get(userId);
         }

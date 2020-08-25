@@ -8,6 +8,8 @@ namespace eRestoran.Model
     {
         public int RestaurantReviewId { get; set; }
         public int UserId { get; set; }
+        public string VisitorName { get; set; }
+
         public string Description { get; set; }
         public int? Grade { get; set; }
     }

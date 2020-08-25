@@ -76,11 +76,11 @@ namespace eRestoran.WebAPI.Services
            
         }
 
-        public Model.User Get(int userId)
+        public Model.Visitor Get(int userId)
         {
             var entity = _context.User.Find(userId);
             
-            return _mapper.Map<Model.User>(entity);
+            return _mapper.Map<Model.Visitor>(entity);
         }
 
         public Model.User Insert(UserInsertRequest request)

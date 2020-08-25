@@ -168,5 +168,37 @@ namespace eRestoran.WinUI
             frmUserDetails frm = new frmUserDetails();
             frm.Show();
         }
+
+        private void izmjenaPodatakaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmRestaurantDetails frm = new frmRestaurantDetails();
+            frm.Show();
+        }
+
+        private void pregledPreporukaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmListOfRecommendation frm = new frmListOfRecommendation();
+            frm.Show();
+        }
+
+        private void pregledPosjetaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmListOfVisits frm = new frmListOfVisits();
+            frm.Show();
+        }
+
+        private void pregledDojmovaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmListOfReviews frm = new frmListOfReviews();
+            frm.Show();
+
+
+        }
+
+        private void pregledPonudeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmShowRestaurantMenuItems frm = new frmShowRestaurantMenuItems();
+            frm.Show();
+        }
     }
 }

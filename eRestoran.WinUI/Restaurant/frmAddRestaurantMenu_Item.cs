@@ -88,7 +88,7 @@ namespace eRestoran.WinUI.Restaurant
 
         private void btnAddImage_Click(object sender, EventArgs e)
         {
-            if(openFileDialog1.ShowDialog()==DialogResult.OK)
+           if (openFileDialog1.ShowDialog()==DialogResult.OK)
             {
                 txtSlika.Text = openFileDialog1.FileName;
                 Image originalImage = System.Drawing.Image.FromFile(openFileDialog1.FileName);
@@ -98,5 +98,67 @@ namespace eRestoran.WinUI.Restaurant
                 request.Image = ms.ToArray();
             }
         }
+
+        private void txtItemName_Validating(object sender, CancelEventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(txtItemName.Text))
+            {
+                errorProvider1.SetError(txtItemName, Properties.Resources.Validation_Field_Required);
+                e.Cancel = true;
+            }
+            else
+            {
+                errorProvider1.SetError(txtItemName, null);
+
+            }
+        }
+
+        private void txtPortion_Validating(object sender, CancelEventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(txtPortion.Text))
+            {
+                errorProvider1.SetError(txtPortion, Properties.Resources.Validation_Field_Required);
+                e.Cancel = true;
+            }
+            else
+            {
+                errorProvider1.SetError(txtPortion, null);
+
+            }
+        }
+
+        private void txtCategory_Validating(object sender, CancelEventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(txtCategory.Text))
+            {
+                errorProvider1.SetError(txtCategory, Properties.Resources.Validation_Field_Required);
+                e.Cancel = true;
+            }
+            else
+            {
+                errorProvider1.SetError(txtCategory, null);
+
+            }
+        }
+
+        private void nudPrice_Validating(object sender, CancelEventArgs e)
+        {
+
+            if (int.TryParse(nudPrice.ToString(),out int p))
+            {
+                if(p<1)
+                {
+                    errorProvider1.SetError(nudPrice, Properties.Resources.Validation_Field_PriceTooLow);
+                    e.Cancel = true;
+                }
+            }
+            else
+            {
+                errorProvider1.SetError(nudPrice, null);
+
+            }
+        }
+
     }
-}
+    }
+

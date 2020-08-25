@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.txtItemName = new System.Windows.Forms.TextBox();
             this.txtPortion = new System.Windows.Forms.ComboBox();
             this.txtCategory = new System.Windows.Forms.ComboBox();
@@ -39,10 +40,6 @@
             this.nudPrice = new System.Windows.Forms.NumericUpDown();
             this.KM = new System.Windows.Forms.Label();
             this.dgvItems = new System.Windows.Forms.DataGridView();
-            this.txtSlika = new System.Windows.Forms.TextBox();
-            this.Sl = new System.Windows.Forms.Label();
-            this.btnAddImage = new System.Windows.Forms.Button();
-            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.RestaurantMenuItemId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ItemName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Price = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -51,8 +48,14 @@
             this.Image = new System.Windows.Forms.DataGridViewImageColumn();
             this.ItemCategoryId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.QuantityId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.txtSlika = new System.Windows.Forms.TextBox();
+            this.Sl = new System.Windows.Forms.Label();
+            this.btnAddImage = new System.Windows.Forms.Button();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.nudPrice)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvItems)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // txtItemName
@@ -61,6 +64,7 @@
             this.txtItemName.Name = "txtItemName";
             this.txtItemName.Size = new System.Drawing.Size(220, 22);
             this.txtItemName.TabIndex = 0;
+            this.txtItemName.Validating += new System.ComponentModel.CancelEventHandler(this.txtItemName_Validating);
             // 
             // txtPortion
             // 
@@ -69,6 +73,7 @@
             this.txtPortion.Name = "txtPortion";
             this.txtPortion.Size = new System.Drawing.Size(220, 24);
             this.txtPortion.TabIndex = 2;
+            this.txtPortion.Validating += new System.ComponentModel.CancelEventHandler(this.txtPortion_Validating);
             // 
             // txtCategory
             // 
@@ -78,6 +83,7 @@
             this.txtCategory.Size = new System.Drawing.Size(220, 24);
             this.txtCategory.TabIndex = 3;
             this.txtCategory.SelectedIndexChanged += new System.EventHandler(this.txtCategory_SelectedIndexChanged);
+            this.txtCategory.Validating += new System.ComponentModel.CancelEventHandler(this.txtCategory_Validating);
             // 
             // label1
             // 
@@ -137,6 +143,7 @@
             this.nudPrice.Name = "nudPrice";
             this.nudPrice.Size = new System.Drawing.Size(192, 22);
             this.nudPrice.TabIndex = 9;
+            this.nudPrice.Validating += new System.ComponentModel.CancelEventHandler(this.nudPrice_Validating);
             // 
             // KM
             // 
@@ -168,36 +175,6 @@
             this.dgvItems.RowTemplate.Height = 24;
             this.dgvItems.Size = new System.Drawing.Size(797, 231);
             this.dgvItems.TabIndex = 11;
-            // 
-            // txtSlika
-            // 
-            this.txtSlika.Location = new System.Drawing.Point(447, 35);
-            this.txtSlika.Name = "txtSlika";
-            this.txtSlika.Size = new System.Drawing.Size(203, 22);
-            this.txtSlika.TabIndex = 13;
-            // 
-            // Sl
-            // 
-            this.Sl.AutoSize = true;
-            this.Sl.Location = new System.Drawing.Point(386, 35);
-            this.Sl.Name = "Sl";
-            this.Sl.Size = new System.Drawing.Size(42, 17);
-            this.Sl.TabIndex = 14;
-            this.Sl.Text = "Slika:";
-            // 
-            // btnAddImage
-            // 
-            this.btnAddImage.Location = new System.Drawing.Point(447, 73);
-            this.btnAddImage.Name = "btnAddImage";
-            this.btnAddImage.Size = new System.Drawing.Size(111, 30);
-            this.btnAddImage.TabIndex = 15;
-            this.btnAddImage.Text = "Dodaj sliku";
-            this.btnAddImage.UseVisualStyleBackColor = true;
-            this.btnAddImage.Click += new System.EventHandler(this.btnAddImage_Click);
-            // 
-            // openFileDialog1
-            // 
-            this.openFileDialog1.FileName = "openFileDialog1";
             // 
             // RestaurantMenuItemId
             // 
@@ -276,6 +253,40 @@
             this.QuantityId.Visible = false;
             this.QuantityId.Width = 125;
             // 
+            // txtSlika
+            // 
+            this.txtSlika.Location = new System.Drawing.Point(447, 35);
+            this.txtSlika.Name = "txtSlika";
+            this.txtSlika.Size = new System.Drawing.Size(203, 22);
+            this.txtSlika.TabIndex = 13;
+            // 
+            // Sl
+            // 
+            this.Sl.AutoSize = true;
+            this.Sl.Location = new System.Drawing.Point(386, 35);
+            this.Sl.Name = "Sl";
+            this.Sl.Size = new System.Drawing.Size(42, 17);
+            this.Sl.TabIndex = 14;
+            this.Sl.Text = "Slika:";
+            // 
+            // btnAddImage
+            // 
+            this.btnAddImage.Location = new System.Drawing.Point(447, 73);
+            this.btnAddImage.Name = "btnAddImage";
+            this.btnAddImage.Size = new System.Drawing.Size(111, 30);
+            this.btnAddImage.TabIndex = 15;
+            this.btnAddImage.Text = "Dodaj sliku";
+            this.btnAddImage.UseVisualStyleBackColor = true;
+            this.btnAddImage.Click += new System.EventHandler(this.btnAddImage_Click);
+            // 
+            // openFileDialog1
+            // 
+            this.openFileDialog1.FileName = "openFileDialog1";
+            // 
+            // errorProvider1
+            // 
+            this.errorProvider1.ContainerControl = this;
+            // 
             // frmAddRestaurantMenu_Item
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -300,6 +311,7 @@
             this.Load += new System.EventHandler(this.frmAddRestaurantMenu_Item_Load);
             ((System.ComponentModel.ISupportInitialize)(this.nudPrice)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvItems)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -330,5 +342,6 @@
         private System.Windows.Forms.DataGridViewImageColumn Image;
         private System.Windows.Forms.DataGridViewTextBoxColumn ItemCategoryId;
         private System.Windows.Forms.DataGridViewTextBoxColumn QuantityId;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
     }
 }

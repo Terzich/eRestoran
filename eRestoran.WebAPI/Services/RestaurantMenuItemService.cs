@@ -20,7 +20,8 @@ namespace eRestoran.WebAPI.Services
             var query = _context.Set<Database.RestaurantMenuItem>().AsQueryable();
             if(search?.ItemCategoryId.HasValue == true)
             {
-                query = query.Where(q => q.ItemCategoryId == search.ItemCategoryId);
+                if(search.ItemCategoryId!=-1)
+                    query = query.Where(q => q.ItemCategoryId == search.ItemCategoryId);
             }
             query.OrderBy(q => q.ItemName);
             var list = query.ToList();

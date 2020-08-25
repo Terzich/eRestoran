@@ -9,5 +9,7 @@ namespace eRestoran.Model
         public int VisitorRecommendationId { get; set; }
         public int UserId { get; set; }
         public string RecommendationDescription { get; set; }
+        public string VisitorName { get; set; }
+
     }
 }

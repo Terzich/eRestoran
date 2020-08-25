@@ -9,5 +9,6 @@ namespace eRestoran.Model
         public int VisitId { get; set; }
         public int UserId { get; set; }
         public DateTime? DateOfVisit { get; set; }
+        public string VisitorName { get; set; }
     }
 }

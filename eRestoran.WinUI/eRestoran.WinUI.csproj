@@ -110,11 +110,35 @@
     <Compile Include="Restaurant\frmAddRestaurantMenu_Item.Designer.cs">
       <DependentUpon>frmAddRestaurantMenu_Item.cs</DependentUpon>
     </Compile>
+    <Compile Include="Restaurant\frmListOfRecommendation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Restaurant\frmListOfRecommendation.Designer.cs">
+      <DependentUpon>frmListOfRecommendation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Restaurant\frmListOfReviews.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Restaurant\frmListOfReviews.Designer.cs">
+      <DependentUpon>frmListOfReviews.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Restaurant\frmListOfVisits.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Restaurant\frmListOfVisits.Designer.cs">
+      <DependentUpon>frmListOfVisits.cs</DependentUpon>
+    </Compile>
     <Compile Include="Restaurant\frmRestaurantDetails.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Restaurant\frmRestaurantDetails.Designer.cs">
       <DependentUpon>frmRestaurantDetails.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Restaurant\frmShowRestaurantMenuItems.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Restaurant\frmShowRestaurantMenuItems.Designer.cs">
+      <DependentUpon>frmShowRestaurantMenuItems.cs</DependentUpon>
     </Compile>
     <Compile Include="SuperOffer\AddSuperOffer.cs">
       <SubType>Form</SubType>
@@ -174,8 +198,20 @@
     <EmbeddedResource Include="Restaurant\frmAddRestaurantMenu_Item.resx">
       <DependentUpon>frmAddRestaurantMenu_Item.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Restaurant\frmListOfRecommendation.resx">
+      <DependentUpon>frmListOfRecommendation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Restaurant\frmListOfReviews.resx">
+      <DependentUpon>frmListOfReviews.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Restaurant\frmListOfVisits.resx">
+      <DependentUpon>frmListOfVisits.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Restaurant\frmRestaurantDetails.resx">
       <DependentUpon>frmRestaurantDetails.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Restaurant\frmShowRestaurantMenuItems.resx">
+      <DependentUpon>frmShowRestaurantMenuItems.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SuperOffer\AddSuperOffer.resx">
       <DependentUpon>AddSuperOffer.cs</DependentUpon>

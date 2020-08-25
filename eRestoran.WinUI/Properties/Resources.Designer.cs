@@ -61,6 +61,15 @@ namespace eRestoran.WinUI.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Cijena ne može biti manja od 1 KM !.
+        /// </summary>
+        public static string Validation_Field_PriceTooLow {
+            get {
+                return ResourceManager.GetString("Validation_Field_PriceTooLow", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Ovo polje je obavezno unijeti!.
         /// </summary>
         public static string Validation_Field_Required {

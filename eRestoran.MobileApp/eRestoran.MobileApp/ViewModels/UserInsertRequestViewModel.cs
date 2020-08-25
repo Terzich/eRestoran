@@ -183,8 +183,8 @@ namespace eRestoran.MobileApp.ViewModels
         
         public async Task Init()
         {
-            Model.User r = null;
-            r = await _service.GetById<Model.User>(APIService._VisitorId);
+            Model.Visitor r = null;
+            r = await _service.GetById<Model.Visitor>(APIService._VisitorId);
 
             if (r != null)
             {

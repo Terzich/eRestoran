@@ -37,6 +37,7 @@ namespace eRestoran.WebAPI.Mappers
             CreateMap<Database.Visit, Model.Request.VisitUpsertRequest>().ReverseMap();
             CreateMap<Database.RestaurantReview, Model.RestaurantReview>().ReverseMap();
             CreateMap<Database.RestaurantReview, Model.Request.RestaurantReviewUpsertRequest>().ReverseMap();
+            CreateMap<Database.City, Model.City>().ReverseMap();
 
 
 

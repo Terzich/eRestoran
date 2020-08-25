@@ -11,6 +11,8 @@ namespace eRestoran.Model.Request
         public DateTime? OpenAt { get; set; }
         public DateTime? CloseAt { get; set; }
         public int? NumberOfTables { get; set; }
+        public int CityId { get; set; }
+        public byte[] Image { get; set; }
 
     }
 }
