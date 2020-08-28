@@ -73,6 +73,8 @@ namespace eRestoran.WebAPI
                .AddScheme<AuthenticationSchemeOptions, BasicAuthenticationHandler>("BasicAuthentication", null);
 
             services.AddScoped<IUserService, UserService>();
+            services.AddScoped<IRecommendService, RecommendService>();
+
             services.AddScoped<IService<Model.ItemType,object>, BaseService<Model.ItemType,object,ItemType>>();
             services.AddScoped<IService<Model.ItemCategory, object>, BaseService<Model.ItemCategory, object, ItemCategory>>();
             services.AddScoped<IService<Model.Quantity, object>, BaseService<Model.Quantity, object, Quantity>>();
@@ -88,6 +90,7 @@ namespace eRestoran.WebAPI
             services.AddScoped<ICRUDService<Model.Visit, object, Model.Request.VisitUpsertRequest, Model.Request.VisitUpsertRequest>, VisitService>();
             services.AddScoped<ICRUDService<Model.RestaurantReview, object, Model.Request.RestaurantReviewUpsertRequest, Model.Request.RestaurantReviewUpsertRequest>, RestaurantReviewService>();
             services.AddScoped<IService<Model.City, object>, CityService>();
+            services.AddScoped<ICRUDService<Model.MenuItemsReview, object, Model.Request.MenuItemsReviewUpsertRequest, Model.Request.MenuItemsReviewUpsertRequest>, MenuItemsReviewService>();
 
 
 

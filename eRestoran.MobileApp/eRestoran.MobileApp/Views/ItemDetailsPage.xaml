@@ -1,0 +1,93 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="clr-namespace:eRestoran.MobileApp.ViewModels"
+             xmlns:converters="clr-namespace:eRestoran.MobileApp.Converters"
+             mc:Ignorable="d"
+             x:Class="eRestoran.MobileApp.Views.ItemDetailsPage">
+
+    <ContentPage.BindingContext>
+        <vm:ItemDetailsViewModel />
+    </ContentPage.BindingContext>
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:ImageConverter x:Key="imgConv"></converters:ImageConverter>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ContentPage.Content>
+        <StackLayout >
+
+            <StackLayout VerticalOptions="CenterAndExpand" HorizontalOptions="Center">
+                <Label HorizontalTextAlignment="Center" FontSize="Large" FontAttributes="Bold" TextColor="RoyalBlue" Text="{Binding _ItemName}"></Label>
+                <StackLayout Padding="25">
+                    <Image WidthRequest="350"  Source="{Binding _Image, Converter={StaticResource imgConv}}"></Image>
+
+                </StackLayout>
+
+                <Label FontSize="Medium" HorizontalTextAlignment="Center" FontAttributes="Bold" Text="Cijena u KM: "></Label>
+                <Label HorizontalTextAlignment="Center" FontAttributes="Bold" TextColor="OrangeRed" Text="{Binding _Price}"></Label>
+                <Label FontSize="Medium" HorizontalTextAlignment="Center" FontAttributes="Bold" Text="Kategorija: "></Label>
+                <Label HorizontalTextAlignment="Center" FontAttributes="Bold" TextColor="OrangeRed" Text="{Binding _ItemCategoryName}"></Label>
+                <Label FontSize="Medium" HorizontalTextAlignment="Center" FontAttributes="Bold" Text="Porcija: "></Label>
+                <Label  HorizontalTextAlignment="Center" FontAttributes="Bold" TextColor="OrangeRed" Text="{Binding _QuantityName}"></Label>
+
+            </StackLayout>
+            <StackLayout HorizontalOptions="Center" VerticalOptions="End" Padding="15">
+                <Label  IsVisible="{Binding _give}" HorizontalTextAlignment="Center" FontAttributes="Bold" TextColor="Black" Text="Molimo unesite vašu ocjenu za ovu stavku (Ocjena od 1 do 5): "></Label>
+                <Entry IsVisible="{Binding _give}" Keyboard="Numeric" Text="{Binding _ReviewGrade}"> </Entry>
+                <Label  IsVisible="{Binding _give}" HorizontalTextAlignment="Center" FontAttributes="Bold" TextColor="Black" Text="Ostavite dojam o ovoj stavci:"></Label>
+                <Entry IsVisible="{Binding _give}" Text="{Binding _ReviewDescription}"></Entry>
+                <Button  Command="{Binding AddGradeCommand}" IsVisible="{Binding _give}" Text="Ocijeni stavku"></Button>
+                
+                <Label HorizontalOptions="Center">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span FontAttributes="Italic" TextColor="Black" Text="Da li želite" />
+                            <Span Text=" ocjeniti"
+                  TextColor="Blue"
+                  TextDecorations="Underline">
+                                <Span.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding GiveReviewCommand}"
+                                          />
+                                </Span.GestureRecognizers>
+                            </Span>
+                            <Span Text=" ovu stavku menija?" />
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+
+
+                <Label
+                        FontSize="13"
+                        Text="Stavke menija poput ove"></Label>
+                <ListView HeightRequest="120" ItemsSource="{Binding RecommendedRmItems}" BackgroundColor="LightBlue" >
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <StackLayout Padding="10" Orientation="Horizontal">
+                                    <StackLayout>
+                                        <Image WidthRequest="40" HeightRequest="40" Source="{Binding Image, Converter={StaticResource imgConv}}"></Image>
+                                    </StackLayout>
+                                    <StackLayout Orientation="Vertical"  Margin="0,10,0,0">
+                                        <Label Text="{Binding ItemName}" 
+                                            d:Text="{Binding .}"
+                                            LineBreakMode="NoWrap" 
+                                            Style="{DynamicResource ListItemTextStyle}" 
+                                            FontSize="10" />
+                                    </StackLayout>
+                                </StackLayout>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </StackLayout>
+                
+            
+            
+        </StackLayout>
+        
+    </ContentPage.Content>
+</ContentPage>

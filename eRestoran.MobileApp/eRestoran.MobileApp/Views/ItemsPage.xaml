@@ -65,6 +65,19 @@
                 </FormattedString>
             </Label.FormattedText>
         </Label>
+        <Label IsVisible="{Binding _activeDiscount}" FontAttributes="Bold" FontSize="15" HorizontalOptions="Center"  Margin="0,30,0,10">
+            <Label.FormattedText>
+                <FormattedString>
+                    <Span Text="Nagrađeni ste od osoblja restorana sa:"/>
+                    <Span Text=" "/>
+                    <Span TextColor="DarkRed" Text="{Binding _DiscountType}" />
+                    <Span Text="dana: "/>
+                    <Span TextColor="Blue" Text="{Binding _DiscountDate}" />
+                    <Span Text=". Vaša nagrada traje minimalno 5 dana, stoga je ne zaboravite iskoristiti!"/>
+
+                </FormattedString>
+            </Label.FormattedText>
+        </Label>
         <StackLayout VerticalOptions="CenterAndExpand" HorizontalOptions="Center" >
             <Label FontAttributes="Bold" FontSize="15"   Margin="0,0,0,10">
                 <Label.FormattedText>

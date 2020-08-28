@@ -15,6 +15,8 @@ namespace eRestoran.MobileApp.ViewModels
         private readonly APIService _apiServiceV = new APIService("Visit");
         private readonly APIService _apiServiceVR = new APIService("VisitorRecommendation");
         private readonly APIService _apiServiceRR = new APIService("RestaurantReview");
+        private readonly APIService _apiServiceD = new APIService("Discount");
+
 
 
 
@@ -43,6 +45,29 @@ namespace eRestoran.MobileApp.ViewModels
             get { return RestaurantName; }
             set { SetProperty(ref RestaurantName, value); }
         }
+
+        string DiscountType = string.Empty;
+        public string _DiscountType
+        {
+            get { return DiscountType; }
+            set { SetProperty(ref DiscountType, value); }
+        }
+
+        bool activeDiscount = false;
+        public bool _activeDiscount
+        {
+            get { return activeDiscount; }
+            set { SetProperty(ref activeDiscount, value); }
+        }
+
+        DateTime? DiscountDate = null;
+        public DateTime? _DiscountDate
+        {
+            get { return DiscountDate; }
+            set { SetProperty(ref DiscountDate, value); }
+        }
+
+
 
         string Description = string.Empty;
         public string _Description
@@ -220,18 +245,19 @@ namespace eRestoran.MobileApp.ViewModels
             
             var visits = await _apiServiceV.Get<List<Model.Visit>>(null);
             var vr = await _apiServiceVR.Get<List<Model.VisitorRecommendation>>(null);
+            int c = 0, c1 = 0;
 
             foreach (var item in visits)
             {
-                if (item.UserId != APIService._VisitorId)
-                    visits.Remove(item);
+                if (item.UserId == APIService._VisitorId)
+                    c++;
             }
             foreach (var item in vr)
             {
-                if (item.UserId != APIService._VisitorId)
-                    vr.Remove(item);
+                if (item.UserId == APIService._VisitorId)
+                    c1++;
             }
-            if(visits.Count<=vr.Count)
+            if(c<=c1)
                 await Application.Current.MainPage.DisplayAlert("Obavijest!", "Broj preporuka ne može biti veći od broja posjeta. Nakon nove posjete resorana, ostavljanje preporuke će biti omogućeno!", "OK");
             else
             {
@@ -264,6 +290,17 @@ namespace eRestoran.MobileApp.ViewModels
             _NumberOfTables = r.NumberOfTables;
             _OpenAt = new TimeSpan(r.OpenAt.Value.Hour, r.OpenAt.Value.Minute, r.OpenAt.Value.Second);
             _CloseAt = new TimeSpan(r.CloseAt.Value.Hour, r.CloseAt.Value.Minute, r.CloseAt.Value.Second);
+            List<Model.Discount> d = await _apiServiceD.Get<List<Model.Discount>>(null);
+            foreach (var item in d)
+            {
+                if (item.UserId == APIService._VisitorId)
+                {
+                    _activeDiscount = true;
+                    _DiscountType = item.DiscountType;
+                    _DiscountDate = item.DiscountDate;
+                }
+            }
+            
 
         }
 

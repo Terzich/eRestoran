@@ -38,6 +38,8 @@ namespace eRestoran.WebAPI.Mappers
             CreateMap<Database.RestaurantReview, Model.RestaurantReview>().ReverseMap();
             CreateMap<Database.RestaurantReview, Model.Request.RestaurantReviewUpsertRequest>().ReverseMap();
             CreateMap<Database.City, Model.City>().ReverseMap();
+            CreateMap<Database.MenuItemsReview, Model.MenuItemsReview>().ReverseMap();
+            CreateMap<Database.MenuItemsReview, Model.Request.MenuItemsReviewUpsertRequest>().ReverseMap();
 
 
 

@@ -27,7 +27,7 @@ namespace eRestoran.MobileApp.Views
 
         private async void ListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
-            await Navigation.PushAsync(new CreateAccountPage());
+            await Navigation.PushAsync(new ItemDetailsPage((e.SelectedItem as Model.RestaurantMenuItem).RestaurantMenuItemId ));
         }
     }
 }

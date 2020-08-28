@@ -37,5 +37,17 @@ namespace eRestoran.WebAPI.Services
             }
             return result;
         }
+        public override Model.RestaurantMenuItem GetById(int id)
+        {
+            var r = _context.RestaurantMenuItem.Find(id);
+            var result = _mapper.Map<Model.RestaurantMenuItem>(r);
+           
+            if (result.ItemCategoryId != null)
+                result.ItemCategoryName = _context.ItemCategory.Find(result.ItemCategoryId).Category;
+            if (result.QuantityId != null)
+                result.QuantityName = _context.Quantity.Find(result.QuantityId).Description;
+            
+            return result;
+        }
     }
 }
