@@ -1,7 +1,9 @@
 ﻿using eRestoran.MobileApp.Views;
+using eRestoran.Model;
 using eRestoran.Model.Request;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
@@ -16,6 +18,10 @@ namespace eRestoran.MobileApp.ViewModels
         private readonly APIService _apiServiceVR = new APIService("VisitorRecommendation");
         private readonly APIService _apiServiceRR = new APIService("RestaurantReview");
         private readonly APIService _apiServiceD = new APIService("Discount");
+        private readonly APIService _apiServiceA = new APIService("Award");
+        private readonly APIService _apiServiceSO = new APIService("SuperOffer");
+
+
 
 
 
@@ -51,7 +57,25 @@ namespace eRestoran.MobileApp.ViewModels
         {
             get { return DiscountType; }
             set { SetProperty(ref DiscountType, value); }
+        
         }
+
+        public ObservableCollection<Model.SuperOffer> SuperOfferList { get; set; } = new ObservableCollection<Model.SuperOffer>();
+
+        bool showOffers = false;
+        public bool _showOffers
+        {
+            get { return showOffers; }
+            set { SetProperty(ref showOffers, value); }
+        }
+
+        string DiscountValue = string.Empty;
+        public string _DiscountValue
+        {
+            get { return DiscountValue; }
+            set { SetProperty(ref DiscountValue, value); }
+        }
+
 
         bool activeDiscount = false;
         public bool _activeDiscount
@@ -66,6 +90,29 @@ namespace eRestoran.MobileApp.ViewModels
             get { return DiscountDate; }
             set { SetProperty(ref DiscountDate, value); }
         }
+
+        string AwardText = string.Empty;
+        public string _AwardText
+        {
+            get { return AwardText; }
+            set { SetProperty(ref AwardText, value); }
+        }
+
+
+        bool activeAward = false;
+        public bool _activeAward
+        {
+            get { return activeAward; }
+            set { SetProperty(ref activeAward, value); }
+        }
+
+        DateTime? AwardDate = null;
+        public DateTime? _AwardDate
+        {
+            get { return AwardDate; }
+            set { SetProperty(ref AwardDate, value); }
+        }
+
 
 
 
@@ -291,16 +338,46 @@ namespace eRestoran.MobileApp.ViewModels
             _OpenAt = new TimeSpan(r.OpenAt.Value.Hour, r.OpenAt.Value.Minute, r.OpenAt.Value.Second);
             _CloseAt = new TimeSpan(r.CloseAt.Value.Hour, r.CloseAt.Value.Minute, r.CloseAt.Value.Second);
             List<Model.Discount> d = await _apiServiceD.Get<List<Model.Discount>>(null);
+            List<Model.Award> a = await _apiServiceA.Get<List<Model.Award>>(null);
+            List<Model.SuperOffer> s = await _apiServiceSO.Get<List<Model.SuperOffer>>(null);
+
             foreach (var item in d)
             {
                 if (item.UserId == APIService._VisitorId)
                 {
-                    _activeDiscount = true;
-                    _DiscountType = item.DiscountType;
-                    _DiscountDate = item.DiscountDate;
+                    if (item.Active == true)
+                    {
+                        _activeDiscount = true;
+                        _DiscountType = item.DiscountType;
+                        _DiscountDate = item.DiscountDate;
+                        _DiscountValue = (item.DiscountValue * 100).ToString();
+                    }
+                    
                 }
             }
-            
+            foreach (var item in a)
+            {
+                if (item.UserId == APIService._VisitorId)
+                {
+                    if (item.Active == true)
+                    {
+                        _activeAward = true;
+                        _AwardText= item.Description;
+                        _AwardDate = item.AwardDate;
+                    }
+
+                }
+            }
+            foreach (var item in s)
+            {
+                if(item.Active == true)
+                {
+                    _showOffers = true;
+                    SuperOfferList.Add(item);                     
+                }
+
+            }
+
 
         }
 

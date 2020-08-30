@@ -14,5 +14,10 @@ namespace eRestoran.Model
         public int? ItemCategoryId { get; set; }
         public int? RestaurantMenuItemId { get; set; }
         public decimal? DiscountValue { get; set; }
+        public bool? Active { get; set; }
+        public int? DiscountType { get; set; }
+        public string DiscountTypeText { get; set; }
+
+
     }
 }

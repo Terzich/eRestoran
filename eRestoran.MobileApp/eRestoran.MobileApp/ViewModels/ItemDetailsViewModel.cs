@@ -9,7 +9,9 @@ using Xamarin.Forms;
 
 namespace eRestoran.MobileApp.ViewModels
 {
-    class ItemDetailsViewModel: BaseViewModel
+    
+
+    public class ItemDetailsViewModel : BaseViewModel
     {
         private readonly APIService _apiServiceRMI = new APIService("RestaurantMenuItem");
         private readonly APIService _apiServiceMIR = new APIService("MenuItemsReview");
@@ -43,9 +45,9 @@ namespace eRestoran.MobileApp.ViewModels
                 await Application.Current.MainPage.DisplayAlert("Greška!", "Potrebno je unijeti i ocjenu i dojam!", "Pokušaj ponovo");
                 return;
             }
-            if(int.TryParse(_ReviewGrade, out int g))
+            if (int.TryParse(_ReviewGrade, out int g))
             {
-                if(g<1 || g>5)
+                if (g < 1 || g > 5)
                 {
                     await Application.Current.MainPage.DisplayAlert("Greška!", "Ocjena ne može biti veća od 5 ili manja od 1!", "Pokušaj ponovo");
                     return;
@@ -133,7 +135,7 @@ namespace eRestoran.MobileApp.ViewModels
             set { SetProperty(ref Image, value); }
         }
 
-        
+
 
         int RestaurantMenuItemId = 0;
         public int _RestaurantMenuItemId
@@ -181,4 +183,5 @@ namespace eRestoran.MobileApp.ViewModels
             }
         }
     }
+
 }

@@ -45,7 +45,6 @@
             this.pregledSvihPosjetiocaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.upravljanjeNagradamaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.upravljanjePopustimaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.dodajPosjetiocaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.superPonudeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pregledSuperPonudaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dodajSuperPonuduToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -152,8 +151,7 @@
             this.posjetiociToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.pregledSvihPosjetiocaToolStripMenuItem,
             this.upravljanjeNagradamaToolStripMenuItem,
-            this.upravljanjePopustimaToolStripMenuItem,
-            this.dodajPosjetiocaToolStripMenuItem});
+            this.upravljanjePopustimaToolStripMenuItem});
             this.posjetiociToolStripMenuItem.Name = "posjetiociToolStripMenuItem";
             this.posjetiociToolStripMenuItem.Size = new System.Drawing.Size(86, 24);
             this.posjetiociToolStripMenuItem.Text = "Posjetioci";
@@ -178,13 +176,6 @@
             this.upravljanjePopustimaToolStripMenuItem.Size = new System.Drawing.Size(247, 26);
             this.upravljanjePopustimaToolStripMenuItem.Text = "Upravljanje popustima";
             this.upravljanjePopustimaToolStripMenuItem.Click += new System.EventHandler(this.upravljanjePopustimaToolStripMenuItem_Click);
-            // 
-            // dodajPosjetiocaToolStripMenuItem
-            // 
-            this.dodajPosjetiocaToolStripMenuItem.Name = "dodajPosjetiocaToolStripMenuItem";
-            this.dodajPosjetiocaToolStripMenuItem.Size = new System.Drawing.Size(247, 26);
-            this.dodajPosjetiocaToolStripMenuItem.Text = "Dodaj posjetioca";
-            this.dodajPosjetiocaToolStripMenuItem.Click += new System.EventHandler(this.dodajPosjetiocaToolStripMenuItem_Click);
             // 
             // superPonudeToolStripMenuItem
             // 
@@ -246,7 +237,6 @@
         private System.Windows.Forms.ToolStripMenuItem dodajSuperPonuduToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem upravljanjeNagradamaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem upravljanjePopustimaToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem dodajPosjetiocaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem restoranToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem izmjenaPodatakaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem pregledPreporukaToolStripMenuItem;

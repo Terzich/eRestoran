@@ -5,19 +5,14 @@ using System.Text;
 
 namespace eRestoran.Model.Request
 {
-    public class MenuItemsReviewUpsertRequest
+    public class UserRoleUpsertRequest
     {
         [Required]
 
         public int UserId { get; set; }
         [Required]
 
-        public int RestaurantMenuItemId { get; set; }
-        [Required]
+        public int RoleId { get; set; }
 
-        public string Description { get; set; }
-        [Required]
-
-        public int? Grade { get; set; }
     }
 }

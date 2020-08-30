@@ -50,12 +50,7 @@ namespace eRestoran.WinUI.Users
             dgvUsers.DataSource = listV;
         }
 
-        private void dgvUsers_MouseDoubleClick(object sender, MouseEventArgs e)
-        {
-            var id = dgvUsers.SelectedRows[0].Cells[0].Value;
-            frmUserDetails frm = new frmUserDetails(int.Parse(id.ToString()));
-            frm.Show();
-        }
+       
 
         private void dgvUsers_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {

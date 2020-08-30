@@ -24,9 +24,9 @@
             <Label Text="Korisničko ime:"/>
             <Entry x:Name="Username" Text="{Binding _Username}"></Entry>
             <Label Text="Lozinka:"/>
-            <Entry x:Name="Password" Text="{Binding _Password}"></Entry>
+            <Entry x:Name="Password" Text="{Binding _Password}" IsPassword="True"></Entry>
             <Label Text="Potvrdite lozinku:"/>
-            <Entry x:Name="ConfirmationPassword" Text="{Binding _ConfirmationPassword}"></Entry>
+            <Entry x:Name="ConfirmationPassword" Text="{Binding _ConfirmationPassword} " IsPassword="True"></Entry>
 
             <Button Command="{Binding SignUpCommand}" Text="Kreiraj račun" HorizontalOptions="FillAndExpand"></Button>
             <Label IsVisible="{Binding IsBusy}" Text="Working..."></Label>

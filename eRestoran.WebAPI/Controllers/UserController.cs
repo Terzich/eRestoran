@@ -39,7 +39,7 @@ namespace eRestoran.WebAPI.Controllers
         }
 
         [HttpPost]
-        public ActionResult<Model.User>Insert(UserInsertRequest request)
+        public ActionResult<Model.Visitor>Insert(UserInsertRequest request)
         {
             return _service.Insert(request);
         }

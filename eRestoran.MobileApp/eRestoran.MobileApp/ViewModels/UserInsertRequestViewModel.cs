@@ -205,6 +205,11 @@ namespace eRestoran.MobileApp.ViewModels
 
         async Task SignUp()
         {
+            if (string.IsNullOrEmpty(_Name) || string.IsNullOrEmpty(_Surname) || string.IsNullOrEmpty(_Address) || _DateOfBirth==null || string.IsNullOrEmpty(_PhoneNumber) || string.IsNullOrEmpty(_Password) || string.IsNullOrEmpty(_ConfirmationPassword) || string.IsNullOrEmpty(_Username))
+            {
+                await Application.Current.MainPage.DisplayAlert("Greška!", "Potrebno je unijeti sva polja!", "Try again");
+                return;
+            }
             IsBusy = true;
             UserInsertRequest req = new UserInsertRequest
             {

@@ -79,7 +79,6 @@
             this.dgvUsers.Size = new System.Drawing.Size(749, 354);
             this.dgvUsers.TabIndex = 0;
             this.dgvUsers.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvUsers_CellContentClick);
-            this.dgvUsers.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.dgvUsers_MouseDoubleClick);
             // 
             // btnShowUsers
             // 

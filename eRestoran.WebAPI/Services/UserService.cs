@@ -83,21 +83,40 @@ namespace eRestoran.WebAPI.Services
             return _mapper.Map<Model.Visitor>(entity);
         }
 
-        public Model.User Insert(UserInsertRequest request)
+        public Model.Visitor Insert(UserInsertRequest request)
         {
             var entity = _mapper.Map<Database.User>(request);
             if(request.Password!=request.ConfirmationPassword)
             {
                 throw new Exception("Lozinke se ne podudaraju!");
             }
+
             entity.CityId = 1;
             entity.GenderId = 1;
             entity.PasswordSalt = GenerateSalt();
             entity.PasswordHash = GenerateHash(entity.PasswordSalt, request.Password);
             _context.Add(entity);
             _context.SaveChanges();
+            var u = _context.User.ToList();
+            var ur = _context.UserRole.ToList();
+            bool c = false;
+            foreach (var uItem in u)
+            {
+                foreach (var urItem in ur)
+                {
+                    if (uItem.UserId == urItem.UserId)
+                        c = true;
 
-            return _mapper.Map<Model.User>(entity);
+                }
+                if (c == false)
+                {
+                    _context.UserRole.Add(new Database.UserRole { UserId = uItem.UserId, RoleId = 2 });
+                    _context.SaveChanges();
+                }
+                c = false;
+            }
+
+            return _mapper.Map<Model.Visitor>(entity);
 
         }
 
@@ -117,6 +136,8 @@ namespace eRestoran.WebAPI.Services
 
             return _mapper.Map<Model.Visitor>(entity);
         }
+
+        
 
         public Model.User Authenticate(string username, string password)
         {

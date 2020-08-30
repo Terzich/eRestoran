@@ -23,7 +23,7 @@
             <StackLayout VerticalOptions="CenterAndExpand" HorizontalOptions="Center">
                 <Label HorizontalTextAlignment="Center" FontSize="Large" FontAttributes="Bold" TextColor="RoyalBlue" Text="{Binding _ItemName}"></Label>
                 <StackLayout Padding="25">
-                    <Image WidthRequest="350"  Source="{Binding _Image, Converter={StaticResource imgConv}}"></Image>
+                    <Image WidthRequest="250" HeightRequest="250"  Source="{Binding _Image, Converter={StaticResource imgConv}}"></Image>
 
                 </StackLayout>
 

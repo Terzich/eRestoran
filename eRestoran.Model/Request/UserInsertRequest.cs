@@ -11,11 +11,23 @@ namespace eRestoran.Model.Request
         public string Name { get; set; }
         [Required]
         public string Surname { get; set; }
+        [Required]
+
         public DateTime? DateOfBirth { get; set; }
+        [Required]
+
         public string Address { get; set; }
+        [Required]
+
         public string PhoneNumber { get; set; }
+        [Required]
+
         public string Password { get; set; }
+        [Required]
+
         public string ConfirmationPassword { get; set; }
+        [Required]
+
         public string Username { get; set; }
 
     }

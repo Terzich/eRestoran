@@ -11,7 +11,7 @@ namespace eRestoran.WebAPI.Services
     {
         List<Model.Visitor> Get(UserSearchRequest search);
         Model.Visitor Get(int userId);
-        Model.User Insert(UserInsertRequest request);
+        Model.Visitor Insert(UserInsertRequest request);
         Model.Visitor Update(int id, UserInsertRequest request);
         Model.User Authenticate(string username, string password);
 

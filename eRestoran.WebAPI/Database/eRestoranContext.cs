@@ -240,6 +240,11 @@ namespace eRestoran.WebAPI.Database
 
                 entity.Property(e => e.RestaurantMenuItemId).HasColumnName("RestaurantMenu_ItemId");
 
+                entity.HasOne(d => d.DiscountTypeNavigation)
+                    .WithMany(p => p.SuperOffer)
+                    .HasForeignKey(d => d.DiscountType)
+                    .HasConstraintName("SuperOffer_DiscountType_FK");
+
                 entity.HasOne(d => d.ItemCategory)
                     .WithMany(p => p.SuperOffer)
                     .HasForeignKey(d => d.ItemCategoryId)

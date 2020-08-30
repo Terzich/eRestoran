@@ -12,9 +12,9 @@
     <ContentPage.Content>
         <StackLayout Padding="5" VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand">
             <Label Text="Korisničko ime:"/>
-            <Entry x:Name="userName" Text="{Binding _Username}"></Entry>
+            <Entry x:Name="userName" Text="{Binding _Username}" ></Entry>
             <Label Text="Password:"/>
-            <Entry Text="{Binding _Password}"></Entry>
+            <Entry Text="{Binding _Password}" IsPassword="True"></Entry>
             <Button Command="{Binding LoginCommand}" Text="Login" HorizontalOptions="FillAndExpand"></Button>
             <Label IsVisible="{Binding IsBusy}" Text="Working..."></Label>
             <Label>

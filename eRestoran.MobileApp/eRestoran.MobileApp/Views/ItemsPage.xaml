@@ -65,21 +65,58 @@
                 </FormattedString>
             </Label.FormattedText>
         </Label>
-        <Label IsVisible="{Binding _activeDiscount}" FontAttributes="Bold" FontSize="15" HorizontalOptions="Center"  Margin="0,30,0,10">
+        <Label HorizontalTextAlignment="Center" IsVisible="{Binding _activeDiscount}" TextColor="DarkGreen" FontAttributes="Bold" FontSize="15" HorizontalOptions="Center"  Margin="0,30,0,10">
             <Label.FormattedText>
                 <FormattedString>
-                    <Span Text="Nagrađeni ste od osoblja restorana sa:"/>
-                    <Span Text=" "/>
+                    <Span Text="Nagrađeni ste od osoblja restorana sa: "/>
                     <Span TextColor="DarkRed" Text="{Binding _DiscountType}" />
-                    <Span Text="dana: "/>
-                    <Span TextColor="Blue" Text="{Binding _DiscountDate}" />
+                    <Span Text=", u iznosu od: "/>
+                    <Span TextColor="DarkRed" Text="{Binding _DiscountValue}"/>
+
+                    <Span Text="%, na datum: "/>
+                    <Span TextColor="Blue" Text="{Binding _DiscountDate, StringFormat='{0:MMMM dd, yyyy}'}" />
                     <Span Text=". Vaša nagrada traje minimalno 5 dana, stoga je ne zaboravite iskoristiti!"/>
 
                 </FormattedString>
             </Label.FormattedText>
         </Label>
+        <Label HorizontalTextAlignment="Center" IsVisible="{Binding _activeAward}" TextColor="DarkGreen" FontAttributes="Bold" FontSize="15" HorizontalOptions="Center"  Margin="0,30,0,10">
+            <Label.FormattedText>
+                <FormattedString>
+                    <Span Text="Nagrađeni ste od osoblja restorana sa: "/>
+                    <Span TextColor="DarkRed" Text="{Binding _AwardText}" />
+                    <Span Text=", na datum: "/>
+                    <Span TextColor="Blue" Text="{Binding _AwardDate, StringFormat='{0:MMMM dd, yyyy}'}" />
+                    <Span Text=". Vaša nagrada traje minimalno 5 dana, stoga je ne zaboravite iskoristiti!"/>
+
+                </FormattedString>
+            </Label.FormattedText>
+        </Label>
+        <ListView IsVisible="{Binding _showOffers}" ItemsSource="{Binding SuperOfferList}" >
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout Padding="10" Orientation="Horizontal">
+                            <Label>
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span FontAttributes="Italic" TextColor="Red" Text="{Binding Description}" />
+                                        <Span Text=". Super ponuda traje od " TextColor="Black">
+                                        </Span>
+                                        <Span Text="{Binding OfferStart, StringFormat='{0:MMMM dd, yyyy}'}" />
+                                        <Span Text=", do "></Span>
+                                        <Span Text="{Binding OfferEnd, StringFormat='{0:MMMM dd, yyyy}'}"></Span>
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
         <StackLayout VerticalOptions="CenterAndExpand" HorizontalOptions="Center" >
-            <Label FontAttributes="Bold" FontSize="15"   Margin="0,0,0,10">
+            <Label FontAttributes="Bold" FontSize="15"   Margin="0,0,0,10" HorizontalTextAlignment="Center"  >
                 <Label.FormattedText>
                     <FormattedString>
                         <Span Text="Naziv restorana:"/>
@@ -88,7 +125,7 @@
                     </FormattedString>
                 </Label.FormattedText>
             </Label>
-            <Label FontAttributes="Bold" FontSize="15"   Margin="0,0,0,10">
+            <Label FontAttributes="Bold" FontSize="15"   Margin="0,0,0,10" HorizontalTextAlignment="Center" >
                 <Label.FormattedText>
                     <FormattedString>
                         <Span Text="Grad i adresa:"/>
@@ -99,7 +136,7 @@
                     </FormattedString>
                 </Label.FormattedText>
             </Label>
-            <Label FontAttributes="Bold" FontSize="15"   Margin="0,0,0,10">
+            <Label FontAttributes="Bold" FontSize="15"   Margin="0,0,0,10" HorizontalTextAlignment="Center" >
                 <Label.FormattedText>
                     <FormattedString>
                         <Span Text="Broj stolova:"/>
@@ -108,7 +145,7 @@
                     </FormattedString>
                 </Label.FormattedText>
             </Label>
-            <Label FontAttributes="Bold" FontSize="15"   Margin="0,0,0,10">
+            <Label FontAttributes="Bold" FontSize="15"   Margin="0,0,0,10" HorizontalTextAlignment="Center" >
                 <Label.FormattedText>
                     <FormattedString>
                         <Span Text="Vrijeme otvaranja:"/>

@@ -37,23 +37,19 @@
             this.dtpOfferEnd = new System.Windows.Forms.DateTimePicker();
             this.label6 = new System.Windows.Forms.Label();
             this.nudDiscount = new System.Windows.Forms.NumericUpDown();
-            this.dgvProducts = new System.Windows.Forms.DataGridView();
             this.button1 = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.cmbType = new System.Windows.Forms.ComboBox();
-            this.label7 = new System.Windows.Forms.Label();
-            this.cmbCategory = new System.Windows.Forms.ComboBox();
-            this.label9 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
+            this.dgvProducts = new System.Windows.Forms.DataGridView();
             this.RestaurantMenuItemId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.RestaurantMenuItemName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.QuantityName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ItemName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Price = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CategoryName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ItemCategoryId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ItemCategoryName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.QuantityId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Slika = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.QuantityName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Image = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Akcija = new System.Windows.Forms.DataGridViewButtonColumn();
             ((System.ComponentModel.ISupportInitialize)(this.nudDiscount)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProducts)).BeginInit();
             this.SuspendLayout();
@@ -72,7 +68,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(2, 73);
+            this.label2.Location = new System.Drawing.Point(12, 76);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(139, 17);
             this.label2.TabIndex = 1;
@@ -81,7 +77,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(2, 128);
+            this.label3.Location = new System.Drawing.Point(491, 73);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(199, 17);
             this.label3.TabIndex = 2;
@@ -90,7 +86,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(2, 172);
+            this.label4.Location = new System.Drawing.Point(497, 126);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(180, 17);
             this.label4.TabIndex = 3;
@@ -105,22 +101,22 @@
             // 
             // dtpOfferStart
             // 
-            this.dtpOfferStart.Location = new System.Drawing.Point(220, 123);
+            this.dtpOfferStart.Location = new System.Drawing.Point(696, 71);
             this.dtpOfferStart.Name = "dtpOfferStart";
-            this.dtpOfferStart.Size = new System.Drawing.Size(242, 22);
+            this.dtpOfferStart.Size = new System.Drawing.Size(283, 22);
             this.dtpOfferStart.TabIndex = 5;
             // 
             // dtpOfferEnd
             // 
-            this.dtpOfferEnd.Location = new System.Drawing.Point(220, 172);
+            this.dtpOfferEnd.Location = new System.Drawing.Point(696, 126);
             this.dtpOfferEnd.Name = "dtpOfferEnd";
-            this.dtpOfferEnd.Size = new System.Drawing.Size(242, 22);
+            this.dtpOfferEnd.Size = new System.Drawing.Size(283, 22);
             this.dtpOfferEnd.TabIndex = 6;
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(483, 175);
+            this.label6.Location = new System.Drawing.Point(400, 170);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(211, 17);
             this.label6.TabIndex = 9;
@@ -129,38 +125,16 @@
             // nudDiscount
             // 
             this.nudDiscount.DecimalPlaces = 2;
-            this.nudDiscount.Location = new System.Drawing.Point(696, 175);
+            this.nudDiscount.Location = new System.Drawing.Point(465, 209);
             this.nudDiscount.Name = "nudDiscount";
-            this.nudDiscount.Size = new System.Drawing.Size(283, 22);
+            this.nudDiscount.Size = new System.Drawing.Size(89, 22);
             this.nudDiscount.TabIndex = 10;
-            // 
-            // dgvProducts
-            // 
-            this.dgvProducts.AllowUserToAddRows = false;
-            this.dgvProducts.AllowUserToDeleteRows = false;
-            this.dgvProducts.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvProducts.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.RestaurantMenuItemId,
-            this.RestaurantMenuItemName,
-            this.QuantityName,
-            this.Price,
-            this.CategoryName,
-            this.ItemCategoryId,
-            this.QuantityId,
-            this.Slika});
-            this.dgvProducts.Location = new System.Drawing.Point(-2, 263);
-            this.dgvProducts.Name = "dgvProducts";
-            this.dgvProducts.ReadOnly = true;
-            this.dgvProducts.RowHeadersWidth = 51;
-            this.dgvProducts.RowTemplate.Height = 24;
-            this.dgvProducts.Size = new System.Drawing.Size(1005, 278);
-            this.dgvProducts.TabIndex = 11;
             // 
             // button1
             // 
             this.button1.BackColor = System.Drawing.Color.OrangeRed;
             this.button1.ForeColor = System.Drawing.SystemColors.Desktop;
-            this.button1.Location = new System.Drawing.Point(886, 198);
+            this.button1.Location = new System.Drawing.Point(862, 186);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(117, 66);
             this.button1.TabIndex = 12;
@@ -171,67 +145,44 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(483, 80);
+            this.label5.Location = new System.Drawing.Point(12, 131);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(197, 17);
+            this.label5.Size = new System.Drawing.Size(137, 17);
             this.label5.TabIndex = 13;
-            this.label5.Text = "Tip za koji važi super ponuda:";
+            this.label5.Text = "Vrsta super ponude:";
             // 
             // cmbType
             // 
             this.cmbType.FormattingEnabled = true;
-            this.cmbType.Location = new System.Drawing.Point(696, 81);
+            this.cmbType.Location = new System.Drawing.Point(220, 128);
             this.cmbType.Name = "cmbType";
-            this.cmbType.Size = new System.Drawing.Size(283, 24);
+            this.cmbType.Size = new System.Drawing.Size(242, 24);
             this.cmbType.TabIndex = 14;
+            this.cmbType.SelectedIndexChanged += new System.EventHandler(this.cmbType_SelectedIndexChanged);
             // 
-            // label7
+            // dgvProducts
             // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(483, 128);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(206, 17);
-            this.label7.TabIndex = 15;
-            this.label7.Text = "Kategorija za koju važi ponuda:";
-            // 
-            // cmbCategory
-            // 
-            this.cmbCategory.FormattingEnabled = true;
-            this.cmbCategory.Location = new System.Drawing.Point(696, 128);
-            this.cmbCategory.Name = "cmbCategory";
-            this.cmbCategory.Size = new System.Drawing.Size(283, 24);
-            this.cmbCategory.TabIndex = 16;
-            this.cmbCategory.SelectedIndexChanged += new System.EventHandler(this.cmbCategory_SelectedIndexChanged);
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.ForeColor = System.Drawing.Color.Green;
-            this.label9.Location = new System.Drawing.Point(266, 223);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(482, 17);
-            this.label9.TabIndex = 19;
-            this.label9.Text = "Napomena: Super ponudu je moguće dodati i bez odabira tipa ili kategorije!";
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.ForeColor = System.Drawing.Color.Green;
-            this.label8.Location = new System.Drawing.Point(897, 61);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(82, 17);
-            this.label8.TabIndex = 20;
-            this.label8.Text = "*opcionalno";
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.ForeColor = System.Drawing.Color.Green;
-            this.label10.Location = new System.Drawing.Point(897, 108);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(82, 17);
-            this.label10.TabIndex = 21;
-            this.label10.Text = "*opcionalno";
+            this.dgvProducts.AllowUserToAddRows = false;
+            this.dgvProducts.AllowUserToDeleteRows = false;
+            this.dgvProducts.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvProducts.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.RestaurantMenuItemId,
+            this.ItemName,
+            this.Price,
+            this.ItemCategoryId,
+            this.ItemCategoryName,
+            this.QuantityId,
+            this.QuantityName,
+            this.Image,
+            this.Akcija});
+            this.dgvProducts.Location = new System.Drawing.Point(5, 258);
+            this.dgvProducts.Name = "dgvProducts";
+            this.dgvProducts.ReadOnly = true;
+            this.dgvProducts.RowHeadersWidth = 51;
+            this.dgvProducts.RowTemplate.Height = 24;
+            this.dgvProducts.Size = new System.Drawing.Size(994, 279);
+            this.dgvProducts.TabIndex = 15;
+            this.dgvProducts.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvProducts_CellContentClick);
             // 
             // RestaurantMenuItemId
             // 
@@ -239,89 +190,87 @@
             this.RestaurantMenuItemId.HeaderText = "Id";
             this.RestaurantMenuItemId.MinimumWidth = 6;
             this.RestaurantMenuItemId.Name = "RestaurantMenuItemId";
-            this.RestaurantMenuItemId.ReadOnly = true;
             this.RestaurantMenuItemId.Visible = false;
             this.RestaurantMenuItemId.Width = 125;
             // 
-            // RestaurantMenuItemName
+            // ItemName
             // 
-            this.RestaurantMenuItemName.DataPropertyName = "ItemName";
-            this.RestaurantMenuItemName.HeaderText = "Naziv stavke";
-            this.RestaurantMenuItemName.MinimumWidth = 6;
-            this.RestaurantMenuItemName.Name = "RestaurantMenuItemName";
-            this.RestaurantMenuItemName.ReadOnly = true;
-            this.RestaurantMenuItemName.Width = 125;
-            // 
-            // QuantityName
-            // 
-            this.QuantityName.DataPropertyName = "QuantityName";
-            this.QuantityName.HeaderText = "Porcija";
-            this.QuantityName.MinimumWidth = 6;
-            this.QuantityName.Name = "QuantityName";
-            this.QuantityName.ReadOnly = true;
-            this.QuantityName.Width = 125;
+            this.ItemName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.ItemName.DataPropertyName = "ItemName";
+            this.ItemName.HeaderText = "Naziv stavke";
+            this.ItemName.MinimumWidth = 6;
+            this.ItemName.Name = "ItemName";
             // 
             // Price
             // 
             this.Price.DataPropertyName = "Price";
-            this.Price.HeaderText = "Cijena (u KM)";
+            this.Price.HeaderText = "Cijena";
             this.Price.MinimumWidth = 6;
             this.Price.Name = "Price";
-            this.Price.ReadOnly = true;
             this.Price.Width = 125;
-            // 
-            // CategoryName
-            // 
-            this.CategoryName.DataPropertyName = "ItemCategoryName";
-            this.CategoryName.HeaderText = "Kategorija";
-            this.CategoryName.MinimumWidth = 6;
-            this.CategoryName.Name = "CategoryName";
-            this.CategoryName.ReadOnly = true;
-            this.CategoryName.Width = 125;
             // 
             // ItemCategoryId
             // 
             this.ItemCategoryId.DataPropertyName = "ItemCategoryId";
-            this.ItemCategoryId.HeaderText = "CatId";
+            this.ItemCategoryId.HeaderText = "CAT";
             this.ItemCategoryId.MinimumWidth = 6;
             this.ItemCategoryId.Name = "ItemCategoryId";
-            this.ItemCategoryId.ReadOnly = true;
             this.ItemCategoryId.Visible = false;
             this.ItemCategoryId.Width = 125;
+            // 
+            // ItemCategoryName
+            // 
+            this.ItemCategoryName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.ItemCategoryName.DataPropertyName = "ItemCategoryName";
+            this.ItemCategoryName.HeaderText = "Kategorija";
+            this.ItemCategoryName.MinimumWidth = 6;
+            this.ItemCategoryName.Name = "ItemCategoryName";
             // 
             // QuantityId
             // 
             this.QuantityId.DataPropertyName = "QuantityId";
-            this.QuantityId.HeaderText = "IdQua";
+            this.QuantityId.HeaderText = "Q";
             this.QuantityId.MinimumWidth = 6;
             this.QuantityId.Name = "QuantityId";
-            this.QuantityId.ReadOnly = true;
             this.QuantityId.Visible = false;
             this.QuantityId.Width = 125;
             // 
-            // Slika
+            // QuantityName
             // 
-            this.Slika.DataPropertyName = "Image";
-            this.Slika.HeaderText = "Slika";
-            this.Slika.MinimumWidth = 6;
-            this.Slika.Name = "Slika";
-            this.Slika.ReadOnly = true;
-            this.Slika.Width = 125;
+            this.QuantityName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.QuantityName.DataPropertyName = "QuantityName";
+            this.QuantityName.HeaderText = "Porcija";
+            this.QuantityName.MinimumWidth = 6;
+            this.QuantityName.Name = "QuantityName";
+            // 
+            // Image
+            // 
+            this.Image.DataPropertyName = "Image";
+            this.Image.HeaderText = "Slika";
+            this.Image.MinimumWidth = 6;
+            this.Image.Name = "Image";
+            this.Image.Visible = false;
+            this.Image.Width = 125;
+            // 
+            // Akcija
+            // 
+            this.Akcija.DataPropertyName = "Akcija";
+            this.Akcija.HeaderText = "Akcija";
+            this.Akcija.MinimumWidth = 6;
+            this.Akcija.Name = "Akcija";
+            this.Akcija.Text = "Dodaj super ponudu";
+            this.Akcija.UseColumnTextForButtonValue = true;
+            this.Akcija.Width = 125;
             // 
             // AddSuperOffer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1002, 538);
-            this.Controls.Add(this.label10);
-            this.Controls.Add(this.label8);
-            this.Controls.Add(this.label9);
-            this.Controls.Add(this.cmbCategory);
-            this.Controls.Add(this.label7);
+            this.Controls.Add(this.dgvProducts);
             this.Controls.Add(this.cmbType);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.dgvProducts);
             this.Controls.Add(this.nudDiscount);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.dtpOfferEnd);
@@ -352,22 +301,18 @@
         private System.Windows.Forms.DateTimePicker dtpOfferEnd;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.NumericUpDown nudDiscount;
-        private System.Windows.Forms.DataGridView dgvProducts;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.ComboBox cmbType;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.ComboBox cmbCategory;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.DataGridView dgvProducts;
         private System.Windows.Forms.DataGridViewTextBoxColumn RestaurantMenuItemId;
-        private System.Windows.Forms.DataGridViewTextBoxColumn RestaurantMenuItemName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn QuantityName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ItemName;
         private System.Windows.Forms.DataGridViewTextBoxColumn Price;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CategoryName;
         private System.Windows.Forms.DataGridViewTextBoxColumn ItemCategoryId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ItemCategoryName;
         private System.Windows.Forms.DataGridViewTextBoxColumn QuantityId;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Slika;
+        private System.Windows.Forms.DataGridViewTextBoxColumn QuantityName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Image;
+        private System.Windows.Forms.DataGridViewButtonColumn Akcija;
     }
 }

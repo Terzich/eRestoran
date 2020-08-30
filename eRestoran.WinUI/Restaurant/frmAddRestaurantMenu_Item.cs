@@ -83,6 +83,7 @@ namespace eRestoran.WinUI.Restaurant
             request.Price = nudPrice.Value;
 
             await _serviceRMI.Insert<Model.RestaurantMenuItem>(request);
+            MessageBox.Show("Stavka menija uspješno dodana!", "Obavijest", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
         }
 

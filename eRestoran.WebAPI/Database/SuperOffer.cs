@@ -13,7 +13,10 @@ namespace eRestoran.WebAPI.Database
         public int? ItemCategoryId { get; set; }
         public int? RestaurantMenuItemId { get; set; }
         public decimal? DiscountValue { get; set; }
+        public int? DiscountType { get; set; }
+        public bool? Active { get; set; }
 
+        public virtual DiscountType DiscountTypeNavigation { get; set; }
         public virtual ItemCategory ItemCategory { get; set; }
         public virtual ItemType ItemType { get; set; }
         public virtual RestaurantMenuItem RestaurantMenuItem { get; set; }

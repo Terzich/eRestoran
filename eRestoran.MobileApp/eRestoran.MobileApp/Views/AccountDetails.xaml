@@ -43,9 +43,9 @@
                 </Label.FormattedText>
             </Label>
             <Label IsVisible="{Binding _showPW}" Text="Nova lozinka:"/>
-            <Entry  x:Name="_Password" Text="{Binding _Password}" IsVisible="{Binding _showPW}"></Entry>
+            <Entry  x:Name="_Password" Text="{Binding _Password}" IsPassword="True" IsVisible="{Binding _showPW}"></Entry>
             <Label IsVisible="{Binding _showPW}" Text="Potvrdite novu lozinku:"/>
-            <Entry x:Name="CPass" Text="{Binding _ConfirmationPassword}" IsVisible="{Binding _showPW}"></Entry>
+            <Entry x:Name="CPass" Text="{Binding _ConfirmationPassword}" IsPassword="True" IsVisible="{Binding _showPW}"></Entry>
             <Button Text="Promijeni podatke" Command="{Binding UpdateDataCommand}"></Button>
             <Label IsVisible="{Binding IsBusy}" Text="Working..."></Label>
 
