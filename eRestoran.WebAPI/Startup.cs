@@ -66,7 +66,7 @@ namespace eRestoran.WebAPI
                 });
             });
 
-            var connection = @"Server=localhost;Database=eRestoran;Trusted_Connection=True;ConnectRetryCount=0";
+            var connection = Configuration.GetConnectionString("eRestoran");
             services.AddDbContext<eRestoranContext>(c => c.UseSqlServer(connection));
 
             services.AddAuthentication("BasicAuthentication")
