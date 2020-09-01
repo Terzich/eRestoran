@@ -10,6 +10,6 @@ RUN dotnet publish "eRestoran.WebAPI" -c Release -o /app
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app .
-
+ADD /UsedImages img/
 
 ENTRYPOINT ["dotnet", "eRestoran.WebAPI.dll"] 
