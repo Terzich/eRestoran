@@ -1,0 +1,7 @@
+DESKTOP APLIKACIJA: 
+Username: desktop
+Password: test
+
+MOBILNA APLIKACIJA:
+Username: mobile
+Password: test
