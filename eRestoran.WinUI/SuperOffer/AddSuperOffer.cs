@@ -103,6 +103,16 @@ namespace eRestoran.WinUI.SuperOffer
             return req;
 
         }
+        private async Task<bool> CheckOffers()
+        {
+            var so = await _serviceSO.Get<List<Model.SuperOffer>>(null);
+            foreach (var s in so)
+            {
+                if (s.Active == true)
+                    return false;
+            }
+            return true;
+        }
 
 
         private async void button1_Click(object sender, EventArgs e)
@@ -113,11 +123,20 @@ namespace eRestoran.WinUI.SuperOffer
 
                 if (id != 14)
                 {
-                    SuperOfferUpsertRequest req = CreateRequest(id);
-                    Model.SuperOffer r = null;
-                    r = await _serviceSO.Insert<Model.SuperOffer>(req);
-                    if (r != null)
-                        MessageBox.Show("Super ponuda uspješno dodana!", "Obavijest", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    if(await CheckOffers() == false)
+                    {
+                        MessageBox.Show("Već je aktivna jedna super ponuda, novu nije moguće dodati dok stara ne bude daktivirana!", "Obavijest", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    }
+                    else
+                    {
+                        SuperOfferUpsertRequest req = CreateRequest(id);
+                        Model.SuperOffer r = null;
+                        r = await _serviceSO.Insert<Model.SuperOffer>(req);
+                        if (r != null)
+                            MessageBox.Show("Super ponuda uspješno dodana!", "Obavijest", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    }
                 }
                 else
                 {
@@ -138,22 +157,32 @@ namespace eRestoran.WinUI.SuperOffer
                 {
                     if (id == 14)
                     {
-                        var objRMI = dgvProducts.Rows[e.RowIndex].Cells[1].Value.ToString();
-                        int rmiId = int.Parse(objRMI);
-                        var req = new SuperOfferUpsertRequest
+                        if (await CheckOffers() == false)
                         {
-                            Active = true,
-                            OfferStart = dtpOfferStart.Value,
-                            OfferEnd = dtpOfferEnd.Value,
-                            DiscountValue = nudDiscount.Value,
-                            DiscountType = id,
-                            RestaurantMenuItemId = rmiId,
-                            Description=txtSuperOfferName.Text
-                        };
-                        Model.SuperOffer r = null;
-                        r = await _serviceSO.Insert<Model.SuperOffer>(req);
-                        if (r != null)
-                            MessageBox.Show("Super ponuda uspješno dodana!", "Obavijest", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            MessageBox.Show("Već je aktivna jedna super ponuda, novu nije moguće dodati dok stara ne bude daktivirana!", "Obavijest", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                        }
+                        else
+                        {
+                            var objRMI = dgvProducts.Rows[e.RowIndex].Cells[1].Value.ToString();
+                            int rmiId = int.Parse(objRMI);
+                            var req = new SuperOfferUpsertRequest
+                            {
+                                Active = true,
+                                OfferStart = dtpOfferStart.Value,
+                                OfferEnd = dtpOfferEnd.Value,
+                                DiscountValue = nudDiscount.Value,
+                                DiscountType = id,
+                                RestaurantMenuItemId = rmiId,
+                                Description = txtSuperOfferName.Text
+                            };
+                            Model.SuperOffer r = null;
+                            r = await _serviceSO.Insert<Model.SuperOffer>(req);
+                            if (r != null)
+                                MessageBox.Show("Super ponuda uspješno dodana!", "Obavijest", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                        }
+
                     }
                 }
             }

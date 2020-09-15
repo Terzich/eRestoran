@@ -323,6 +323,7 @@ namespace eRestoran.MobileApp.ViewModels
                 if (r != null)
                 {
                     await Application.Current.MainPage.DisplayAlert("Preporuka ostavljena!", "Uspješno ste ostavili preporuku ovom restoranu!", "OK");
+                    _addR = false;
                 }
 
             }

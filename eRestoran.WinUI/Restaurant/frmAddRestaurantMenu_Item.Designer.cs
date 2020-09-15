@@ -40,6 +40,11 @@
             this.nudPrice = new System.Windows.Forms.NumericUpDown();
             this.KM = new System.Windows.Forms.Label();
             this.dgvItems = new System.Windows.Forms.DataGridView();
+            this.txtSlika = new System.Windows.Forms.TextBox();
+            this.Sl = new System.Windows.Forms.Label();
+            this.btnAddImage = new System.Windows.Forms.Button();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.RestaurantMenuItemId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ItemName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Price = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -48,14 +53,11 @@
             this.Image = new System.Windows.Forms.DataGridViewImageColumn();
             this.ItemCategoryId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.QuantityId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.txtSlika = new System.Windows.Forms.TextBox();
-            this.Sl = new System.Windows.Forms.Label();
-            this.btnAddImage = new System.Windows.Forms.Button();
-            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.pbRMI = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.nudPrice)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvItems)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbRMI)).BeginInit();
             this.SuspendLayout();
             // 
             // txtItemName
@@ -127,7 +129,7 @@
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(120, 51);
             this.button1.TabIndex = 8;
-            this.button1.Text = "Dodaj stavku";
+            this.button1.Text = "Dodaj / izmjeni stavku";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
@@ -175,6 +177,40 @@
             this.dgvItems.RowTemplate.Height = 24;
             this.dgvItems.Size = new System.Drawing.Size(797, 231);
             this.dgvItems.TabIndex = 11;
+            // 
+            // txtSlika
+            // 
+            this.txtSlika.Location = new System.Drawing.Point(447, 35);
+            this.txtSlika.Name = "txtSlika";
+            this.txtSlika.Size = new System.Drawing.Size(203, 22);
+            this.txtSlika.TabIndex = 13;
+            // 
+            // Sl
+            // 
+            this.Sl.AutoSize = true;
+            this.Sl.Location = new System.Drawing.Point(386, 35);
+            this.Sl.Name = "Sl";
+            this.Sl.Size = new System.Drawing.Size(42, 17);
+            this.Sl.TabIndex = 14;
+            this.Sl.Text = "Slika:";
+            // 
+            // btnAddImage
+            // 
+            this.btnAddImage.Location = new System.Drawing.Point(656, 31);
+            this.btnAddImage.Name = "btnAddImage";
+            this.btnAddImage.Size = new System.Drawing.Size(143, 26);
+            this.btnAddImage.TabIndex = 15;
+            this.btnAddImage.Text = "Dodaj / izmjeni sliku";
+            this.btnAddImage.UseVisualStyleBackColor = true;
+            this.btnAddImage.Click += new System.EventHandler(this.btnAddImage_Click);
+            // 
+            // openFileDialog1
+            // 
+            this.openFileDialog1.FileName = "openFileDialog1";
+            // 
+            // errorProvider1
+            // 
+            this.errorProvider1.ContainerControl = this;
             // 
             // RestaurantMenuItemId
             // 
@@ -231,6 +267,7 @@
             this.Image.ReadOnly = true;
             this.Image.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.Image.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.Image.Visible = false;
             this.Image.Width = 125;
             // 
             // ItemCategoryId
@@ -253,45 +290,21 @@
             this.QuantityId.Visible = false;
             this.QuantityId.Width = 125;
             // 
-            // txtSlika
+            // pbRMI
             // 
-            this.txtSlika.Location = new System.Drawing.Point(447, 35);
-            this.txtSlika.Name = "txtSlika";
-            this.txtSlika.Size = new System.Drawing.Size(203, 22);
-            this.txtSlika.TabIndex = 13;
-            // 
-            // Sl
-            // 
-            this.Sl.AutoSize = true;
-            this.Sl.Location = new System.Drawing.Point(386, 35);
-            this.Sl.Name = "Sl";
-            this.Sl.Size = new System.Drawing.Size(42, 17);
-            this.Sl.TabIndex = 14;
-            this.Sl.Text = "Slika:";
-            // 
-            // btnAddImage
-            // 
-            this.btnAddImage.Location = new System.Drawing.Point(447, 73);
-            this.btnAddImage.Name = "btnAddImage";
-            this.btnAddImage.Size = new System.Drawing.Size(111, 30);
-            this.btnAddImage.TabIndex = 15;
-            this.btnAddImage.Text = "Dodaj sliku";
-            this.btnAddImage.UseVisualStyleBackColor = true;
-            this.btnAddImage.Click += new System.EventHandler(this.btnAddImage_Click);
-            // 
-            // openFileDialog1
-            // 
-            this.openFileDialog1.FileName = "openFileDialog1";
-            // 
-            // errorProvider1
-            // 
-            this.errorProvider1.ContainerControl = this;
+            this.pbRMI.Location = new System.Drawing.Point(447, 63);
+            this.pbRMI.Name = "pbRMI";
+            this.pbRMI.Size = new System.Drawing.Size(203, 150);
+            this.pbRMI.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbRMI.TabIndex = 16;
+            this.pbRMI.TabStop = false;
             // 
             // frmAddRestaurantMenu_Item
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.pbRMI);
             this.Controls.Add(this.btnAddImage);
             this.Controls.Add(this.Sl);
             this.Controls.Add(this.txtSlika);
@@ -312,6 +325,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.nudPrice)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvItems)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbRMI)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -334,6 +348,7 @@
         private System.Windows.Forms.Label Sl;
         private System.Windows.Forms.Button btnAddImage;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
+        private System.Windows.Forms.ErrorProvider errorProvider1;
         private System.Windows.Forms.DataGridViewTextBoxColumn RestaurantMenuItemId;
         private System.Windows.Forms.DataGridViewTextBoxColumn ItemName;
         private System.Windows.Forms.DataGridViewTextBoxColumn Price;
@@ -342,6 +357,6 @@
         private System.Windows.Forms.DataGridViewImageColumn Image;
         private System.Windows.Forms.DataGridViewTextBoxColumn ItemCategoryId;
         private System.Windows.Forms.DataGridViewTextBoxColumn QuantityId;
-        private System.Windows.Forms.ErrorProvider errorProvider1;
+        private System.Windows.Forms.PictureBox pbRMI;
     }
 }

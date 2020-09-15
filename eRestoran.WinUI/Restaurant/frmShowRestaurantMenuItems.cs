@@ -25,7 +25,7 @@ namespace eRestoran.WinUI.Restaurant
         {
             LoadCategory();
             var rez = _serviceRMI.Get<List<Model.RestaurantMenuItem>>(null);
-            dataGridView1.DataSource = rez;
+            dgv.DataSource = rez;
 
         }
         private async Task LoadCategory()
@@ -52,7 +52,17 @@ namespace eRestoran.WinUI.Restaurant
                 Model.Request.MenuItemSearchRequest
             { ItemCategoryId = CategoryId });
 
-            dataGridView1.DataSource = result;
+            dgv.DataSource = result;
+        }
+
+        private void dgv_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dgv.Columns[e.ColumnIndex].Name == "Change")
+            {
+                var id = dgv.Rows[e.RowIndex].Cells[1].Value;
+                frmAddRestaurantMenu_Item frm = new frmAddRestaurantMenu_Item(int.Parse(id.ToString()));
+                frm.Show();
+            }
         }
     }
 }

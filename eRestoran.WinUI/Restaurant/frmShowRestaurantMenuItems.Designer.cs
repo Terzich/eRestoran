@@ -30,16 +30,16 @@
         {
             this.cmbCategory = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dgv = new System.Windows.Forms.DataGridView();
             this.RestaurantMenuItemId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ItemName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ItemCategoryName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Price = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ItemCategoryId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ItemQuantityId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ItemCategoryName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.QuantityId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.QuantityName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Change = new System.Windows.Forms.DataGridViewButtonColumn();
             this.Image = new System.Windows.Forms.DataGridViewImageColumn();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv)).BeginInit();
             this.SuspendLayout();
             // 
             // cmbCategory
@@ -60,31 +60,36 @@
             this.label1.TabIndex = 1;
             this.label1.Text = "Odaberite kategoriju za koju zelite pregledati stavke menija:";
             // 
-            // dataGridView1
+            // dgv
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dgv.AllowUserToAddRows = false;
+            this.dgv.AllowUserToDeleteRows = false;
+            this.dgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgv.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.RestaurantMenuItemId,
             this.ItemName,
-            this.ItemCategoryName,
-            this.Quantity,
-            this.Price,
             this.ItemCategoryId,
-            this.ItemQuantityId,
+            this.ItemCategoryName,
+            this.QuantityId,
+            this.QuantityName,
+            this.Change,
             this.Image});
-            this.dataGridView1.Location = new System.Drawing.Point(-1, 127);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(914, 338);
-            this.dataGridView1.TabIndex = 2;
+            this.dgv.Location = new System.Drawing.Point(1, 119);
+            this.dgv.Name = "dgv";
+            this.dgv.ReadOnly = true;
+            this.dgv.RowHeadersWidth = 51;
+            this.dgv.RowTemplate.Height = 24;
+            this.dgv.Size = new System.Drawing.Size(915, 349);
+            this.dgv.TabIndex = 2;
+            this.dgv.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_CellContentClick);
             // 
             // RestaurantMenuItemId
             // 
             this.RestaurantMenuItemId.DataPropertyName = "RestaurantMenuItemId";
-            this.RestaurantMenuItemId.HeaderText = "RestaurantMenuItemId";
+            this.RestaurantMenuItemId.HeaderText = "RMIid";
             this.RestaurantMenuItemId.MinimumWidth = 6;
             this.RestaurantMenuItemId.Name = "RestaurantMenuItemId";
+            this.RestaurantMenuItemId.ReadOnly = true;
             this.RestaurantMenuItemId.Visible = false;
             this.RestaurantMenuItemId.Width = 125;
             // 
@@ -95,30 +100,7 @@
             this.ItemName.HeaderText = "Naziv stavke";
             this.ItemName.MinimumWidth = 6;
             this.ItemName.Name = "ItemName";
-            // 
-            // ItemCategoryName
-            // 
-            this.ItemCategoryName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.ItemCategoryName.DataPropertyName = "ItemCategoryName";
-            this.ItemCategoryName.HeaderText = "Naziv kategorije";
-            this.ItemCategoryName.MinimumWidth = 6;
-            this.ItemCategoryName.Name = "ItemCategoryName";
-            // 
-            // Quantity
-            // 
-            this.Quantity.DataPropertyName = "QuantityName";
-            this.Quantity.HeaderText = "Porcija";
-            this.Quantity.MinimumWidth = 6;
-            this.Quantity.Name = "Quantity";
-            this.Quantity.Width = 125;
-            // 
-            // Price
-            // 
-            this.Price.DataPropertyName = "Price";
-            this.Price.HeaderText = "Cijena (u KM)";
-            this.Price.MinimumWidth = 6;
-            this.Price.Name = "Price";
-            this.Price.Width = 125;
+            this.ItemName.ReadOnly = true;
             // 
             // ItemCategoryId
             // 
@@ -126,40 +108,71 @@
             this.ItemCategoryId.HeaderText = "ICID";
             this.ItemCategoryId.MinimumWidth = 6;
             this.ItemCategoryId.Name = "ItemCategoryId";
+            this.ItemCategoryId.ReadOnly = true;
             this.ItemCategoryId.Visible = false;
             this.ItemCategoryId.Width = 125;
             // 
-            // ItemQuantityId
+            // ItemCategoryName
             // 
-            this.ItemQuantityId.DataPropertyName = "QuantityId";
-            this.ItemQuantityId.HeaderText = "ItemQuantityId";
-            this.ItemQuantityId.MinimumWidth = 6;
-            this.ItemQuantityId.Name = "ItemQuantityId";
-            this.ItemQuantityId.Visible = false;
-            this.ItemQuantityId.Width = 125;
+            this.ItemCategoryName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.ItemCategoryName.DataPropertyName = "ItemCategoryName";
+            this.ItemCategoryName.HeaderText = "Kategorija";
+            this.ItemCategoryName.MinimumWidth = 6;
+            this.ItemCategoryName.Name = "ItemCategoryName";
+            this.ItemCategoryName.ReadOnly = true;
+            // 
+            // QuantityId
+            // 
+            this.QuantityId.DataPropertyName = "QuantityId";
+            this.QuantityId.HeaderText = "QID";
+            this.QuantityId.MinimumWidth = 6;
+            this.QuantityId.Name = "QuantityId";
+            this.QuantityId.ReadOnly = true;
+            this.QuantityId.Visible = false;
+            this.QuantityId.Width = 125;
+            // 
+            // QuantityName
+            // 
+            this.QuantityName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.QuantityName.DataPropertyName = "QuantityName";
+            this.QuantityName.HeaderText = "Porcija";
+            this.QuantityName.MinimumWidth = 6;
+            this.QuantityName.Name = "QuantityName";
+            this.QuantityName.ReadOnly = true;
+            // 
+            // Change
+            // 
+            this.Change.DataPropertyName = "Change";
+            this.Change.HeaderText = "Akcija";
+            this.Change.MinimumWidth = 6;
+            this.Change.Name = "Change";
+            this.Change.ReadOnly = true;
+            this.Change.Text = "Izmjeni";
+            this.Change.UseColumnTextForButtonValue = true;
+            this.Change.Width = 125;
             // 
             // Image
             // 
-            this.Image.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.Image.DataPropertyName = "Image";
             this.Image.HeaderText = "Slika";
             this.Image.MinimumWidth = 6;
             this.Image.Name = "Image";
-            this.Image.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Image.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.Image.ReadOnly = true;
+            this.Image.Visible = false;
+            this.Image.Width = 125;
             // 
             // frmShowRestaurantMenuItems
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(915, 465);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.dgv);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.cmbCategory);
             this.Name = "frmShowRestaurantMenuItems";
             this.Text = "frmShowRestaurantMenuItems";
             this.Load += new System.EventHandler(this.frmShowRestaurantMenuItems_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -169,14 +182,14 @@
 
         private System.Windows.Forms.ComboBox cmbCategory;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dgv;
         private System.Windows.Forms.DataGridViewTextBoxColumn RestaurantMenuItemId;
         private System.Windows.Forms.DataGridViewTextBoxColumn ItemName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ItemCategoryName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Quantity;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Price;
         private System.Windows.Forms.DataGridViewTextBoxColumn ItemCategoryId;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ItemQuantityId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ItemCategoryName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn QuantityId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn QuantityName;
+        private System.Windows.Forms.DataGridViewButtonColumn Change;
         private System.Windows.Forms.DataGridViewImageColumn Image;
     }
 }

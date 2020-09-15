@@ -19,22 +19,42 @@ namespace eRestoran.WinUI.Restaurant
         APIService _serviceC = new APIService("ItemCategory");
         APIService _serviceRMI = new APIService("RestaurantMenuItem");
 
+        private int? _id = null;
 
-        public frmAddRestaurantMenu_Item()
+
+        public frmAddRestaurantMenu_Item(int? rmiId = null)
         {
             InitializeComponent();
+            _id = rmiId;
         }
 
-        private void frmAddRestaurantMenu_Item_Load(object sender, EventArgs e)
+        private async void frmAddRestaurantMenu_Item_Load(object sender, EventArgs e)
         {
             LoadQuantity();
             LoadCategory();
+            if (_id.HasValue)
+            {
+                var rmi = await _serviceRMI.GetById<Model.RestaurantMenuItem>(_id);
+                txtItemName.Text = rmi.ItemName;
+                nudPrice.Value = rmi.Price;
+                request.Image = rmi.Image;
+                pbRMI.Image = System.Drawing.Image.FromStream(new MemoryStream(rmi.Image));
+            }
 
         }
         private async Task LoadQuantity()
         {
             var q = await _serviceQ.Get<List<Model.Quantity>>(null);
-            q.Insert(0, new Model.Quantity());
+            if (_id.HasValue)
+            {
+                var rmi = await _serviceRMI.GetById<Model.RestaurantMenuItem>(_id);
+                q.Insert(0, new Model.Quantity { QuantityId = rmi.QuantityId.Value, Description = rmi.QuantityName });
+            }
+            else
+            {
+                q.Insert(0, new Model.Quantity());
+
+            }
             txtPortion.DisplayMember = "Description";
             txtPortion.ValueMember = "QuantityId";
             txtPortion.DataSource = q;
@@ -42,7 +62,16 @@ namespace eRestoran.WinUI.Restaurant
         private async Task LoadCategory()
         {
             var q = await _serviceC.Get<List<Model.ItemCategory>>(null);
-            q.Insert(0, new Model.ItemCategory());
+            if (_id.HasValue)
+            {
+                var rmi = await _serviceRMI.GetById<Model.RestaurantMenuItem>(_id);
+                q.Insert(0, new Model.ItemCategory { ItemCategoryId = rmi.ItemCategoryId, Category = rmi.ItemCategoryName});
+            }
+            else
+            {
+                q.Insert(0, new Model.ItemCategory());
+
+            }
             txtCategory.DisplayMember = "Category";
             txtCategory.ValueMember = "ItemCategoryId";
             txtCategory.DataSource = q;
@@ -69,21 +98,33 @@ namespace eRestoran.WinUI.Restaurant
         RestaurantMenuItemUpsertRequest request = new RestaurantMenuItemUpsertRequest();
         private async void button1_Click(object sender, EventArgs e)
         {
-            var idObjC = txtCategory.SelectedValue;
-            if (int.TryParse(idObjC.ToString(), out int idC))
+            if(this.ValidateChildren())
             {
-                request.ItemCategoryId = idC;
-            }
-            var idObjQ = txtPortion.SelectedValue;
-            if (int.TryParse(idObjQ.ToString(), out int idQ))
-            {
-                request.QuantityId = idQ;
-            }
-            request.ItemName = txtItemName.Text;
-            request.Price = nudPrice.Value;
+                var idObjC = txtCategory.SelectedValue;
+                if (int.TryParse(idObjC.ToString(), out int idC))
+                {
+                    request.ItemCategoryId = idC;
+                }
+                var idObjQ = txtPortion.SelectedValue;
+                if (int.TryParse(idObjQ.ToString(), out int idQ))
+                {
+                    request.QuantityId = idQ;
+                }
+                request.ItemName = txtItemName.Text;
+                request.Price = nudPrice.Value;
 
-            await _serviceRMI.Insert<Model.RestaurantMenuItem>(request);
-            MessageBox.Show("Stavka menija uspješno dodana!", "Obavijest", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                if (_id.HasValue)
+                {
+                    await _serviceRMI.Update<Model.RestaurantMenuItem>(_id.Value, request);
+                }
+                else
+                {
+
+                    await _serviceRMI.Insert<Model.RestaurantMenuItem>(request);
+                }
+                MessageBox.Show("Stavka menija uspješno dodana / izmjenjena!", "Obavijest", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            }
 
         }
 
@@ -93,6 +134,8 @@ namespace eRestoran.WinUI.Restaurant
             {
                 txtSlika.Text = openFileDialog1.FileName;
                 Image originalImage = System.Drawing.Image.FromFile(openFileDialog1.FileName);
+                pbRMI.Image = originalImage;
+
                 MemoryStream ms = new MemoryStream();
                 originalImage.Save(ms, ImageFormat.Jpeg);
 
