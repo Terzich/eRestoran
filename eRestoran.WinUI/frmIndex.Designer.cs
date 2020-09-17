@@ -48,6 +48,8 @@
             this.superPonudeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pregledSuperPonudaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dodajSuperPonuduToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ključeviZaPosjeteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.listaAktivnihKljučevaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip.SuspendLayout();
             this.menuStrip.SuspendLayout();
             this.SuspendLayout();
@@ -77,7 +79,8 @@
             this.restoranToolStripMenuItem,
             this.meniRestoranaToolStripMenuItem,
             this.posjetiociToolStripMenuItem,
-            this.superPonudeToolStripMenuItem});
+            this.superPonudeToolStripMenuItem,
+            this.ključeviZaPosjeteToolStripMenuItem});
             this.menuStrip.Location = new System.Drawing.Point(0, 0);
             this.menuStrip.Name = "menuStrip";
             this.menuStrip.Size = new System.Drawing.Size(843, 28);
@@ -200,6 +203,21 @@
             this.dodajSuperPonuduToolStripMenuItem.Text = "Dodaj super ponudu";
             this.dodajSuperPonuduToolStripMenuItem.Click += new System.EventHandler(this.dodajSuperPonuduToolStripMenuItem_Click);
             // 
+            // ključeviZaPosjeteToolStripMenuItem
+            // 
+            this.ključeviZaPosjeteToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.listaAktivnihKljučevaToolStripMenuItem});
+            this.ključeviZaPosjeteToolStripMenuItem.Name = "ključeviZaPosjeteToolStripMenuItem";
+            this.ključeviZaPosjeteToolStripMenuItem.Size = new System.Drawing.Size(146, 24);
+            this.ključeviZaPosjeteToolStripMenuItem.Text = "Ključevi za posjete";
+            // 
+            // listaAktivnihKljučevaToolStripMenuItem
+            // 
+            this.listaAktivnihKljučevaToolStripMenuItem.Name = "listaAktivnihKljučevaToolStripMenuItem";
+            this.listaAktivnihKljučevaToolStripMenuItem.Size = new System.Drawing.Size(238, 26);
+            this.listaAktivnihKljučevaToolStripMenuItem.Text = "Lista aktivnih ključeva";
+            this.listaAktivnihKljučevaToolStripMenuItem.Click += new System.EventHandler(this.listaAktivnihKljučevaToolStripMenuItem_Click);
+            // 
             // frmIndex
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -242,6 +260,8 @@
         private System.Windows.Forms.ToolStripMenuItem pregledPreporukaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem pregledPosjetaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem pregledDojmovaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem ključeviZaPosjeteToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem listaAktivnihKljučevaToolStripMenuItem;
     }
 }
 

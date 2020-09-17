@@ -18,7 +18,7 @@ services:
     build:
       context: .
     environment:
-      - ConnectionStrings:eRestoran=Server=erestoran-sql,1433;Database=170116;User=sa;Password=QWElkj132!;ConnectRetryCount=0
+      - ConnectionStrings:eRestoran=Server=erestoran-sql,1433;Database=IB170116;User=sa;Password=QWElkj132!;ConnectRetryCount=0
     ports:
       - 49947:80
     networks:

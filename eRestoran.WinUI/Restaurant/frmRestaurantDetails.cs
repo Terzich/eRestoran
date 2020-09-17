@@ -34,6 +34,7 @@ namespace eRestoran.WinUI.Restaurant
             txtCity.Text = restaurant.CityName;
             txtAddress.Text = restaurant.Address;
             nudNumberOfTables.Text = restaurant.NumberOfTables.ToString();
+            request.Image = restaurant.Image;
 
 
             pbR.Image = System.Drawing.Image.FromStream(new MemoryStream(restaurant.Image));

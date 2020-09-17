@@ -20,6 +20,8 @@ namespace eRestoran.MobileApp.ViewModels
         private readonly APIService _apiServiceD = new APIService("Discount");
         private readonly APIService _apiServiceA = new APIService("Award");
         private readonly APIService _apiServiceSO = new APIService("SuperOffer");
+        private readonly APIService _apiServiceK = new APIService("Key");
+
 
 
 
@@ -136,6 +138,14 @@ namespace eRestoran.MobileApp.ViewModels
             get { return ReviewGradeS; }
             set { SetProperty(ref ReviewGradeS, value); }
         }
+
+        string Key = string.Empty;
+        public string _Key
+        {
+            get { return Key; }
+            set { SetProperty(ref Key, value); }
+        }
+
         int? ReviewGrade = 0;
         public int? _ReviewGrade
         {
@@ -261,6 +271,34 @@ namespace eRestoran.MobileApp.ViewModels
 
         public async Task AddVisit()
         {
+
+            var ks = await _apiServiceK.Get<List<Model.Key>>(null);
+            bool c = false;
+            int id = 0;
+
+
+            if (string.IsNullOrEmpty(_Key))
+            {
+                await Application.Current.MainPage.DisplayAlert("Greška!", "Za ostavljanje posjete potrebno je unijeti kod od 9 cifara! (Napomena: devetocifreni kod možete zatražiti na šanku kod konobara, ukoliko nema dostupnih kodova, obavijestite osoblje restorana kako bi vam generisali novi!", "Pokušajte ponovo!");
+                return;
+            }
+            foreach (var item in ks)
+            {
+                if (_Key == item.Key1.ToString())
+                {
+                    c = true;
+                    id = item.KeyId;
+                }
+            }
+            if(c==false)
+            {
+                await Application.Current.MainPage.DisplayAlert("Greška!", "Vaš kod nije ispravan!", "Pokušajte ponovo!");
+                return;
+            }
+
+            KeyUpsertRequest kr = new KeyUpsertRequest { Key1 = ks[id].Key1, Active = false };
+            await _apiServiceK.Update<Model.Key>(id, kr);
+
             VisitUpsertRequest req = new VisitUpsertRequest
             {
                 UserId = APIService._VisitorId,

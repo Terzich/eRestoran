@@ -5,6 +5,11 @@ namespace eRestoran.WebAPI.Database
 {
     public partial class Restaurant
     {
+        public Restaurant()
+        {
+            Key = new HashSet<Key>();
+        }
+
         public int RestaurantId { get; set; }
         public string RestaurantName { get; set; }
         public int CityId { get; set; }
@@ -15,5 +20,6 @@ namespace eRestoran.WebAPI.Database
         public byte[] Image { get; set; }
 
         public virtual City City { get; set; }
+        public virtual ICollection<Key> Key { get; set; }
     }
 }

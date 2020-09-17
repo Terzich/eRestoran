@@ -91,6 +91,7 @@ namespace eRestoran.WebAPI
             services.AddScoped<ICRUDService<Model.RestaurantReview, object, Model.Request.RestaurantReviewUpsertRequest, Model.Request.RestaurantReviewUpsertRequest>, RestaurantReviewService>();
             services.AddScoped<IService<Model.City, object>, CityService>();
             services.AddScoped<ICRUDService<Model.MenuItemsReview, object, Model.Request.MenuItemsReviewUpsertRequest, Model.Request.MenuItemsReviewUpsertRequest>, MenuItemsReviewService>();
+            services.AddScoped<ICRUDService<Model.Key, object, Model.Request.KeyUpsertRequest, Model.Request.KeyUpsertRequest>, KeyService>();
 
 
 

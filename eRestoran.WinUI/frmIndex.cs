@@ -1,4 +1,5 @@
 ﻿using eRestoran.WinUI.Award;
+using eRestoran.WinUI.Key;
 using eRestoran.WinUI.Restaurant;
 using eRestoran.WinUI.SuperOffer;
 using eRestoran.WinUI.Users;
@@ -198,6 +199,12 @@ namespace eRestoran.WinUI
         private void pregledPonudeToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frmShowRestaurantMenuItems frm = new frmShowRestaurantMenuItems();
+            frm.Show();
+        }
+
+        private void listaAktivnihKljučevaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmListOfKeys frm = new frmListOfKeys();
             frm.Show();
         }
     }

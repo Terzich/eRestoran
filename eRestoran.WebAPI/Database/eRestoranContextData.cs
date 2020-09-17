@@ -453,7 +453,47 @@ namespace eRestoran.WebAPI.Database
                RecommendationDescription="Preporuka za promjenu muzike, ova je dosta monotona"
 
             });
+            modelBuilder.Entity<Key>().HasData(new Key()
+            {
+                KeyId=1,
+               Key1=123456789,
+               Active=true
+            });
+            modelBuilder.Entity<Key>().HasData(new Key()
+            {
+                KeyId = 2,
 
+                Key1 = 987654321,
+                Active = true
+            });
+            modelBuilder.Entity<Key>().HasData(new Key()
+            {
+                KeyId = 3,
+
+                Key1 = 123789456,
+                Active = true
+            });
+            modelBuilder.Entity<Key>().HasData(new Key()
+            {
+                KeyId = 4,
+
+                Key1 = 789123456,
+                Active = true
+            });
+            modelBuilder.Entity<Key>().HasData(new Key()
+            {
+                KeyId = 5,
+
+                Key1 = 258963147,
+                Active = true
+            });
+            modelBuilder.Entity<Key>().HasData(new Key()
+            {
+                KeyId = 6,
+
+                Key1 = 147258369,
+                Active = true
+            });
         }
     }
 }

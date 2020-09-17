@@ -22,6 +22,7 @@ namespace eRestoran.WebAPI.Database
         public virtual DbSet<Gender> Gender { get; set; }
         public virtual DbSet<ItemCategory> ItemCategory { get; set; }
         public virtual DbSet<ItemType> ItemType { get; set; }
+        public virtual DbSet<Key> Key { get; set; }
         public virtual DbSet<MenuItemsReview> MenuItemsReview { get; set; }
         public virtual DbSet<Quantity> Quantity { get; set; }
         public virtual DbSet<Restaurant> Restaurant { get; set; }
@@ -36,7 +37,6 @@ namespace eRestoran.WebAPI.Database
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            
             if (!optionsBuilder.IsConfigured)
             {
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
@@ -55,7 +55,7 @@ namespace eRestoran.WebAPI.Database
                 entity.HasOne(d => d.User)
                     .WithMany(p => p.Award)
                     .HasForeignKey(d => d.UserId)
-                    .OnDelete(DeleteBehavior.Cascade)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("Award_User_FK");
             });
 
@@ -75,7 +75,7 @@ namespace eRestoran.WebAPI.Database
                 entity.HasOne(d => d.DiscountType)
                     .WithMany(p => p.Discount)
                     .HasForeignKey(d => d.DiscountTypeId)
-                    .OnDelete(DeleteBehavior.Cascade)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("DiscountType_Discount_FK");
 
                 entity.HasOne(d => d.ItemCategory)
@@ -96,7 +96,7 @@ namespace eRestoran.WebAPI.Database
                 entity.HasOne(d => d.User)
                     .WithMany(p => p.Discount)
                     .HasForeignKey(d => d.UserId)
-                    .OnDelete(DeleteBehavior.Cascade)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("User_Discount_FK");
             });
 
@@ -121,7 +121,7 @@ namespace eRestoran.WebAPI.Database
                 entity.HasOne(d => d.ItemType)
                     .WithMany(p => p.ItemCategory)
                     .HasForeignKey(d => d.ItemTypeId)
-                    .OnDelete(DeleteBehavior.Cascade)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("ItemTypeId_FK");
             });
 
@@ -130,6 +130,16 @@ namespace eRestoran.WebAPI.Database
                 entity.Property(e => e.Type)
                     .IsRequired()
                     .HasMaxLength(35);
+            });
+
+            modelBuilder.Entity<Key>(entity =>
+            {
+                entity.Property(e => e.Key1).HasColumnName("Key");
+
+                entity.HasOne(d => d.Restaurant)
+                    .WithMany(p => p.Key)
+                    .HasForeignKey(d => d.RestaurantId)
+                    .HasConstraintName("Restaurant_Key_FK");
             });
 
             modelBuilder.Entity<MenuItemsReview>(entity =>
@@ -145,13 +155,13 @@ namespace eRestoran.WebAPI.Database
                 entity.HasOne(d => d.RestaurantMenuItem)
                     .WithMany(p => p.MenuItemsReview)
                     .HasForeignKey(d => d.RestaurantMenuItemId)
-                    .OnDelete(DeleteBehavior.Cascade)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("RestaurantMenu_ItemId_FK");
 
                 entity.HasOne(d => d.User)
                     .WithMany(p => p.MenuItemsReview)
                     .HasForeignKey(d => d.UserId)
-                    .OnDelete(DeleteBehavior.Cascade)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("UserId_FK");
             });
 
@@ -177,7 +187,7 @@ namespace eRestoran.WebAPI.Database
                 entity.HasOne(d => d.City)
                     .WithMany(p => p.Restaurant)
                     .HasForeignKey(d => d.CityId)
-                    .OnDelete(DeleteBehavior.Cascade)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("CityId_Restaurant_FK");
             });
 
@@ -196,7 +206,7 @@ namespace eRestoran.WebAPI.Database
                 entity.HasOne(d => d.ItemCategory)
                     .WithMany(p => p.RestaurantMenuItem)
                     .HasForeignKey(d => d.ItemCategoryId)
-                    .OnDelete(DeleteBehavior.Cascade)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("ItemCategoryId_FK");
 
                 entity.HasOne(d => d.Quantity)
@@ -216,7 +226,7 @@ namespace eRestoran.WebAPI.Database
                 entity.HasOne(d => d.User)
                     .WithMany(p => p.RestaurantReview)
                     .HasForeignKey(d => d.UserId)
-                    .OnDelete(DeleteBehavior.Cascade)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("Restaurant_Review_UserId_FK");
             });
 
@@ -287,13 +297,13 @@ namespace eRestoran.WebAPI.Database
                 entity.HasOne(d => d.City)
                     .WithMany(p => p.User)
                     .HasForeignKey(d => d.CityId)
-                    .OnDelete(DeleteBehavior.Cascade)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("CityId_FK");
 
                 entity.HasOne(d => d.Gender)
                     .WithMany(p => p.User)
                     .HasForeignKey(d => d.GenderId)
-                    .OnDelete(DeleteBehavior.Cascade)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("GenderId_FK");
             });
 
@@ -302,13 +312,13 @@ namespace eRestoran.WebAPI.Database
                 entity.HasOne(d => d.Role)
                     .WithMany(p => p.UserRole)
                     .HasForeignKey(d => d.RoleId)
-                    .OnDelete(DeleteBehavior.Cascade)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("Role_UserRole_FK");
 
                 entity.HasOne(d => d.User)
                     .WithMany(p => p.UserRole)
                     .HasForeignKey(d => d.UserId)
-                    .OnDelete(DeleteBehavior.Cascade)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("User_UserRole_FK");
             });
 
@@ -319,9 +329,11 @@ namespace eRestoran.WebAPI.Database
                 entity.HasOne(d => d.User)
                     .WithMany(p => p.Visit)
                     .HasForeignKey(d => d.UserId)
-                    .OnDelete(DeleteBehavior.Cascade)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("Visit_UserId_FK");
             });
+
+         
 
             modelBuilder.Entity<VisitorRecommendation>(entity =>
             {
@@ -336,7 +348,7 @@ namespace eRestoran.WebAPI.Database
                 entity.HasOne(d => d.User)
                     .WithMany(p => p.VisitorRecommendation)
                     .HasForeignKey(d => d.UserId)
-                    .OnDelete(DeleteBehavior.Cascade)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("Visitor_Recommendation_UserId_FK");
             });
 
