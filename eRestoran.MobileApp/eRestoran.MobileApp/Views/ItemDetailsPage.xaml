@@ -18,21 +18,24 @@
     </ContentPage.Resources>
 
     <ContentPage.Content>
-        <StackLayout >
+        <StackLayout  BackgroundColor="Gray">
 
-            <StackLayout VerticalOptions="CenterAndExpand" HorizontalOptions="Center">
-                <Label HorizontalTextAlignment="Center" FontSize="Large" FontAttributes="Bold" TextColor="RoyalBlue" Text="{Binding _ItemName}"></Label>
-                <StackLayout Padding="25">
-                    <Image WidthRequest="250" HeightRequest="250"  Source="{Binding _Image, Converter={StaticResource imgConv}}"></Image>
+                <Label HorizontalTextAlignment="Center" FontSize="Large" FontAttributes="Bold" TextColor="Black" Text="{Binding _ItemName}"></Label>
+            <StackLayout VerticalOptions="CenterAndExpand" HorizontalOptions="Center" Orientation="Horizontal" BackgroundColor="Silver">
+                <StackLayout Padding="10">
+                    <Image HeightRequest="200" WidthRequest="200" Source="{Binding _Image, Converter={StaticResource imgConv}}"></Image>
 
                 </StackLayout>
 
+                <StackLayout Orientation="Vertical">
+                    
                 <Label FontSize="Medium" HorizontalTextAlignment="Center" FontAttributes="Bold" Text="Cijena u KM: "></Label>
-                <Label HorizontalTextAlignment="Center" FontAttributes="Bold" TextColor="OrangeRed" Text="{Binding _Price}"></Label>
+                <Label HorizontalTextAlignment="Center" FontAttributes="Bold" TextColor="DarkRed" Text="{Binding _Price}"></Label>
                 <Label FontSize="Medium" HorizontalTextAlignment="Center" FontAttributes="Bold" Text="Kategorija: "></Label>
-                <Label HorizontalTextAlignment="Center" FontAttributes="Bold" TextColor="OrangeRed" Text="{Binding _ItemCategoryName}"></Label>
+                    <Label HorizontalTextAlignment="Center" FontAttributes="Bold" TextColor="DarkRed" Text="{Binding _ItemCategoryName}"></Label>
                 <Label FontSize="Medium" HorizontalTextAlignment="Center" FontAttributes="Bold" Text="Porcija: "></Label>
-                <Label  HorizontalTextAlignment="Center" FontAttributes="Bold" TextColor="OrangeRed" Text="{Binding _QuantityName}"></Label>
+                    <Label  HorizontalTextAlignment="Center" FontAttributes="Bold" TextColor="DarkRed" Text="{Binding _QuantityName}"></Label>
+                </StackLayout>
 
             </StackLayout>
             <StackLayout HorizontalOptions="Center" VerticalOptions="End" Padding="15">

@@ -4,6 +4,7 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:vm="clr-namespace:eRestoran.MobileApp.ViewModels"
+             xmlns:converters="clr-namespace:eRestoran.MobileApp.Converters"
              mc:Ignorable="d"
              x:Class="eRestoran.MobileApp.Views.ItemsPage"
              Title="{Binding Title}"
@@ -16,8 +17,14 @@
     <ContentPage.BindingContext>
         <vm:HomePageViewModel />
     </ContentPage.BindingContext>
-
-    <StackLayout  Padding="10,10, 10, 10" BackgroundColor="Azure">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:ImageConverter x:Key="imgConv"></converters:ImageConverter>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    
+    <ScrollView>
+    <StackLayout  Padding="10,10, 10, 10" BackgroundColor="LightGray">
         <!--<ListView x:Name="ItemsListView"
                 ItemsSource="{Binding Items}"
                 VerticalOptions="FillAndExpand"
@@ -65,7 +72,13 @@
                 </FormattedString>
             </Label.FormattedText>
         </Label>
-        <StackLayout VerticalOptions="CenterAndExpand" HorizontalOptions="Center" Padding="20,20,20,20" BackgroundColor="Silver" Margin="20" >
+        <StackLayout VerticalOptions="CenterAndExpand" HorizontalOptions="Center" Padding="20,20,20,20" BackgroundColor="Silver" Margin="20" Orientation="Horizontal" >
+
+                <StackLayout>
+                    <Image VerticalOptions="Center" WidthRequest="200"  Source="{Binding _image, Converter={StaticResource imgConv}}"></Image>
+                </StackLayout>
+
+                <StackLayout Orientation="Vertical">
             <Label FontAttributes="Bold" FontSize="15"   Margin="0,0,0,10" HorizontalTextAlignment="Center"  >
                 <Label.FormattedText>
                     <FormattedString>
@@ -108,8 +121,8 @@
                     </FormattedString>
                 </Label.FormattedText>
             </Label>
-
-        </StackLayout>
+                </StackLayout>
+            </StackLayout>
 
         <Label HorizontalTextAlignment="Center" IsVisible="{Binding _activeDiscount}" TextColor="DarkGreen" FontAttributes="Bold" FontSize="15" HorizontalOptions="Center"  Margin="0,30,0,10">
             <Label.FormattedText>
@@ -138,7 +151,7 @@
                 </FormattedString>
             </Label.FormattedText>
         </Label>
-        <ListView IsVisible="{Binding _showOffers}" ItemsSource="{Binding SuperOfferList}" >
+        <ListView IsVisible="{Binding _showOffers}" ItemsSource="{Binding SuperOfferList}" HeightRequest="60">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
@@ -187,7 +200,7 @@
         </Label>
         <Label IsVisible="{Binding _addR}" Text="Unesite tekst preporuke:" HorizontalOptions="Center" />
         <Entry IsVisible="{Binding _addR}" Text="{Binding _Description}"></Entry>
-        <Button IsVisible="{Binding _addR}" HorizontalOptions="Center" Command="{Binding RecommendationCommand}" Text="Ostavi preporuku" BackgroundColor="Yellow" BorderColor="Black" CornerRadius="15"></Button>
+        <Button IsVisible="{Binding _addR}" HorizontalOptions="Center" Command="{Binding RecommendationCommand}" Text="Ostavi preporuku" BackgroundColor="Yellow" BorderColor="Black"></Button>
         <Label IsVisible="{Binding _addR}" FontAttributes="Italic" Text="Napomena! Broj ostavljenih preporuka ne može biti veći od proja ostavljenih posjeta! " HorizontalOptions="Center" />
 
 
@@ -215,5 +228,5 @@
         <Button  Command="{Binding AddReviewCommand}" IsVisible="{Binding _giveR}" Margin="0,0,10,10" HorizontalOptions="Center" Text="Ostavi dojam" BackgroundColor="Blue" BorderColor="Black"></Button>
 
     </StackLayout>
-    
+    </ScrollView>
 </ContentPage>

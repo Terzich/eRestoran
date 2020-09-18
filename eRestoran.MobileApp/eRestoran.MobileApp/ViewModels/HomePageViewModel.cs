@@ -166,8 +166,16 @@ namespace eRestoran.MobileApp.ViewModels
             get { return giveR; }
             set { SetProperty(ref giveR, value); }
         }
-        
-         bool showR = false;
+
+        byte[] image = null;
+        public byte[] _image
+        {
+            get { return image; }
+            set { SetProperty(ref image, value); }
+        }
+
+
+        bool showR = false;
         public bool _showR
         {
             get { return showR; }
@@ -374,6 +382,7 @@ namespace eRestoran.MobileApp.ViewModels
             _CityName = r.CityName;
             _Address = r.Address;
             _NumberOfTables = r.NumberOfTables;
+            _image = r.Image;
             _OpenAt = new TimeSpan(r.OpenAt.Value.Hour, r.OpenAt.Value.Minute, r.OpenAt.Value.Second);
             _CloseAt = new TimeSpan(r.CloseAt.Value.Hour, r.CloseAt.Value.Minute, r.CloseAt.Value.Second);
             List<Model.Discount> d = await _apiServiceD.Get<List<Model.Discount>>(null);
