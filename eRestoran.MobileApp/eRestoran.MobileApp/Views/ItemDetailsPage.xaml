@@ -27,13 +27,13 @@
 
                 </StackLayout>
 
-                <StackLayout Orientation="Vertical">
+                <StackLayout Orientation="Vertical" Padding="10">
                     
-                <Label FontSize="Medium" HorizontalTextAlignment="Center" FontAttributes="Bold" Text="Cijena u KM: "></Label>
+                <Label  HorizontalTextAlignment="Center" FontAttributes="Bold" Text="Cijena u KM: "></Label>
                 <Label HorizontalTextAlignment="Center" FontAttributes="Bold" TextColor="DarkRed" Text="{Binding _Price}"></Label>
-                <Label FontSize="Medium" HorizontalTextAlignment="Center" FontAttributes="Bold" Text="Kategorija: "></Label>
+                <Label  HorizontalTextAlignment="Center" FontAttributes="Bold" Text="Kategorija: "></Label>
                     <Label HorizontalTextAlignment="Center" FontAttributes="Bold" TextColor="DarkRed" Text="{Binding _ItemCategoryName}"></Label>
-                <Label FontSize="Medium" HorizontalTextAlignment="Center" FontAttributes="Bold" Text="Porcija: "></Label>
+                <Label  HorizontalTextAlignment="Center" FontAttributes="Bold" Text="Porcija: "></Label>
                     <Label  HorizontalTextAlignment="Center" FontAttributes="Bold" TextColor="DarkRed" Text="{Binding _QuantityName}"></Label>
                 </StackLayout>
 

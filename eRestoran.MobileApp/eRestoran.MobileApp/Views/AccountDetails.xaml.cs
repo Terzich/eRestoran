@@ -19,6 +19,8 @@ namespace eRestoran.MobileApp.Views
         {
             InitializeComponent();
             BindingContext = model = new UserInsertRequestViewModel();
+            imgDisp.Source = "reslogo.png";
+
 
         }
         protected async override void OnAppearing()

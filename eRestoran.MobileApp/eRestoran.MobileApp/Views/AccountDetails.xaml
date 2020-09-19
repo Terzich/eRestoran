@@ -4,29 +4,38 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:vm="clr-namespace:eRestoran.MobileApp.ViewModels"
+             xmlns:converters="clr-namespace:eRestoran.MobileApp.Converters"
              mc:Ignorable="d"
              x:Class="eRestoran.MobileApp.Views.AccountDetails">
     
     <ContentPage.BindingContext>
         <vm:UserInsertRequestViewModel />
     </ContentPage.BindingContext>
-    
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:ImageConverter x:Key="imgConv"></converters:ImageConverter>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
     <ContentPage.Content>
-        
+        <ScrollView>
         <StackLayout>
-            <Label Text="Ime:"/>
+            <Image HeightRequest="300" WidthRequest="300" HorizontalOptions="Center" x:Name="imgDisp" ></Image>
+
+            <Label Text="Ime:" FontAttributes="Bold"/>
             <Entry x:Name="_Name" Text="{Binding _Name}"></Entry>
-            <Label Text="Prezime:"/>
+            <Label Text="Prezime:" FontAttributes="Bold"/>
             <Entry x:Name="Surname" Text="{Binding _Surname}"></Entry>
-            <Label Text="Adresa stanovanja:"/>
+            <Label Text="Adresa stanovanja:" FontAttributes="Bold"/>
             <Entry x:Name="Address" Text="{Binding _Address}"></Entry>
-            <Label Text="Datum rođenja:"/>
+            <Label Text="Datum rođenja:" FontAttributes="Bold"/>
             <DatePicker Date="{Binding _DateOfBirth}"></DatePicker>
-            <Label Text="Broj telefona:"/>
+            <Label Text="Broj telefona:" FontAttributes="Bold"/>
             <Entry x:Name="PhoneNumber" Text="{Binding _PhoneNumber}"></Entry>
-            <Label Text="Korisničko ime:"/>
+            <Label Text="Korisničko ime:" FontAttributes="Bold"/>
             <Entry x:Name="Username" Text="{Binding _Username}"></Entry>
-            <Label>
+            <Label FontAttributes="Bold">
                 <Label.FormattedText>
                     <FormattedString>
                         <Span Text="Ukoliko želite promijeniti lozinku, " />
@@ -42,13 +51,14 @@
                     </FormattedString>
                 </Label.FormattedText>
             </Label>
-            <Label IsVisible="{Binding _showPW}" Text="Nova lozinka:"/>
+            <Label FontAttributes="Bold" IsVisible="{Binding _showPW}" Text="Nova lozinka:"/>
             <Entry  x:Name="_Password" Text="{Binding _Password}" IsPassword="True" IsVisible="{Binding _showPW}"></Entry>
-            <Label IsVisible="{Binding _showPW}" Text="Potvrdite novu lozinku:"/>
+            <Label FontAttributes="Bold" IsVisible="{Binding _showPW}" Text="Potvrdite novu lozinku:"/>
             <Entry x:Name="CPass" Text="{Binding _ConfirmationPassword}" IsPassword="True" IsVisible="{Binding _showPW}"></Entry>
             <Button Text="Promijeni podatke" Command="{Binding UpdateDataCommand}"></Button>
             <Label IsVisible="{Binding IsBusy}" Text="Working..."></Label>
 
         </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>

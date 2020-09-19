@@ -15,6 +15,8 @@ namespace eRestoran.MobileApp.Views
         public CreateAccountPage()
         {
             InitializeComponent();
+            imgDisp.Source = "reslogo.png";
+
         }
     }
 }

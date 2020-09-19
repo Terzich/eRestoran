@@ -17,6 +17,7 @@ namespace eRestoran.MobileApp.Views
         {
             InitializeComponent();
             redirect = red;
+            imgDisp.Source = "reslogo.png";
         }
 
         private async void TapGestureRecognizer_Tapped(object sender, EventArgs e)
